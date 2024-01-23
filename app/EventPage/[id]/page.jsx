@@ -1,4 +1,6 @@
 import AddQuestion from "@/app/(components)/(form)/AddFlexQuestion";
+import GetUserInfo from "@/app/(components)/(form)/GetUserInfo";
+import WhoToInvite from "@/app/(components)/(form)/WhoToInvite";
 
 const page = async ({ params }) => {
     return (
@@ -9,6 +11,8 @@ const page = async ({ params }) => {
                     <input type="text" id="eventName" name="eventName" class="w-full px-3 py-2 border rounded text-blue-600" required />
                 </div>
                 <AddQuestion />
+                <WhoToInvite />
+                <GetUserInfo />
                 <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Submit</button>
             </form>
 
