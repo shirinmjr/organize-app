@@ -1,10 +1,21 @@
 // import {Images} from "@/assets/images"
 import Image from "next/image";
 import startImage from "../../assets/images/start@3x.png";
+import logoPNG from "../../assets/images/logo.png";
+import Link from "next/link";
+
 const GetStarted = () => {
     return (
         <div className="flex flex-col items-center justify-center h-screen mx-5">
-            <div className="flex mb-3">
+            <div className="flex flex-col mb-3">
+                <div>
+                    <Image
+                        alt="app logo"
+                        src={logoPNG}
+                        width={120}
+                        height={80}
+                    />
+                </div>
                 <div>
                     <Image
                         alt="get started image"
@@ -17,7 +28,9 @@ const GetStarted = () => {
                     <div className="lg:grid grid-cols-2 xl:grid-cols-4">
                         <p>We empower communities to <b>get things done</b></p>
                     </div>
-                    <input type="submit" className="btn bg-white shadow-lg p-3 m-2" value={"Get Started!"} />
+                    <Link href={`/EventPage/new`}>
+                        <input type="submit" className="btn bg-white shadow-lg p-3 m-2" value={"Get Started!"} />
+                    </Link>
                 </div>
             </div>
         </div>
