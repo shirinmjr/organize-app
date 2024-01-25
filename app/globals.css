@@ -18,20 +18,20 @@
   }
 
   h1 {
-    @apply text-4xl;
+    @apply text-3xl;
     margin: 0 0 5px 0;
   }
   h2 {
-    @apply text-3xl;
-  }
-  h3 {
     @apply text-2xl;
   }
-  h4 {
+  h3 {
     @apply text-xl;
   }
-  h5 {
+  h4 {
     @apply text-lg;
+  }
+  h5 {
+    @apply text-base;
   }
   p {
     @apply text-sm;
