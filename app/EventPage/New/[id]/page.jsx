@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ProgressBar from "@/app/(components)/ProgressBar";
 import EventName from "@/app/(components)/(createEventForm)/StepA.EventName";
 import NeedToDecide from "@/app/(components)/(createEventForm)/StepB.NeedToDecide";
