@@ -30,7 +30,7 @@ const GetStarted = () => {
                         <p>We empower communities to <b>get things done</b></p>
                     </div>
                     <Link href={`/EventPage/New/1`}>
-                        <input type="submit" className="btn bg-white shadow-lg p-3 m-2" value={"Get Started!"} />
+                        <input type="submit" className="btn text-blue 400 shadow-lg p-3 m-2" value={"Get Started!"} />
                     </Link>
                 </div>
             </div>
