@@ -10,7 +10,7 @@ import Link from "next/link";
 // import { useRouter } from "next/navigation";
 
 
-const page = () => {
+const Page = () => {
     const initialFormData = {
         eventName: "",
         decisions: [{
@@ -133,4 +133,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default Page;
