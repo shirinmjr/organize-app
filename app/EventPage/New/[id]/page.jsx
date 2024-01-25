@@ -6,7 +6,6 @@ import GetUserInfo from "@/app/(components)/(createEventForm)/StepD.GetUserInfo"
 import WhoToInvite from "@/app/(components)/(createEventForm)/StepC.WhoToInvite";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 
 const initialFormData = {
     eventName: "",
@@ -23,7 +22,7 @@ const initialFormData = {
 };
 
 const page = () => {
-    const [step, setStep] = useState(1);
+
     const router = useRouter();
     const pageNum = router.query;
     console.log({ pageNum });
