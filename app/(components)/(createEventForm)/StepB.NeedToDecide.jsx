@@ -5,7 +5,7 @@ import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-const DecisionQuestion = () => {
+const NeedToDecide = () => {
     const router = useRouter();
     const questionsRef = useRef();
 
@@ -14,16 +14,61 @@ const DecisionQuestion = () => {
     const createQuestion = (e) => {
         e.preventDefault();
         console.log("current", questionsRef.current);
-        console.log(selectedType);
+        console.log("select type", selectedType);
 
         const newElement = document.createElement('div');
-        newElement.innerHTML = '<input type="text" />';
+        newElement.innerHTML = ' <input type="text" />';
 
         // Append the new element to the container
         questionsRef.current.appendChild(newElement);
+        switch (selectedType) {
+            case "s":
+                console.log("Creating Single choice question");
+                createRadio();
+                break;
+            case "m":
+                console.log("Creating multiple choice question");
+
+                createCheckBox();
+                break;
+            case "t":
+                console.log("Creating Text question");
+                createTextfield();
+                break;
+            default:
+                console.log("No Type Was Selected");
+        }
+
 
     };
 
+    const createTextfield = () => {
+
+        const newElement = document.createElement('div');
+        newElement.innerHTML = '<label>Please Explain: </label><input type="text" />';
+
+        // Append the new element to the container
+        questionsRef.current.appendChild(newElement);
+    };
+    const createCheckBox = () => {
+        const newElement = document.createElement('div');
+        newElement.innerHTML = '[]<input type="text" />';
+
+        // Append the new element to the container
+        questionsRef.current.appendChild(newElement);
+    };
+    const createRadio = () => {
+        const newElement = document.createElement('div');
+        newElement.innerHTML = `<div className="flex">
+        ( ) <input type="text" />
+        ( ) <input type="text" />
+        ( ) <input type="text" />
+        ( ) <input type="text" />
+        </div> `;
+
+        // Append the new element to the container
+        questionsRef.current.appendChild(newElement);
+    };
 
 
 
@@ -60,7 +105,7 @@ const DecisionQuestion = () => {
                 </div>
                 <div ref={questionsRef}>
 
-                    This is where questions go
+                    <button type='submit' className='text-black border-x-white'>Save</button>
 
 
 
@@ -71,5 +116,5 @@ const DecisionQuestion = () => {
     );
 };
 
-export default DecisionQuestion;
+export default NeedToDecide;
 
