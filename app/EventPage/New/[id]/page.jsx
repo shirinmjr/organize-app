@@ -5,7 +5,7 @@ import AddQuestion from "@/app/(components)/(createEventForm)/StepB.NeedToDecide
 import GetUserInfo from "@/app/(components)/(createEventForm)/StepD.GetUserInfo";
 import WhoToInvite from "@/app/(components)/(createEventForm)/StepC.WhoToInvite";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 
 const initialFormData = {
     eventName: "",
@@ -23,9 +23,9 @@ const initialFormData = {
 
 const page = () => {
 
-    const router = useRouter();
-    const pageNum = router.query;
-    console.log({ pageNum });
+    // const router = useRouter();
+    // const pageNum = router.query;
+    //console.log({ pageNum });
     return (
         <div className="form-container p-8 rounded shadow-md">
 
