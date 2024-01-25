@@ -35,7 +35,7 @@ const DecisionQuestion = () => {
     return (
         <div>
             <div className="mb-4  ">
-                <h1 className="block text-sm font-bold mb-2">What still needs to be decided for your event?</h1>
+                <h1 className="">What still needs to be decided for your event?</h1>
                 <div className='flex text-xl text-blue-600'>
                     <select
                         id="type"

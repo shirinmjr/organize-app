@@ -10,8 +10,11 @@ const page = async ({ params }) => {
                     <h2 >What is your event name?</h2>
                     <input type="text" id="eventName" name="eventName" className="w-full px-3 py-2 border rounded text-blue-600" required />
                 </div>
+                <hr/>
                 <AddQuestion />
+                <hr/>
                 <WhoToInvite />
+                <hr/>
                 <GetUserInfo />
                 <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Submit</button>
             </form>
