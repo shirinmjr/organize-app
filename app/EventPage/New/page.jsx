@@ -11,6 +11,8 @@ import Link from "next/link";
 
 
 const Page = () => {
+    const totalSteps = 5;
+
     const initialFormData = {
         eventName: "",
         decisions: [{
@@ -86,9 +88,9 @@ const Page = () => {
             <div className='bg-white rounded shadow-md'>
                 <form className="">
 
-                    <ProgressBar progress={step} />
+                    <ProgressBar step={step} totalSteps={totalSteps} />
                     {/* {renderProgressBar()} */}
-                    {step === 1 ? <EventName /> : null}
+                    {step === 1 ? <EventName callBack={handleChangeInput} /> : null}
                     {step === 2 ? <NeedToDecide /> : null}
                     {step === 3 ? <WhoToInvite /> : null}
                     {step === 4 ? <GetUserInfo /> : null} {/* final step*/}
