@@ -59,7 +59,7 @@ const NeedToDecide = () => {
     };
     const createRadio = () => {
         const newElement = document.createElement('div');
-        newElement.innerHTML = `<div className="flex">
+        newElement.innerHTML = `<div className="flex bg-black">
         ( ) <input type="text" />
         ( ) <input type="text" />
         ( ) <input type="text" />
@@ -78,7 +78,7 @@ const NeedToDecide = () => {
     const handleSelectChange = (e) => setSelectedType(e.target.value);
 
     return (
-        <div>
+        <div className='h-screen'>
             <div className="mb-4  ">
                 <h1 className="">What still needs to be decided for your event?</h1>
                 <div className='flex text-xl text-blue-600'>
