@@ -2,27 +2,14 @@ import { faTicketSimple } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 
-const ProgressBar = () => {
+const ProgressBar = ({ progress }) => {
     return (
-        <nav className="p-4 event-progressbar">
-            <div className="flex justify-evenly items-center ">
-
-                <Link href="1">
-                    <FontAwesomeIcon icon={faTicketSimple} className="icon" />
-                </Link>
-                <Link href="2">
-                    <FontAwesomeIcon icon={faTicketSimple} className="icon" />
-                </Link>
-                <Link href="3">
-                    <FontAwesomeIcon icon={faTicketSimple} className="icon" />
-                </Link>
-                <Link href="4">
-                    <FontAwesomeIcon icon={faTicketSimple} className="icon" />
-                </Link>
+        <div className="w-full bg-gray-200 rounded-full h-5 dark:bg-blue-400">
+            <div className="bg-blue-600 h-5 rounded-full"
+                style={{ width: `${progress}0%` }}>
 
             </div>
-        </nav>
+        </div >
     );
 };
-
 export default ProgressBar;

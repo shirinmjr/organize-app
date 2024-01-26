@@ -30,22 +30,11 @@ const Page = () => {
     const [formData, setFormData] = useState(initialFormData);
 
     const handleNextStep = () => {
-
         setStep(step + 1);
-
-        //     if (step === "A") setStep("B");
-        //     else if (step === "B") setStep("C");
-        //     else if (step === "C") setStep("D");
     };
 
     const handlePreviousStep = () => {
-        if (step === 1) setStep(1);
         setStep(step - 1);
-
-        //     if (step === "D") setStep("C");
-        //     else if (step === "C") setStep("B");
-        //     else if (step === "B") setStep("A");
-        // };
     };
 
     const handleChangeInput = (event) => {
@@ -70,8 +59,9 @@ const Page = () => {
 
 
     useEffect(() => {
+        console.log(step);
         console.log("change in form detected"), formData;
-    }, [formData]);
+    }, [formData, step]);
 
     const renderProgressBar = () => {
         return (
@@ -93,41 +83,45 @@ const Page = () => {
 
     return (
         <div className="form-container p-8 rounded shadow-md">
+            <div className='bg-white rounded shadow-md'>
+                <form className="">
 
-            <form className="">
+                    <ProgressBar progress={step} />
+                    {/* {renderProgressBar()} */}
+                    {step === 1 ? <EventName /> : null}
+                    {step === 2 ? <NeedToDecide /> : null}
+                    {step === 3 ? <WhoToInvite /> : null}
+                    {step === 4 ? <GetUserInfo /> : null} {/* final step*/}
 
-                <ProgressBar />
-                {/* {renderProgressBar()} */}
-                {step === 1 ? <EventName /> : null}
-                {step === 2 ? <NeedToDecide /> : null}
-                {step === 3 ? <WhoToInvite /> : null}
-                {step === 4 ? <GetUserInfo /> : null}
-
-
-                <div className="flex flex-row ">
-                    {/* <Link className="btn" href="#">Previous</Link>
+                    <div className="flex flex-row ">
+                        {/* <Link className="btn" href="#">Previous</Link>
                     <Link className="btn" href="#">Next</Link> */}
 
 
-                </div>
-            </form>
-            <div className='flex flex-row justify-between'>
-                <button
-                    className="bg-blue-500 btn text-white m-5 px-4 py-2 rounded hover:bg-blue-700"
-                    onClick={(e) => handlePreviousStep()}
-                >
-                    Previous
-                </button>
+                    </div>
+                </form>
+                <div className='flex flex-row justify-between'>
+                    {step > 1 &&
+                        <div>
+                            <button
+                                className="bg-blue-500 btn text-white m-5 px-4 py-2 rounded hover:bg-blue-700"
+                                onClick={(e) => handlePreviousStep()}
+                            >
+                                Previous
+                            </button>
+                        </div>}
+                    {step < 4 &&
+                        <div>
+                            <button
+                                className="bg-blue-500 btn text-white px-4 m-5 py-2 rounded hover:bg-blue-700"
+                                onClick={(e) => handleNextStep()}
+                            >
+                                Next
+                            </button>
+                        </div>}
 
-                <button
-                    className="bg-blue-500 btn text-white px-4 m-5 py-2 rounded hover:bg-blue-700"
-                    onClick={(e) => handleNextStep()}
-                >
-                    Next
-                </button>
-
-            </div >
-
+                </div >
+            </div>
         </div>
 
     );

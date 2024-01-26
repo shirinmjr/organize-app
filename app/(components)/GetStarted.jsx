@@ -15,26 +15,22 @@ const GetStarted = () => {
                         src={get_started_logo}
                         width={220}
                         height={100}
-
                     />
                 </div>
                 <br />
-
-
                 <div className="mt-50">
                     <Image
                         alt="get started image"
                         src={startImage}
                         width={650}
                         height={366}
-
                     />
-                    <h2 className="">Make a difference,</h2>
-                    <h3>together</h3>
+                    <h1 className="">Make a difference,</h1>
+                    <h2>together</h2>
                     <div className="lg:grid grid-cols-2 xl:grid-cols-4">
                         <p>We empower communities to <b>get things done</b></p>
                     </div>
-                    <Link href={`/EventPage/New/1`}>
+                    <Link href={`/EventPage/NewEvent/1`}>
                         <input type="submit" className="btn text-blue 400 shadow-lg p-3 m-2" value={"Get Started!"} />
                     </Link>
                 </div>
