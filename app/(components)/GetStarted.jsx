@@ -9,20 +9,25 @@ const GetStarted = () => {
         <div
             className="flex flex-col items-center justify-center h-screen mx-5">
             <div className="flex flex-col mb-3">
-                <div>
+                <div >
                     <Image
                         alt="app logo"
                         src={get_started_logo}
                         width={220}
                         height={100}
+
                     />
                 </div>
-                <div>
+                <br />
+
+
+                <div className="mt-50">
                     <Image
                         alt="get started image"
                         src={startImage}
                         width={650}
                         height={366}
+
                     />
                     <h2 className="">Make a difference,</h2>
                     <h3>together</h3>
