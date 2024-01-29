@@ -139,14 +139,17 @@ const NeedToDecide = ({ callBack }) => {
             {questions.map((question) => {
                 return (
                     <div key={question.id} >
-                        <div className='flex text-xl text-blue-600'>
+                        <div className='flex text-xl w-full text-blue-600'>
                             <input
                                 type="text"
                                 id={question.id}
                                 name="question"
-                                className="text-field w-full  py-2  text-border-3 rounded text-blue-600" required
+                                className="text-field   py-2  text-border-3 rounded text-blue-600" required
                             />
+                        </div>
+                        <div className='flex flex-col-2' >
 
+                            How do people to answer:
                             <select
                                 id="type"
                                 name="type"
@@ -156,10 +159,11 @@ const NeedToDecide = ({ callBack }) => {
                                 <option value="">Select</option>
                                 <option value="single">Single Choice</option>
                                 <option value="multiple">Multiple Choice</option>
-                                <option value="top3">Top Three</option>
+                                <option value="top3">Pick Top Three</option>
                                 <option value="explain">Explain it</option>
                             </select>
                         </div>
+
                         <div className='flex'>
                             <input
                                 className='text-field py-2  text-border-3 rounded text-blue-600'
@@ -171,7 +175,9 @@ const NeedToDecide = ({ callBack }) => {
                                 />
                             </h2>
                         </div>
+
                     </div>
+
                 );
 
 
@@ -184,6 +190,7 @@ const NeedToDecide = ({ callBack }) => {
 
 
             </div>
+            <hr />
         </div>
     );
 };
