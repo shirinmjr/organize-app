@@ -14,7 +14,7 @@ const Page = () => {
 
     const initialFormData = {
         eventName: "",
-        decisions: [{
+        questions: [{
             question: "",
             type: "",
             answers: [],
@@ -26,12 +26,12 @@ const Page = () => {
         }
     };
 
-    const totalSteps = 5;//For Progress bar - total steps on the form 
+    const totalSteps = 5;//total steps - on the form change if steps changed
     const [step, setStep] = useState(1);
     const [formData, setFormData] = useState(initialFormData);
 
     const handleNextStep = () => setStep(step + 1);
-    const handlePreviousStep = () => setStep(step - 1);
+    const handleBackStep = () => setStep(step - 1);
     const handleChangeInput = (event) => {
         const fieldName = event.target.name;
         let fieldValue;
@@ -66,7 +66,7 @@ const Page = () => {
                 <form className="">
                     <ProgressBar step={step} totalSteps={totalSteps} />
                     {step === 1 ? <EventName callBack={handleChangeInput} /> : null}
-                    {step === 2 ? <NeedToDecide /> : null}
+                    {step === 2 ? <NeedToDecide callBack={handleChangeInput} /> : null}
                     {step === 3 ? <WhoToInvite /> : null}
                     {step === 4 ? <GetUserInfo /> : null} {/* final step*/}
                     <div className="flex flex-row ">
@@ -78,7 +78,7 @@ const Page = () => {
                     {step > 1 &&
                         <button
                             className=" bg-blue-500 btn text-white m-5 px-4 py-2 rounded hover:bg-blue-700 justify-start"
-                            onClick={(e) => handlePreviousStep()}
+                            onClick={(e) => handleBackStep()}
                         >
                             Previous
                         </button>}
