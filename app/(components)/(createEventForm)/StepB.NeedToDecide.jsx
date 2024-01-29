@@ -105,9 +105,9 @@ const NeedToDecide = ({ callBack }) => {
                                     className='text-blue-600 hover:cursor-pointer hover:text-blue-00 '
                                     onClick={createOption}
                                 />
-                                
-                                {question.options && question.options.map((option) => {
-                                    return (<div>
+
+                                {question.options && question.options.map((option, index) => {
+                                    return (<div key={index}>
                                         <input type='text'
                                             className="mt-1 block py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring focus:ring-gray-200 focus:border-gray-500"
                                             id="option"
