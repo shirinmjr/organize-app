@@ -65,8 +65,8 @@ const Page = () => {
 
                 <form className="">
                     <ProgressBar step={step} totalSteps={totalSteps} />
-                    {step === 1 ? <EventName callBack={handleChangeInput} /> : null}
-                    {step === 2 ? <NeedToDecide callBack={handleChangeInput} /> : null}
+                    {/* {step === 1 ? <EventName callBack={handleChangeInput} /> : null} */}
+                    {step === 1 ? <NeedToDecide callBack={handleChangeInput} /> : null}
                     {step === 3 ? <WhoToInvite /> : null}
                     {step === 4 ? <GetUserInfo /> : null} {/* final step*/}
                     <div className="flex flex-row ">
