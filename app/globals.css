@@ -47,6 +47,9 @@
   textarea {
     @apply m-1 rounded p-1 border-spacing-3 border-blue-400;
   }
+  .text-field {
+    border: 1px solid blue;
+  }
 }
 
 @layer components {
@@ -59,6 +62,7 @@
   .text-border-3 {
     border: 3px #008eff solid;
   }
+
   .event-progressbar {
     background-color: #008eff;
     color: #ffffff;

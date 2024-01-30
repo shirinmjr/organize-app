@@ -7,6 +7,7 @@ import generateUniqueId from '@/app/util/generateUniqueId';
 
 
 const NeedToDecide = ({ callBack }) => {
+    const optionsRef = useRef(null);
     const router = useRouter();
     const [questions, setQuestions] = useState([]);
 
@@ -24,6 +25,7 @@ const NeedToDecide = ({ callBack }) => {
     };
 
     const handleTextFieldChange = (e, id) => {
+        console.log("handling text change", e);
         const textValue = e.target.value;
         const nameValue = e.target.name;
         console.log("updating ", nameValue, " for: ", id, " with value ", textValue);
@@ -41,7 +43,7 @@ const NeedToDecide = ({ callBack }) => {
             case "top3":
                 questions.forEach((question, index) => { if (question.id === id) questions[index].type = selectedType; });
                 setQuestions([...questions]);
-                createOption();
+
                 break;
             case "explain":
                 questions.forEach((question, index) => { if (question.id === id) questions[index].type = selectedType; });
@@ -52,10 +54,14 @@ const NeedToDecide = ({ callBack }) => {
         }
     };
 
-    const createOption = () => {
+    const createOption = (id) => {
         console.log("creating new option");
-        const options = [];
-        return options;
+        const newElement = document.createElement('div');
+        newElement.innerHTML = `<input 
+        class="text-field w-full  py-3  mb-4 text-border-3 rounded text-blue-600" required        type="text" />`;
+        // ${{ onChange={(event) => { handleTextFieldChange(event, id); }}}/>`;
+        optionsRef.current.appendChild(newElement);
+
 
     };
 
@@ -64,6 +70,7 @@ const NeedToDecide = ({ callBack }) => {
         <div className="q-title flex flex-col h-screen mx-5 m-10">
             <div className='flex gap-7'>
                 <h3 className="mb-4">What still needs to be decided for your event?</h3>
+
                 <h2>
                     Add&nbsp;<FontAwesomeIcon icon={faCirclePlus}
                         className='text-blue-600 hover:cursor-pointer hover:text-blue-00 '
@@ -103,18 +110,21 @@ const NeedToDecide = ({ callBack }) => {
                             <h2>
                                 Add&nbsp;Options <FontAwesomeIcon icon={faCirclePlus}
                                     className='text-blue-600 hover:cursor-pointer hover:text-blue-00 '
-                                    onClick={createOption}
+                                    onClick={(event) => createOption(question.id)}
                                 />
 
-                                {question.options && question.options.map((option, index) => {
-                                    return (<div key={index}>
-                                        <input type='text'
-                                            className="mt-1 block py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring focus:ring-gray-200 focus:border-gray-500"
-                                            id="option"
-                                            name="option" />
-                                    </div>);
-                                })}
                             </h2>
+                            <div ref={optionsRef}>
+                            </div>
+
+                            {/* {question.options && question.options.map((option, index) => {
+                                return (<div key={index}>
+                                    <input type='text'
+                                        className="mt-1 block py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring focus:ring-gray-200 focus:border-gray-500"
+                                        id="option"
+                                        name="option" />
+                                </div>);
+                            })} */}
 
                         </div>
 
