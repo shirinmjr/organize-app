@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
+import { faCirclePlus, faX } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import generateUniqueId from '@/app/util/generateUniqueId';
 
@@ -20,11 +20,12 @@ const NeedToDecide = ({ callBack }) => {
     };
 
     const handleTextFieldChange = (e, id) => {
-        console.log("handling text change", e);
         const textValue = e.target.value;
         const nameValue = e.target.name;
         console.log("updating ", nameValue, " for: ", id, " with value ", textValue);
-        questions.forEach((question, index) => { if (question.id === id) questions[index][nameValue] = textValue; });
+        questions.forEach((question, index) => {
+            if (question.id === id) questions[index][nameValue] = textValue;
+        });
         setQuestions([...questions]);
     };
 
@@ -36,11 +37,15 @@ const NeedToDecide = ({ callBack }) => {
             case "single":
             case "multiple":
             case "top3":
-                questions.forEach((question, index) => { if (question.id === id) questions[index].type = selectedType; });
+                questions.forEach((question, index) => {
+                    if (question.id === id) questions[index].type = selectedType;
+                });
                 setQuestions([...questions]);
                 break;
             case "explain":
-                questions.forEach((question, index) => { if (question.id === id) questions[index].type = selectedType; });
+                questions.forEach((question, index) => {
+                    if (question.id === id) questions[index].type = selectedType;
+                });
                 setQuestions([...questions]);
                 break;
             default:
@@ -49,17 +54,25 @@ const NeedToDecide = ({ callBack }) => {
     };
 
     const createOption = (id) => {
-        questions.forEach((question, index) => { if (question.id === id) questions[index].options.push(""); });
+        questions.forEach((question, index) => {
+            if (question.id === id) questions[index].options.push("");
+        });
         setQuestions([...questions]);
     };
 
-    const handleAddOption = (event, id, indexQ) => {
-        console.log("handling option");
-        const textCaptured = event.target.value;
-        console.log("value", textCaptured);
-        console.log("option field", id);
-        questions.forEach((question, index) => { if (question.id === id) questions[index].options[indexQ] = textCaptured; });
+    const handleAddOption = (event, questionId, optionIndex) => {
+        questions.forEach((question, index) => {
+            if (question.id === questionId) questions[index].options[optionIndex] = event.target.value;
+        });
         setQuestions([...questions]);
+    };
+    const handleRemoveOption = (event, questionId, optionIndex) => {
+        console.log("handling remove option");
+        questions.forEach((question, index) => {
+            if (question.id === questionId) questions[index].options.splice(optionIndex, 1);
+        });
+        setQuestions([...questions]);
+
     };
 
     return (
@@ -115,12 +128,18 @@ const NeedToDecide = ({ callBack }) => {
 
 
                         {question.options && question.type != "explain" && question.options.map((option, index) => {
-                            return (<div key={index}>
+                            return (<div key={index} className='flex'>
                                 <input type='text'
                                     className="field-option rounded-md shadow-sm focus:outline-none focus:ring focus:ring-gray-200 focus:border-gray-500"
                                     id={option}
                                     name={option}
                                     onChange={(event) => handleAddOption(event, question.id, index)} />
+
+                                <FontAwesomeIcon icon={faX}
+                                    className='text-red-600 hover:cursor-pointer hover:text-blue-00 '
+                                    onClick={(event) => handleRemoveOption(event, question.id, index)}
+                                />
+
                             </div>);
                         })}
 
