@@ -26,7 +26,7 @@ const Page = () => {
         }
     };
 
-    const totalSteps = 5;//total steps - on the form change if steps changed
+    const totalSteps = 4;//total steps - on the form change if steps changed
     const [step, setStep] = useState(1);
     const [formData, setFormData] = useState("");
 
@@ -46,10 +46,12 @@ const Page = () => {
             ["questions"]: questions,
         });
     };
-    // if (fieldName === "agreeTo terms") {
-    //     fieldValue = event.target.checked;
-    // } else {
-    // }
+    const handleGetUserInfo = (organizerInfo) => {
+        setFormData({
+            ...formData,
+            ["organizerInfo"]: organizerInfo,
+        });
+    };
 
     // const handleSubmitFormData = () => {
     //     //you can also add gree to terms here
@@ -71,7 +73,7 @@ const Page = () => {
                     {step === 1 ? <EventName callBack={handleEventName} eventName={formData.eventName} /> : null}
                     {step === 2 ? <NeedToDecide callBack={(questions) => handleNeedToDecide(questions)} questionsData={formData.questions} /> : null}
                     {step === 3 ? <WhoToInvite /> : null}
-                    {step === 4 ? <GetUserInfo /> : null} {/* final step*/}
+                    {step === 4 ? <GetUserInfo callBack={(organizerInfo) => handleGetUserInfo(organizerInfo)} organizerData={formData.organizerInfo} /> : null} {/* final step*/}
                     <div className="flex flex-row ">
                     </div>
                 </form>

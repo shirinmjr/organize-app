@@ -1,16 +1,13 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { faCirclePlus, faX } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCirclePlus, faX } from '@fortawesome/free-solid-svg-icons';
 import generateUniqueId from '@/app/util/generateUniqueId';
 
 const NeedToDecide = ({ callBack, questionsData = [] }) => {
     const [questions, setQuestions] = useState(questionsData);
-    ///if (questionsData) setQuestions(questionsData);
 
     useEffect(() => {
-        console.log("questions in useEffect", questions);
-        console.log("this is question data", questionsData);
         callBack(questions);
     }, [questions]);
 
