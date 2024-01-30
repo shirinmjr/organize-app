@@ -47,7 +47,7 @@
   textarea {
     @apply m-1 rounded p-1 border-spacing-3 border-blue-400;
   }
-  .options {
+  .field-option {
     display: flex;
     justify-items: row;
     border: 3px solid #008eff;

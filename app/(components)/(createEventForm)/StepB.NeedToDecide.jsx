@@ -7,14 +7,12 @@ import generateUniqueId from '@/app/util/generateUniqueId';
 
 
 const NeedToDecide = ({ callBack }) => {
-    const optionsRef = useRef(null);
     const router = useRouter();
     const [questions, setQuestions] = useState([]);
 
     useEffect(() => {
         console.log("questions in useEffect", questions);
     }, [questions]);
-
 
     const createQuestion = () => {
         const question = {};
@@ -56,15 +54,19 @@ const NeedToDecide = ({ callBack }) => {
 
     const createOption = (id) => {
         console.log("creating new option");
-        const newElement = document.createElement('div');
-        newElement.innerHTML = `<input 
-        class="options " required        type="text" />`;
-        // ${{ onChange={(event) => { handleTextFieldChange(event, id); }}}/>`;
-        optionsRef.current.appendChild(newElement);
+        questions.forEach((question, index) => {
+            if (question.id === id) {
+                // const myOptions = questions[index].options;
+                console.log(questions[index].options);
+                questions[index].options.push("");
+                console.log(questions[index].options);
+            };
+            setQuestions([...questions]);
+        });
+
 
 
     };
-
 
     return (
         <div className="q-title flex flex-col h-screen mx-5 m-10">
@@ -115,17 +117,16 @@ const NeedToDecide = ({ callBack }) => {
 
                             </h2>
                         </div>
-                        <div className="flex flex-wrap" ref={optionsRef}>
-                        </div>
 
-                        {/* {question.options && question.options.map((option, index) => {
+
+                     {question.options && question.options.map((option, index) => {
                                 return (<div key={index}>
                                     <input type='text'
-                                        className="mt-1 block py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring focus:ring-gray-200 focus:border-gray-500"
+                                        className="field-option rounded-md shadow-sm focus:outline-none focus:ring focus:ring-gray-200 focus:border-gray-500"
                                         id="option"
                                         name="option" />
                                 </div>);
-                            })} */}
+                            })} 
 
 
 

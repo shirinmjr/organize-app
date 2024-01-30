@@ -63,7 +63,7 @@ const Page = () => {
         <div className="form-container p-8 rounded shadow-md">
             <div className='bg-white rounded shadow-md'>
 
-                <form className="">
+                <form className="overflow-y-auto">
                     <ProgressBar step={step} totalSteps={totalSteps} />
                     {/* {step === 1 ? <EventName callBack={handleChangeInput} /> : null} */}
                     {step === 1 ? <NeedToDecide callBack={handleChangeInput} /> : null}
