@@ -58,7 +58,7 @@ const NeedToDecide = ({ callBack }) => {
         console.log("creating new option");
         const newElement = document.createElement('div');
         newElement.innerHTML = `<input 
-        class="text-field w-full  py-3  mb-4 text-border-3 rounded text-blue-600" required        type="text" />`;
+        class="options " required        type="text" />`;
         // ${{ onChange={(event) => { handleTextFieldChange(event, id); }}}/>`;
         optionsRef.current.appendChild(newElement);
 
@@ -114,10 +114,11 @@ const NeedToDecide = ({ callBack }) => {
                                 />
 
                             </h2>
-                            <div ref={optionsRef}>
-                            </div>
+                        </div>
+                        <div className="flex flex-wrap text-field" ref={optionsRef}>
+                        </div>
 
-                            {/* {question.options && question.options.map((option, index) => {
+                        {/* {question.options && question.options.map((option, index) => {
                                 return (<div key={index}>
                                     <input type='text'
                                         className="mt-1 block py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring focus:ring-gray-200 focus:border-gray-500"
@@ -126,7 +127,7 @@ const NeedToDecide = ({ callBack }) => {
                                 </div>);
                             })} */}
 
-                        </div>
+
 
                     </div>
 
