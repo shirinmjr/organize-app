@@ -54,18 +54,13 @@ const NeedToDecide = ({ callBack }) => {
 
     const createOption = (id) => {
         console.log("creating new option");
-        questions.forEach((question, index) => {
-            if (question.id === id) {
-                // const myOptions = questions[index].options;
-                console.log(questions[index].options);
-                questions[index].options.push("");
-                console.log(questions[index].options);
-            };
+        questions.forEach((question, index) => { if (question.id === id) questions[index].options.push("");});
             setQuestions([...questions]);
-        });
+    };
 
-
-
+    const handleAddOption = (event) => {
+        const textCaptured = event.target.value;
+        console.log(textCaptured);
     };
 
     return (
@@ -119,14 +114,15 @@ const NeedToDecide = ({ callBack }) => {
                         </div>
 
 
-                     {question.options && question.options.map((option, index) => {
-                                return (<div key={index}>
-                                    <input type='text'
-                                        className="field-option rounded-md shadow-sm focus:outline-none focus:ring focus:ring-gray-200 focus:border-gray-500"
-                                        id="option"
-                                        name="option" />
-                                </div>);
-                            })} 
+                        {question.options && question.options.map((option, index) => {
+                            return (<div key={index}>
+                                <input type='text'
+                                    className="field-option rounded-md shadow-sm focus:outline-none focus:ring focus:ring-gray-200 focus:border-gray-500"
+                                    id="option"
+                                    name="option"
+                                    onChange={(event) => handleAddOption(event)} />
+                            </div>);
+                        })}
 
 
 
