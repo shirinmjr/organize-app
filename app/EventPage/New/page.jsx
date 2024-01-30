@@ -28,35 +28,38 @@ const Page = () => {
 
     const totalSteps = 5;//total steps - on the form change if steps changed
     const [step, setStep] = useState(1);
-    const [formData, setFormData] = useState(initialFormData);
+    const [formData, setFormData] = useState("");
 
     const handleNextStep = () => setStep(step + 1);
     const handleBackStep = () => setStep(step - 1);
-    const handleChangeInput = (event) => {
-        const fieldName = event.target.name;
-        let fieldValue;
-        fieldValue = event.target.value;
 
+    const handleEventName = (event) => {
         setFormData({
             ...formData,
-            [fieldName]: fieldValue,
+            [event.target.name]: event.target.value,
         });
-
-        // if (fieldName === "agreeTo terms") {
-        //     fieldValue = event.target.checked;
-        // } else {
-        // }
     };
 
-    const handleSubmitFormData = () => {
-        //you can also add gree to terms here
-        console.log("Form submitted successfully and data is: ", formData);
+    const handleNeedToDecide = (questions) => {
+        setFormData({
+            ...formData,
+            ["questions"]: questions,
+        });
     };
+    // if (fieldName === "agreeTo terms") {
+    //     fieldValue = event.target.checked;
+    // } else {
+    // }
+
+    // const handleSubmitFormData = () => {
+    //     //you can also add gree to terms here
+    //     console.log("Form submitted successfully and data is: ", formData);
+    // };
 
     useEffect(() => {
-        console.log("Step: ", step);
+        // console.log("Step: ", step);
         console.log("Form data: ", formData);
-    }, [step, formData]);
+    }, [formData]);
 
 
     return (
@@ -65,8 +68,8 @@ const Page = () => {
 
                 <form className="overflow-y-auto">
                     <ProgressBar step={step} totalSteps={totalSteps} />
-                    {/* {step === 1 ? <EventName callBack={handleChangeInput} /> : null} */}
-                    {step === 1 ? <NeedToDecide callBack={handleChangeInput} /> : null}
+                    {step === 1 ? <EventName callBack={handleEventName} eventName={formData.eventName} /> : null}
+                    {step === 2 ? <NeedToDecide callBack={(questions) => handleNeedToDecide(questions)} questionsData={formData.questions} /> : null}
                     {step === 3 ? <WhoToInvite /> : null}
                     {step === 4 ? <GetUserInfo /> : null} {/* final step*/}
                     <div className="flex flex-row ">

@@ -4,11 +4,14 @@ import { faCirclePlus, faX } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import generateUniqueId from '@/app/util/generateUniqueId';
 
-const NeedToDecide = ({ callBack }) => {
-    const [questions, setQuestions] = useState([]);
+const NeedToDecide = ({ callBack, questionsData = [] }) => {
+    const [questions, setQuestions] = useState(questionsData);
+    ///if (questionsData) setQuestions(questionsData);
 
     useEffect(() => {
         console.log("questions in useEffect", questions);
+        console.log("this is question data", questionsData);
+        callBack(questions);
     }, [questions]);
 
     const createQuestion = () => {
@@ -67,7 +70,6 @@ const NeedToDecide = ({ callBack }) => {
         setQuestions([...questions]);
     };
     const handleRemoveOption = (event, questionId, optionIndex) => {
-        console.log("handling remove option");
         questions.forEach((question, index) => {
             if (question.id === questionId) questions[index].options.splice(optionIndex, 1);
         });
@@ -88,15 +90,16 @@ const NeedToDecide = ({ callBack }) => {
                 </h2>
             </div>
 
-            {questions.map((question) => {
+            {questions && questions.map((question) => {
                 return (
                     <div key={question.id} >
                         <div className='flex text-xl w-full text-blue-600'>
                             <input
                                 className="text-field w-full  py-3  mb-4 text-border-3 rounded text-blue-600" required
                                 type="text"
-                                id={question.id}
+                                id="question"
                                 name="question"
+                                value={question.question}
                                 onChange={(event) => handleTextFieldChange(event, question.id)}
                             />
                         </div>
@@ -106,6 +109,7 @@ const NeedToDecide = ({ callBack }) => {
                                 className="mt-1 block py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring focus:ring-gray-200 focus:border-gray-500"
                                 id="type"
                                 name="type"
+                                value={question.type}
                                 onChange={(event) => handleSelectChange(event, question.id)}
                             >
                                 <option value="">Select</option>
@@ -115,51 +119,37 @@ const NeedToDecide = ({ callBack }) => {
                                 <option value="explain">Explain it</option>
                             </select>
                         </div>
-                        {question.type != "explain" && <div className='flex'>
+                        {question && question.type != "explain" && <div className='flex'>
                             <h2>
                                 Add&nbsp;Options <FontAwesomeIcon icon={faCirclePlus}
                                     className='text-blue-600 hover:cursor-pointer hover:text-blue-00 '
                                     onClick={(event) => createOption(question.id)}
                                 />
-
                             </h2>
                         </div>
                         }
 
+                        {question && question.options && question.type != "explain" &&
+                            question.options.map((option, index) => {
+                                return (<div key={index} className='flex'>
+                                    <input type='text'
+                                        className="field-option rounded-md shadow-sm focus:outline-none focus:ring focus:ring-gray-200 focus:border-gray-500"
+                                        id="option"
+                                        name="option"
+                                        value={option}
+                                        onChange={(event) => handleAddOption(event, question.id, index)} />
 
-                        {question.options && question.type != "explain" && question.options.map((option, index) => {
-                            return (<div key={index} className='flex'>
-                                <input type='text'
-                                    className="field-option rounded-md shadow-sm focus:outline-none focus:ring focus:ring-gray-200 focus:border-gray-500"
-                                    id={option}
-                                    name={option}
-                                    onChange={(event) => handleAddOption(event, question.id, index)} />
+                                    <FontAwesomeIcon icon={faX}
+                                        className='text-red-600 hover:cursor-pointer hover:text-blue-00 '
+                                        onClick={(event) => handleRemoveOption(event, question.id, index)}
+                                    />
 
-                                <FontAwesomeIcon icon={faX}
-                                    className='text-red-600 hover:cursor-pointer hover:text-blue-00 '
-                                    onClick={(event) => handleRemoveOption(event, question.id, index)}
-                                />
-
-                            </div>);
-                        })}
-
-
-
+                                </div>);
+                            })}
+                        <hr />
                     </div>
-
                 );
-
-
             })}
-
-
-
-            {/* <button type='submit' className='text-black border-x-white'>Save</button> */}
-
-
-
-
-            <hr />
         </div>
     );
 };
