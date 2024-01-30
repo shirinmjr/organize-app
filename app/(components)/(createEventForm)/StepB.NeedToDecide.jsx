@@ -1,13 +1,10 @@
 "use client";
-import { useRouter } from 'next/navigation';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import generateUniqueId from '@/app/util/generateUniqueId';
 
-
 const NeedToDecide = ({ callBack }) => {
-    const router = useRouter();
     const [questions, setQuestions] = useState([]);
 
     useEffect(() => {
@@ -41,7 +38,6 @@ const NeedToDecide = ({ callBack }) => {
             case "top3":
                 questions.forEach((question, index) => { if (question.id === id) questions[index].type = selectedType; });
                 setQuestions([...questions]);
-
                 break;
             case "explain":
                 questions.forEach((question, index) => { if (question.id === id) questions[index].type = selectedType; });
@@ -53,14 +49,17 @@ const NeedToDecide = ({ callBack }) => {
     };
 
     const createOption = (id) => {
-        console.log("creating new option");
-        questions.forEach((question, index) => { if (question.id === id) questions[index].options.push("");});
-            setQuestions([...questions]);
+        questions.forEach((question, index) => { if (question.id === id) questions[index].options.push(""); });
+        setQuestions([...questions]);
     };
 
-    const handleAddOption = (event) => {
+    const handleAddOption = (event, id, indexQ) => {
+        console.log("handling option");
         const textCaptured = event.target.value;
-        console.log(textCaptured);
+        console.log("value", textCaptured);
+        console.log("option field", id);
+        questions.forEach((question, index) => { if (question.id === id) questions[index].options[indexQ] = textCaptured; });
+        setQuestions([...questions]);
     };
 
     return (
@@ -103,7 +102,7 @@ const NeedToDecide = ({ callBack }) => {
                                 <option value="explain">Explain it</option>
                             </select>
                         </div>
-                        <div className='flex'>
+                        {question.type != "explain" && <div className='flex'>
                             <h2>
                                 Add&nbsp;Options <FontAwesomeIcon icon={faCirclePlus}
                                     className='text-blue-600 hover:cursor-pointer hover:text-blue-00 '
@@ -112,15 +111,16 @@ const NeedToDecide = ({ callBack }) => {
 
                             </h2>
                         </div>
+                        }
 
 
-                        {question.options && question.options.map((option, index) => {
+                        {question.options && question.type != "explain" && question.options.map((option, index) => {
                             return (<div key={index}>
                                 <input type='text'
                                     className="field-option rounded-md shadow-sm focus:outline-none focus:ring focus:ring-gray-200 focus:border-gray-500"
-                                    id="option"
-                                    name="option"
-                                    onChange={(event) => handleAddOption(event)} />
+                                    id={option}
+                                    name={option}
+                                    onChange={(event) => handleAddOption(event, question.id, index)} />
                             </div>);
                         })}
 
