@@ -115,7 +115,7 @@ const NeedToDecide = ({ callBack }) => {
 
                             </h2>
                         </div>
-                        <div className="flex flex-wrap text-field" ref={optionsRef}>
+                        <div className="flex flex-wrap" ref={optionsRef}>
                         </div>
 
                         {/* {question.options && question.options.map((option, index) => {
