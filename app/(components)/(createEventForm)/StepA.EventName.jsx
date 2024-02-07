@@ -7,7 +7,7 @@ const EventName = ({ callBack, eventName = "" }) => {
                 type="text"
                 id="eventName"
                 name="eventName"
-                value={eventName}
+                value={eventName || ""}
                 onChange={callBack}
             />
         </div>

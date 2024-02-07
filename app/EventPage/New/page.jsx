@@ -5,10 +5,6 @@ import EventName from "@/app/(components)/(createEventForm)/StepA.EventName";
 import NeedToDecide from "@/app/(components)/(createEventForm)/StepB.NeedToDecide";
 import GetUserInfo from "@/app/(components)/(createEventForm)/StepD.GetUserInfo";
 import WhoToInvite from "@/app/(components)/(createEventForm)/StepC.WhoToInvite";
-import Link from "next/link";
-
-// import { useRouter } from "next/navigation";
-
 
 const Page = () => {
 
@@ -19,6 +15,12 @@ const Page = () => {
             type: "",
             answers: [],
         }],
+        volunteers: [
+            {
+                volunteerName: "",
+                phoneNumber: "",
+            }
+        ],
         organizerInfo: {
             firstName: "",
             lastName: "",
@@ -59,7 +61,6 @@ const Page = () => {
     // };
 
     useEffect(() => {
-        // console.log("Step: ", step);
         console.log("Form data: ", formData);
     }, [formData]);
 
