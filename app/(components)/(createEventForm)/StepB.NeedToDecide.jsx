@@ -96,7 +96,7 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
                                 type="text"
                                 id="question"
                                 name="question"
-                                value={question.question}
+                                value={question.question || ""}
                                 onChange={(event) => handleTextFieldChange(event, question.id)}
                             />
                         </div>
@@ -106,7 +106,7 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
                                 className="mt-1 block py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring focus:ring-gray-200 focus:border-gray-500"
                                 id="type"
                                 name="type"
-                                value={question.type}
+                                value={question.type || ""}
                                 onChange={(event) => handleSelectChange(event, question.id)}
                             >
                                 <option value="">Select</option>
@@ -133,7 +133,7 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
                                         className="field-option rounded-md shadow-sm focus:outline-none focus:ring focus:ring-gray-200 focus:border-gray-500"
                                         id="option"
                                         name="option"
-                                        value={option}
+                                        value={option|| ""}
                                         onChange={(event) => handleAddOption(event, question.id, index)} />
 
                                     <FontAwesomeIcon icon={faX}

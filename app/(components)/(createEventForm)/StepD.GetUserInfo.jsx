@@ -1,7 +1,15 @@
 "use Client";
 import React, { useState, useEffect } from 'react';
 
-const GetUserInfo = ({ callBack, organizerData = [] }) => {
+const GetUserInfo = ({ callBack, organizerData = "" }) => {
+  // const initialOrganizerInfo = {
+  //   firstName: "",
+  //   lastName: "",
+  //   phoneNumber: "",
+
+  // };
+
+
   const [organizerInfo, setOrganizerInfo] = useState(organizerData);
 
   useEffect(() => {
@@ -29,7 +37,8 @@ const GetUserInfo = ({ callBack, organizerData = [] }) => {
           type="text"
           id="firstName"
           name="firstName"
-          value={organizerInfo.firstName}
+
+          value={organizerInfo.firstName || ""}
           required
           onChange={handleChange}
         />
@@ -40,7 +49,7 @@ const GetUserInfo = ({ callBack, organizerData = [] }) => {
           type="text"
           id="lastName"
           name="lastName"
-          value={organizerInfo.lastName}
+          value={organizerInfo.lastName || ""}
           required
           onChange={handleChange}
         />
@@ -51,7 +60,7 @@ const GetUserInfo = ({ callBack, organizerData = [] }) => {
           type="tel"
           id="phoneNumber"
           name="phoneNumber"
-          value={organizerInfo.phoneNumber}
+          value={organizerInfo.phoneNumber || ""}
           required
           onChange={handleChange}
         />
