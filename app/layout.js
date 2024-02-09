@@ -13,6 +13,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 
 export const metadata = {
+  manifest: "/manifest.json",
   title: "Orgniz App",
   description: "Creating events for non profits.",
 };
