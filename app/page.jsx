@@ -1,9 +1,9 @@
-import GetStarted from "./(components)/GetStarted";
+import GetStarted from "./components/GetStarted";
 
 const Dashboard = async () => {
   return (
     <div className="p-5">
-      <div className="mb-5" >
+      <div className="mb-5">
         <GetStarted />
       </div>
     </div>

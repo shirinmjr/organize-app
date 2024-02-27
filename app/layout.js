@@ -1,11 +1,11 @@
-// import Nav from "@/app/(components)/Nav";
+// import Nav from "@/app/components/Nav";
 import "./globals.css";
 import { Inter } from "next/font/google";
 
 
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import GetStarted from "./(components)/GetStarted";
+import GetStarted from "./components/GetStarted";
 
 config.autoAddCss = false;
 

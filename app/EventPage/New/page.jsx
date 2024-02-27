@@ -1,10 +1,10 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-import ProgressBar from "@/app/(components)/ProgressBar";
-import EventName from "@/app/(components)/(createEventForm)/StepA.EventName";
-import NeedToDecide from "@/app/(components)/(createEventForm)/StepB.NeedToDecide";
-import GetUserInfo from "@/app/(components)/(createEventForm)/StepD.GetUserInfo";
-import WhoToInvite from "@/app/(components)/(createEventForm)/StepC.WhoToInvite";
+import ProgressBar from "@/app/components/ProgressBar";
+import EventName from "@/app/components/(createEventForm)/StepA.EventName";
+import NeedToDecide from "@/app/components/(createEventForm)/StepB.NeedToDecide";
+import GetUserInfo from "@/app/components/(createEventForm)/StepD.GetUserInfo";
+import WhoToInvite from "@/app/components/(createEventForm)/StepC.WhoToInvite";
 
 const Page = () => {
 
