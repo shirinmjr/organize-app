@@ -64,10 +64,15 @@
   .text-border-3 {
     border: 3px #008eff solid;
   }
+  .text-field {
+    border-color: #0066ff;
+    border-radius: 2em;
+  }
 
   .event-progressbar {
     background-color: #008eff;
     color: #ffffff;
     border-radius: 2em;
   }
+  
 }
