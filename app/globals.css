@@ -65,6 +65,7 @@
     border: 3px #008eff solid;
   }
   .text-field {
+    border: 5px #008eff solid;
     border-color: #0066ff;
     border-radius: 2em;
   }
@@ -74,5 +75,5 @@
     color: #ffffff;
     border-radius: 2em;
   }
-  
 }
+
