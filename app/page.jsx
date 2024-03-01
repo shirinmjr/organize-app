@@ -1,4 +1,4 @@
-import GetStarted from "./(components)/GetStarted";
+import GetStarted from "./components/GetStarted";
 
 const Dashboard = async () => {
   return (

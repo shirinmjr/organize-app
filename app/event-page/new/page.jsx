@@ -1,10 +1,11 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-import ProgressBar from "@/app/(components)/ProgressBar";
-import EventName from "@/app/(components)/(createEventForm)/StepA.EventName";
-import NeedToDecide from "@/app/(components)/(createEventForm)/StepB.NeedToDecide";
-import GetUserInfo from "@/app/(components)/(createEventForm)/StepD.GetUserInfo";
-import WhoToInvite from "@/app/(components)/(createEventForm)/StepC.WhoToInvite";
+import ProgressBar from "@/app/components/ProgressBar";
+import EventName from "@/app/components/createEventForm/StepA.EventName";
+import NeedToDecide from "@/app/components/createEventForm/StepB.NeedToDecide";
+import GetUserInfo from "@/app/components/createEventForm/StepD.GetUserInfo";
+//import VerifyUserInfo from "@/app/components/createEventForm/StepD.GetUserInfo";
+import WhoToInvite from "@/app/components/createEventForm/StepC.WhoToInvite";
 
 const Page = () => {
 
@@ -73,8 +74,8 @@ const Page = () => {
                     <ProgressBar step={step} totalSteps={totalSteps} />
                     {step === 1 ? <EventName callBack={handleEventName} eventName={formData.eventName} /> : null}
                     {step === 2 ? <NeedToDecide callBack={(questions) => handleNeedToDecide(questions)} questionsData={formData.questions} /> : null}
-                    {step === 3 ? <WhoToInvite /> : null}
-                    {step === 4 ? <GetUserInfo callBack={(organizerInfo) => handleGetUserInfo(organizerInfo)} organizerData={formData.organizerInfo} /> : null} {/* final step*/}
+                    {/* {step === 3 ? <WhoToInvite /> : null} //Coming Soon...*/}
+                    {step === 3 ? <GetUserInfo callBack={(organizerInfo) => handleGetUserInfo(organizerInfo)} organizerData={formData.organizerInfo} /> : null} {/* final step*/}
                     <div className="flex flex-row ">
                     </div>
                 </form>

@@ -29,7 +29,7 @@ const GetStarted = () => {
                     <div className="lg:grid grid-cols-2 xl:grid-cols-4">
                         <p>We empower communities to <b>get things done</b></p>
                     </div>
-                    <Link href={`/EventPage/New`}>
+                    <Link href={`/event-page/new`}>
                         <input type="submit" className="btn text-blue 400 shadow-lg p-3 m-2" value={"Get Started!"} />
                     </Link>
                 </div>
