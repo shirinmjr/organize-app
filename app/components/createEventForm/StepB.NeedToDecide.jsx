@@ -75,7 +75,7 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
     };
 
     return (
-        <div className="q-title flex flex-col h-screen mx-5 m-10">
+        <div className="q-title flex flex-col mx-5 m-10">
             <div className='flex gap-7'>
                 <h3 className="mb-4">What still needs to be decided for your event?</h3>
 
@@ -100,8 +100,8 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
                                 onChange={(event) => handleTextFieldChange(event, question.id)}
                             />
                         </div>
-                        <div className='flex flex-col-2' >
-                            How do people to answer:
+                        <div className='flex items-center justify-center flex-col-2' >
+                            How do you want people to answer:
                             <select
                                 className="mt-1 block py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring focus:ring-gray-200 focus:border-gray-500"
                                 id="type"
@@ -128,16 +128,16 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
 
                         {question && question.options && question.type != "explain" &&
                             question.options.map((option, index) => {
-                                return (<div key={index} className='flex'>
+                                return (<div key={index} className='flex items-center justify-center'>
                                     <input type='text'
-                                        className="field-option rounded-md shadow-sm focus:outline-none focus:ring focus:ring-gray-200 focus:border-gray-500"
+                                        className="w-full field-option rounded-md shadow-sm focus:outline-none focus:ring focus:ring-orange-200 focus:border-orange-500"
                                         id="option"
                                         name="option"
-                                        value={option|| ""}
+                                        value={option || ""}
                                         onChange={(event) => handleAddOption(event, question.id, index)} />
 
                                     <FontAwesomeIcon icon={faX}
-                                        className='text-red-600 hover:cursor-pointer hover:text-blue-00 '
+                                        className='text-red-600 hover:cursor-pointer hover:text-blue-00 m-2 '
                                         onClick={(event) => handleRemoveOption(event, question.id, index)}
                                     />
 

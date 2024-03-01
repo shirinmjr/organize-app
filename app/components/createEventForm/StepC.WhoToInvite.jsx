@@ -3,7 +3,7 @@ import { faCirclePlus, faX } from '@fortawesome/free-solid-svg-icons';
 
 const WhoToInvite = () => {
   return (
-    <div className="h-screen my-10">
+    <div className=" my-10">
       <div className='flex flex-col w-full'>
         <h3 className="mb-4">Who do you want to invite?</h3>
         <div className='flex flex-col-3'>
