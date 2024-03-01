@@ -33,7 +33,7 @@ const GetUserInfo = ({ callBack, organizerData = "" }) => {
             Last step, what is your name and phone number?
           </h3>
         </div>
-        <label className="block mb-2 text-sm font-bold text-gray-600">First Name</label>
+        <label className="block mb-2 text-sm font-bold text-blue-600 hover:cursor-pointer hover:text-blue-00">First Name</label>
         <input
           className="w-full field-option rounded-md shadow-sm focus:outline-none focus:ring focus:ring-orange-200 focus:border-orange-500"
           type="text"
@@ -45,7 +45,7 @@ const GetUserInfo = ({ callBack, organizerData = "" }) => {
           onChange={handleChange}
         />
 
-        <label className="block mt-4 mb-2 text-sm font-bold text-gray-600">Last Name</label>
+        <label className="block mt-4 mb-2 text-sm font-bold text-blue-600 hover:cursor-pointer hover:text-blue-00">Last Name</label>
         <input
           className="w-full field-option rounded-md shadow-sm focus:outline-none focus:ring focus:ring-orange-200 focus:border-orange-500"
           type="text"
@@ -56,7 +56,7 @@ const GetUserInfo = ({ callBack, organizerData = "" }) => {
           onChange={handleChange}
         />
 
-        <label className="block mt-4 mb-2 text-sm font-bold text-gray-600">Phone Number</label>
+        <label className="block mt-4 mb-2 text-sm font-bold text-blue-600 hover:cursor-pointer hover:text-blue-00">Phone Number</label>
         <input
           className="w-full field-option rounded-md shadow-sm focus:outline-none focus:ring focus:ring-orange-200 focus:border-orange-500"
           type="tel"
