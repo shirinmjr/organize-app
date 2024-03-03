@@ -3,6 +3,13 @@
 import { useState } from "react";
 import InputWrapper from "./InputWrapper";
 import { RadioGroup } from "@headlessui/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCheck,
+  faCheckSquare,
+  faCheckToSlot,
+  faListCheck,
+} from "@fortawesome/free-solid-svg-icons";
 
 function mapIndexToLetterList(index) {
   if (index > 25) {
@@ -20,9 +27,11 @@ const InputChooseOne = ({ question, options }) => {
     <InputWrapper htmlFor={question} label={question}>
       <RadioGroup name={question} value={choice} onChange={setChoice}>
         {options.map((option, index) => (
-          <RadioGroup.Option
-            className={({ active, checked }) => `
-            cursor-pointer my-1 flex items-center justify-between w-full p-2 border border-blue-400 rounded-full border-1 focus:ring-none
+          <RadioGroup.Option key={index} value={option}>
+            {({ active, checked }) => (
+              <div
+                className={`
+flex justify-between w-full p-2 my-1 border border-blue-400 rounded-full cursor-pointer  border-1 focus:ring-none
             ${
               active
                 ? "ring-1 ring-white/60 ring-offset-1 border-blue-700 focus:outline-blue-700"
@@ -33,13 +42,20 @@ const InputChooseOne = ({ question, options }) => {
                 ? "bg-white border-blue-700 font-bold text-blue-600"
                 : "bg-blue-50"
             }`}
-            key={index}
-            value={option}
-          >
-            <div className="">
-              <span className="mr-2">{mapIndexToLetterList(index)}</span>
-              <span>{option}</span>
-            </div>
+              >
+                <span>
+                  <span className="mr-2">{mapIndexToLetterList(index)}</span>
+                  <span>{option}</span>
+                </span>
+                {checked ? (
+                  <FontAwesomeIcon
+                    className="self-center mr-2"
+                    icon={faCheck}
+                    aria-hidden="true"
+                  />
+                ) : null}
+              </div>
+            )}
           </RadioGroup.Option>
         ))}
       </RadioGroup>

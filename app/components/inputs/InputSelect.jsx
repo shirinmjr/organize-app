@@ -17,12 +17,12 @@ const InputSelect = ({ question, options }) => {
         onChange={setSelected}
       >
         <div className="relative mt-1">
-          <Listbox.Button className="relative w-full cursor-default">
+          <Listbox.Button className="relative w-full cursor-pointer">
             {selected}
             <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
               <FontAwesomeIcon
                 icon={faChevronDown}
-                className="text-blue-600 hover:cursor-pointer hover:text-blue-00 "
+                className="text-blue-600"
                 aria-hidden="true"
               />
             </span>
