@@ -31,7 +31,7 @@ const InputChooseOne = ({ question, options }) => {
             {({ active, checked }) => (
               <div
                 className={`
-flex justify-between w-full p-2 my-1 border border-blue-400 rounded-full cursor-pointer  border-1 focus:ring-none
+flex justify-between w-full p-2 my-1 border border-blue-400 rounded-full cursor-pointer  border-1 focus:ring-none hover:border-blue-700
             ${
               active
                 ? "ring-1 ring-white/60 ring-offset-1 border-blue-700 focus:outline-blue-700"

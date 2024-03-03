@@ -9,25 +9,37 @@ const mockEvent = {
   questions: [
     {
       uuid: generateUniqueId(),
-      question: "What is your favorite color?",
-      type: "select",
-      answers: ["Blue", "Green", "Red"], // are these options the user picks?
-    },
-    {
-      uuid: generateUniqueId(),
-      question: "What is your quest?",
-      type: "text",
-      answers: [], // are these options the user picks?
-    },
-    {
-      uuid: generateUniqueId(),
-      question: "What is your name?",
+      question: "Where should we meet?",
       type: "choose-one",
       answers: [
-        "Athur, King of the Britons",
-        "Sir Lancelot",
-        "I don't know that",
+        "Nogal Park",
+        "Cervantes Park",
+        "Mexico Park",
+        "Japan Park",
+        "Not sure",
       ],
+    },
+    {
+      uuid: generateUniqueId(),
+      question: "What date and time?",
+      type: "choose-one",
+      answers: [
+        "05/06/2024 at 3:00 PM",
+        "05/06/2024 at 5:00 PM",
+        "06/06/2024 at 3:00 PM",
+        "06/06/2024 at 5:00 PM",
+      ],
+    },
+    {
+      uuid: generateUniqueId(),
+      question: "Are you attending this event?",
+      type: "select",
+      answers: ["Yes", "No", "Not sure"],
+    },
+    {
+      uuid: generateUniqueId(),
+      question: "Any comments?",
+      type: "text",
     },
   ],
   volunteers: [
