@@ -1,5 +1,5 @@
 import Button from "@/app/components/inputs/Button";
-import InputChooseOne from "@/app/components/inputs/InputRadioGroup";
+import InputChooseOne from "@/app/components/inputs/InputChooseOne";
 import InputSelect from "@/app/components/inputs/InputSelect";
 import InputText from "@/app/components/inputs/InputText";
 import generateUniqueId from "@/app/util/generateUniqueId";

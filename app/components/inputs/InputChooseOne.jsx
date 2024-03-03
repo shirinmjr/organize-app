@@ -14,8 +14,8 @@ const InputChooseOne = ({ question, options }) => {
           <RadioGroup.Option
             className={({ active, checked }) => `
             cursor-pointer my-1 flex items-center justify-between w-full p-2 border border-blue-400 rounded-full border-1 focus:ring-none
-            ${active ? "ring-1 bg-blue-100 text-white" : ""}
-            ${checked ? "bg-blue-400 font-bold text-white" : ""}`}
+            ${active ? "ring-1 bg-blue-100 text-white" : "bg-blue-50"}
+            ${checked ? "bg-blue-400 font-bold text-white" : "bg-blue-50"}`}
             key={index}
             value={option}
           >
