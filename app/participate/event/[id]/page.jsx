@@ -1,4 +1,5 @@
 import Button from "@/app/components/inputs/Button";
+import InputChooseOne from "@/app/components/inputs/InputRadioGroup";
 import InputSelect from "@/app/components/inputs/InputSelect";
 import InputText from "@/app/components/inputs/InputText";
 import generateUniqueId from "@/app/util/generateUniqueId";
@@ -17,6 +18,16 @@ const mockEvent = {
       question: "What is your quest?",
       type: "text",
       answers: [], // are these options the user picks?
+    },
+    {
+      uuid: generateUniqueId(),
+      question: "What is your name?",
+      type: "choose-one",
+      answers: [
+        "Athur, King of the Britons",
+        "Sir Lancelot",
+        "I don't know that",
+      ],
     },
   ],
   volunteers: [
@@ -39,8 +50,8 @@ const mapQuestionTypeToInput = (questionObj) => {
       return <InputText question={question} />;
     case "select":
       return <InputSelect question={question} options={answers} />;
-    case "top-three": {
-      /* return <InputTopThree question={question} options={answers} /> */
+    case "choose-one": {
+      return <InputChooseOne question={question} options={answers} />;
     }
   }
 };
