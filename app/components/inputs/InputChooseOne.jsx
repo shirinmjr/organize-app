@@ -4,6 +4,15 @@ import { useState } from "react";
 import InputWrapper from "./InputWrapper";
 import { RadioGroup } from "@headlessui/react";
 
+function mapIndexToLetterList(index) {
+  if (index > 25) {
+    console.warn(
+      "Can only map lowercase letters of the alphabet, now starting over from the beginning"
+    );
+  }
+  return `${((index % 26) + 10).toString(36)}.`;
+}
+
 const InputChooseOne = ({ question, options }) => {
   const [choice, setChoice] = useState(null);
 
@@ -27,7 +36,10 @@ const InputChooseOne = ({ question, options }) => {
             key={index}
             value={option}
           >
-            <div className="">{option}</div>
+            <div className="">
+              <span className="mr-2">{mapIndexToLetterList(index)}</span>
+              <span>{option}</span>
+            </div>
           </RadioGroup.Option>
         ))}
       </RadioGroup>
