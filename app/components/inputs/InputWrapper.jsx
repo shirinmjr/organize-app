@@ -1,7 +1,9 @@
 const InputWrapper = ({ children, htmlFor, label }) => {
   return (
-    <div>
-      <label htmlFor={htmlFor}>{label}</label>
+    <div className="flex flex-col w-96">
+      <label className="font-bold" htmlFor={htmlFor}>
+        {label}
+      </label>
       {children}
     </div>
   );

@@ -1,3 +1,4 @@
+import Button from "@/app/components/inputs/Button";
 import InputSelect from "@/app/components/inputs/InputSelect";
 import InputText from "@/app/components/inputs/InputText";
 import generateUniqueId from "@/app/util/generateUniqueId";
@@ -49,6 +50,7 @@ export default function Page({ params }) {
         {questions.map((question) => (
           <div key={question.uuid}>{mapQuestionTypeToInput(question)}</div>
         ))}
+        <Button>Submit</Button>
       </form>
     </div>
   );
