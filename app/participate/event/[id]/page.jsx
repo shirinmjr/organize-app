@@ -39,6 +39,9 @@ const mapQuestionTypeToInput = (questionObj) => {
       return <InputText question={question} />;
     case "select":
       return <InputSelect question={question} options={answers} />;
+    case "top-three": {
+      /* return <InputTopThree question={question} options={answers} /> */
+    }
   }
 };
 
