@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import InputWrapper from "./InputWrapper";
 import { Listbox } from "@headlessui/react";
 import { useState } from "react";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 const InputSelect = ({ question, options }) => {
   const [selected, setSelected] = useState(options[0]);
@@ -17,10 +18,11 @@ const InputSelect = ({ question, options }) => {
       >
         <div className="relative mt-1">
           <Listbox.Button className="relative w-full cursor-default">
-            {selected}{" "}
+            {selected}
             <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
               <FontAwesomeIcon
-                icon="fa-solid fa-chevron-down"
+                icon={faChevronDown}
+                className="text-blue-600 hover:cursor-pointer hover:text-blue-00 "
                 aria-hidden="true"
               />
             </span>

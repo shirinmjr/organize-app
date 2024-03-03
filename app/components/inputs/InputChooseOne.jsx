@@ -30,7 +30,7 @@ const InputChooseOne = ({ question, options }) => {
             }
             ${
               checked
-                ? "bg-blue-400 border-blue-700 font-bold text-white"
+                ? "bg-white border-blue-700 font-bold text-blue-600"
                 : "bg-blue-50"
             }`}
             key={index}
