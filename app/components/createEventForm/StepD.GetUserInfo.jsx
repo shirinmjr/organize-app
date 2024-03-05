@@ -26,16 +26,14 @@ const GetUserInfo = ({ callBack, organizerData = "" }) => {
 
 
   return (
-    <div>
-      <div>
-        <div className='q-title flex flex-col mx-5 m-10'>
-          <h3>
-            Last step, what is your name and phone number?
-          </h3>
-        </div>
-        <label className="block mb-2 text-sm font-bold text-blue-600 hover:cursor-pointer hover:text-blue-00">First Name</label>
+    <div className='event-form'>
+      <div >
+        <h3 className='form-q-title' >
+          Last step, what is your name and phone number?
+        </h3>
+        <label>First Name</label>
         <input
-          className="w-full field-option rounded-md shadow-sm focus:outline-none focus:ring focus:ring-orange-200 focus:border-orange-500"
+          className="input-secondary"
           type="text"
           id="firstName"
           name="firstName"
@@ -45,9 +43,9 @@ const GetUserInfo = ({ callBack, organizerData = "" }) => {
           onChange={handleChange}
         />
 
-        <label className="block mt-4 mb-2 text-sm font-bold text-blue-600 hover:cursor-pointer hover:text-blue-00">Last Name</label>
+        <label>Last Name</label>
         <input
-          className="w-full field-option rounded-md shadow-sm focus:outline-none focus:ring focus:ring-orange-200 focus:border-orange-500"
+          className="input-secondary"
           type="text"
           id="lastName"
           name="lastName"
@@ -56,9 +54,9 @@ const GetUserInfo = ({ callBack, organizerData = "" }) => {
           onChange={handleChange}
         />
 
-        <label className="block mt-4 mb-2 text-sm font-bold text-blue-600 hover:cursor-pointer hover:text-blue-00">Phone Number</label>
+        <label>Phone Number</label>
         <input
-          className="w-full field-option rounded-md shadow-sm focus:outline-none focus:ring focus:ring-orange-200 focus:border-orange-500"
+          className="input-secondary"
           type="tel"
           id="phoneNumber"
           name="phoneNumber"
