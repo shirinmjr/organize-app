@@ -11,17 +11,17 @@ export default function GetUserAuth() {
                         Last step, what is your name and phone number?
                     </h3>
                 </div>
-                <div className='mb-4 mt-4'>
+                <div className='mb-4'>
                     We have sent a temporary verification code to your phone number ending in 6680. Enter the code to continue.
                 </div>
-                <div className='flex flex-row justify-start items-center mb-4 mt-4'>
-                    <input type="number" className=' w-14 h-14 bg-blue-100  text-blue-60 p-2 rounded-full border-4 border-blue-600  shadow-lg' />
-                    <input type="number" className=' w-14 h-14 bg-blue-100  text-blue-60 p-2 rounded-full border-4 border-blue-600  shadow-lg' />
-                    <input type="number" className=' w-14 h-14 bg-blue-100  text-blue-60 p-2 rounded-full border-4 border-blue-600  shadow-lg' />
-                    <input type="number" className=' w-14 h-14 bg-blue-100  text-blue-60 p-2 rounded-full border-4 border-blue-600  shadow-lg' />
-                    <input type="number" className=' w-14 h-14 bg-blue-100  text-blue-60 p-2 rounded-full border-4 border-blue-600  shadow-lg' />
+                <div className='flex flex-row justify-start items-center mb-4'>
+                    <input type="number" maxlength="1" className=' w-14 h-14 bg-blue-100  text-blue-60 p-2 rounded-full border-4 border-blue-600  shadow-lg' />
+                    <input type="number" maxlength="1" className=' w-14 h-14 bg-blue-100  text-blue-60 p-2 rounded-full border-4 border-blue-600  shadow-lg' />
+                    <input type="number" maxlength="1" className=' w-14 h-14 bg-blue-100  text-blue-60 p-2 rounded-full border-4 border-blue-600  shadow-lg' />
+                    <input type="number" maxlength="1" className=' w-14 h-14 bg-blue-100  text-blue-60 p-2 rounded-full border-4 border-blue-600  shadow-lg' />
+                    <input type="number" maxlength="1" className=' w-14 h-14 bg-blue-100  text-blue-60 p-2 rounded-full border-4 border-blue-600  shadow-lg' />
                 </div>
-                <div className='mt-4 mb-4'>
+                <div className='mb-4'>
                     <h4>Didn’t receive a code?</h4>
                 </div>
                 <div>
