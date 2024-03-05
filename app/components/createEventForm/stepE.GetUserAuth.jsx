@@ -97,7 +97,7 @@ export default function GetUserAuth() {
     };
 
     return (
-        <div>
+        <div className="flex flex-col items-start mt-4">
             <div className='q-title flex flex-col my-5'>
                 <h3>
                     Please verify your phone number:

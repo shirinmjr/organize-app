@@ -20,6 +20,8 @@ module.exports = {
         "default-text": "#f1f3f5",
         "blue-accent": "#0084d4",
         "blue-accent-hover": "#009fff",
+        brandBlue: "#0066FF",
+        princetonOrange: "#ff9500",
       },
     },
   },
