@@ -114,7 +114,7 @@ export default function GetUserAuth() {
                     <input
                         className="text-2xl w-14 h-14 flex bg-blue-100  text-blue-60 rounded-full border-4 border-blue-600  shadow-lg p-2 text-center mb-4"
                         key={index}
-                        type="number"
+                        type="text"
                         maxLength={1}
                         onChange={(e) => handleInput(e, index)}
                         ref={inputRefs[index]}
