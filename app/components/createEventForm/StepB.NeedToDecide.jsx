@@ -74,10 +74,13 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
         setQuestions([...questions]);
     };
 
-    const handleRemoveQuestion = (event, questionId) => {
+    const handleRemoveQuestion = (event, questionId,optionIndex) => {
         console.log("event happened", event);
         questions.forEach((question, index) => {
-            if (question.id === questionId) questions.splice(questionId, 1);
+            if (question.id === questionId) {
+                questions.splice(questionId, 1);
+                questions[index].options.splice(optionIndex, 1);
+            }
         });
         setQuestions([...questions]);
     };
