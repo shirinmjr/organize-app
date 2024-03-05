@@ -97,22 +97,22 @@ export default function GetUserAuth() {
     };
 
     return (
-        <div className="flex flex-col items-start mt-4">
-            <div className='q-title flex flex-col my-5'>
-                <h3>
+        <div className="event-form">
+            <div >
+                <h3 className="form-q-title">
                     Please verify your phone number:
                 </h3>
             </div>
             <div className='mb-4'>
                 We have sent a temporary verification code to your phone number ending in 6680. Enter the code to continue.
             </div>
-            <div className='mb-4'>
+            <div className='form-q-title mb-4'>
                 <h4>Didn’t receive a code?</h4>
             </div>
             <div className="flex gap-2 relative items-center mb-4">
                 {[0, 1, 2, 3, 4].map((index) => (
                     <input
-                        className="text-2xl w-14 h-14 flex bg-blue-100  text-blue-60 rounded-full border-4 border-blue-600  shadow-lg p-2 text-center mb-4"
+                        className="text-2xl w-12 h-12 flex bg-blue-100  text-blue-60 rounded-full border-4 border-blueBrand  shadow-lg p-2 text-center mb-4 focus:border-princetonOrange  focus:ring focus:ring-orange-200"
                         key={index}
                         type="text"
                         maxLength={1}
