@@ -4,7 +4,7 @@ import ProgressBar from "@/app/components/ProgressBar";
 import EventName from "@/app/components/createEventForm/StepA.EventName";
 import NeedToDecide from "@/app/components/createEventForm/StepB.NeedToDecide";
 import GetUserInfo from "@/app/components/createEventForm/StepD.GetUserInfo";
-//import VerifyUserInfo from "@/app/components/createEventForm/StepD.GetUserInfo";
+import GetUserAuth from "@/app/components/createEventForm/stepE.GetUserAuth";
 import WhoToInvite from "@/app/components/createEventForm/StepC.WhoToInvite";
 
 const Page = () => {
@@ -55,6 +55,9 @@ const Page = () => {
             ["organizerInfo"]: organizerInfo,
         });
     };
+    const handleUserAuth = (organizerInfo) => {
+        console.log("Authenticating User... for ", organizerInfo);
+    };
 
     // const handleSubmitFormData = () => {
     //     //you can also add gree to terms here
@@ -75,7 +78,8 @@ const Page = () => {
                     {step === 1 ? <EventName callBack={handleEventName} eventName={formData.eventName} /> : null}
                     {step === 2 ? <NeedToDecide callBack={(questions) => handleNeedToDecide(questions)} questionsData={formData.questions} /> : null}
                     {/* {step === 3 ? <WhoToInvite /> : null} //Coming Soon...*/}
-                    {step === 3 ? <GetUserInfo callBack={(organizerInfo) => handleGetUserInfo(organizerInfo)} organizerData={formData.organizerInfo} /> : null} {/* final step*/}
+                    {step === 3 ? <GetUserInfo callBack={(organizerInfo) => handleGetUserInfo(organizerInfo)} organizerData={formData.organizerInfo} /> : null}
+                    {step === 4 ? <GetUserAuth callBack={(organizerInfo) => handleUserAuth(organizerInfo)} organizerData={formData.organizerInfo} /> : null} {/* final step*/}
                     <div className="flex flex-row ">
                     </div>
                 </form>

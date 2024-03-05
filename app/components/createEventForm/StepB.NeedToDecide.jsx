@@ -66,19 +66,29 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
         });
         setQuestions([...questions]);
     };
+
     const handleRemoveOption = (event, questionId, optionIndex) => {
         questions.forEach((question, index) => {
             if (question.id === questionId) questions[index].options.splice(optionIndex, 1);
         });
         setQuestions([...questions]);
+    };
 
+    const handleRemoveQuestion = (event, questionId,optionIndex) => {
+        console.log("event happened", event);
+        questions.forEach((question, index) => {
+            if (question.id === questionId) {
+                questions.splice(questionId, 1);
+                questions[index].options.splice(optionIndex, 1);
+            }
+        });
+        setQuestions([...questions]);
     };
 
     return (
         <div className="q-title flex flex-col mx-5 m-10">
             <div className='flex gap-7'>
                 <h3 className="mb-4">What still needs to be decided for your event?</h3>
-
                 <h2>
                     Add&nbsp;<FontAwesomeIcon icon={faCirclePlus}
                         className='text-blue-600 hover:cursor-pointer hover:text-blue-00 '
@@ -90,7 +100,7 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
             {questions && questions.map((question) => {
                 return (
                     <div key={question.id} >
-                        <div className='flex text-xl w-full text-blue-600'>
+                        <div className='flex text-xl w-full items-center text-blue-600'>
                             <input
                                 className="text-field w-full  py-3  mb-4 text-border-3 rounded text-blue-600" required
                                 type="text"
@@ -98,6 +108,10 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
                                 name="question"
                                 value={question.question || ""}
                                 onChange={(event) => handleTextFieldChange(event, question.id)}
+                            />
+                            <FontAwesomeIcon icon={faX}
+                                className='text-red-600 hover:cursor-pointer hover:text-blue-00 m-2 '
+                                onClick={(event) => handleRemoveQuestion(event, question.id)}
                             />
                         </div>
                         <div className='flex items-center justify-center flex-col-2' >
@@ -135,12 +149,10 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
                                         name="option"
                                         value={option || ""}
                                         onChange={(event) => handleAddOption(event, question.id, index)} />
-
                                     <FontAwesomeIcon icon={faX}
                                         className='text-red-600 hover:cursor-pointer hover:text-blue-00 m-2 '
                                         onClick={(event) => handleRemoveOption(event, question.id, index)}
                                     />
-
                                 </div>);
                             })}
                         <hr />
