@@ -15,11 +15,11 @@ export default function GetUserAuth() {
                     We have sent a temporary verification code to your phone number ending in 6680. Enter the code to continue.
                 </div>
                 <div className='flex flex-row justify-start items-center mb-4'>
-                    <input type="number" maxlength="1" className=' w-14 h-14 bg-blue-100  text-blue-60 p-2 rounded-full border-4 border-blue-600  shadow-lg' />
-                    <input type="number" maxlength="1" className=' w-14 h-14 bg-blue-100  text-blue-60 p-2 rounded-full border-4 border-blue-600  shadow-lg' />
-                    <input type="number" maxlength="1" className=' w-14 h-14 bg-blue-100  text-blue-60 p-2 rounded-full border-4 border-blue-600  shadow-lg' />
-                    <input type="number" maxlength="1" className=' w-14 h-14 bg-blue-100  text-blue-60 p-2 rounded-full border-4 border-blue-600  shadow-lg' />
-                    <input type="number" maxlength="1" className=' w-14 h-14 bg-blue-100  text-blue-60 p-2 rounded-full border-4 border-blue-600  shadow-lg' />
+                    <input type="number" min="0" max="9" className=' w-14 h-14 bg-blue-100  text-blue-60 p-2 rounded-full border-4 border-blue-600  shadow-lg' />
+                    <input type="number" min="0" max="9" className=' w-14 h-14 bg-blue-100  text-blue-60 p-2 rounded-full border-4 border-blue-600  shadow-lg' />
+                    <input type="number" min="0" max="9" className=' w-14 h-14 bg-blue-100  text-blue-60 p-2 rounded-full border-4 border-blue-600  shadow-lg' />
+                    <input type="number" min="0" max="9" className=' w-14 h-14 bg-blue-100  text-blue-60 p-2 rounded-full border-4 border-blue-600  shadow-lg' />
+                    <input type="number" min="0" max="9" className=' w-14 h-14 bg-blue-100  text-blue-60 p-2 rounded-full border-4 border-blue-600  shadow-lg' />
                 </div>
                 <div className='mb-4'>
                     <h4>Didn’t receive a code?</h4>
