@@ -1,9 +1,9 @@
 const EventName = ({ callBack, eventName = "" }) => {
     return (
-        <div className="flex flex-col items-center mt-4">
-            <h3 className="">What is your event name?</h3>
+        <div className="event-form">
+            <h3 className="form-q-title">What is your event name?</h3>
             <input
-                className="w-full bg-white p-4 rounded border-blue-600 border-4 shadow-lg" required
+                className="input-main" required
                 type="text"
                 id="eventName"
                 name="eventName"

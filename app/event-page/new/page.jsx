@@ -4,7 +4,7 @@ import ProgressBar from "@/app/components/ProgressBar";
 import EventName from "@/app/components/createEventForm/StepA.EventName";
 import NeedToDecide from "@/app/components/createEventForm/StepB.NeedToDecide";
 import GetUserInfo from "@/app/components/createEventForm/StepD.GetUserInfo";
-//import VerifyUserInfo from "@/app/components/createEventForm/StepD.GetUserInfo";
+import GetUserAuth from "@/app/components/createEventForm/stepE.GetUserAuth";
 import WhoToInvite from "@/app/components/createEventForm/StepC.WhoToInvite";
 
 const Page = () => {
@@ -56,6 +56,9 @@ const Page = () => {
       ["organizerInfo"]: organizerInfo,
     });
   };
+  const handleUserAuth = (organizerInfo) => {
+    console.log("Authenticating User... for ", organizerInfo);
+  };
 
   // const handleSubmitFormData = () => {
   //     //you can also add gree to terms here
@@ -67,8 +70,8 @@ const Page = () => {
   }, [formData]);
 
   return (
-    <div className="form-container p-8 rounded shadow-md">
-      <div className="bg-white rounded shadow-md">
+    <div className="p-4 rounded shadow-md form-container">
+      <div className="p-4 bg-white rounded shadow-md">
         <form className="overflow-y-auto">
           <ProgressBar step={step} totalSteps={totalSteps} />
           {step === 1 ? (
@@ -89,25 +92,23 @@ const Page = () => {
               callBack={(organizerInfo) => handleGetUserInfo(organizerInfo)}
               organizerData={formData.organizerInfo}
             />
-          ) : null}{" "}
-          {/* final step*/}
-          <div className="flex flex-row "></div>
+          ) : null}
+          {step === 4 ? (
+            <GetUserAuth
+              callBack={(organizerInfo) => handleUserAuth(organizerInfo)}
+              organizerData={formData.organizerInfo}
+            />
+          ) : null}
         </form>
 
-        <div className="flex flex-row justify-between items-center ">
+        <div className="flex flex-row items-center justify-between w-full">
           {step > 1 && (
-            <button
-              className=" bg-blue-500 btn text-white m-5 px-4 py-2 rounded hover:bg-blue-700 justify-start"
-              onClick={(e) => handleBackStep()}
-            >
+            <button className="blue-btn" onClick={(e) => handleBackStep()}>
               Previous
             </button>
           )}
           {step < 4 && (
-            <button
-              className="flex flex-row  bg-blue-500 btn text-white px-4 m-5 py-2 rounded hover:bg-blue-700 justify-end"
-              onClick={(e) => handleNextStep()}
-            >
+            <button className="blue-btn" onClick={(e) => handleNextStep()}>
               Next
             </button>
           )}

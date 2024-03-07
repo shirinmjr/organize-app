@@ -66,44 +66,59 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
         });
         setQuestions([...questions]);
     };
+
     const handleRemoveOption = (event, questionId, optionIndex) => {
         questions.forEach((question, index) => {
             if (question.id === questionId) questions[index].options.splice(optionIndex, 1);
         });
         setQuestions([...questions]);
+    };
 
+    const handleRemoveQuestion = (event, questionId, optionIndex) => {
+        console.log("event happened", event);
+        questions.forEach((question, index) => {
+            if (question.id === questionId) {
+                questions.splice(questionId, 1);
+                questions[index].options.splice(optionIndex, 1);
+            }
+        });
+        setQuestions([...questions]);
     };
 
     return (
-        <div className="q-title flex flex-col mx-5 m-10">
-            <div className='flex gap-7'>
-                <h3 className="mb-4">What still needs to be decided for your event?</h3>
-
-                <h2>
+        <div className="event-form">
+            <div className='flex gap-7 form-q-title'>
+                <h3 className="">What does your group need to make decisions about?</h3>
+                <h2
+                    className='text-brandBlue hover:cursor-pointer hover:text-blue-800'
+                    onClick={createQuestion}
+                >
                     Add&nbsp;<FontAwesomeIcon icon={faCirclePlus}
-                        className='text-blue-600 hover:cursor-pointer hover:text-blue-00 '
-                        onClick={createQuestion}
                     />
                 </h2>
             </div>
 
             {questions && questions.map((question) => {
                 return (
-                    <div key={question.id} >
-                        <div className='flex text-xl w-full text-blue-600'>
+                    <div key={question.id} className='event-form'>
+                        <div className='flex text-xl w-full items-center'>
                             <input
-                                className="text-field w-full  py-3  mb-4 text-border-3 rounded text-blue-600" required
+                                className="input-main mb-4" required
                                 type="text"
                                 id="question"
                                 name="question"
                                 value={question.question || ""}
                                 onChange={(event) => handleTextFieldChange(event, question.id)}
                             />
+                            <FontAwesomeIcon icon={faX}
+                                className='text-red-600 hover:cursor-pointer hover:text-blue-00 m-2 '
+                                onClick={(event) => handleRemoveQuestion(event, question.id)}
+                            />
                         </div>
-                        <div className='flex items-center justify-center flex-col-2' >
-                            How do you want people to answer:
+                        <div className='flex justify-center flex-col-2 mb-4' >
+                            <h5 className='text-brandBlue'>How do you want people to answer:</h5>
                             <select
-                                className="mt-1 block py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring focus:ring-gray-200 focus:border-gray-500"
+                                className="block border border-brandBlue bg-white rounded-md shadow-sm focus:outline-none focus:ring focus:ring-gray-200 focus:border-princetonOrange hover:cursor-pointer"
                                 id="type"
                                 name="type"
                                 value={question.type || ""}
@@ -116,34 +131,32 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
                                 <option value="explain">Explain it</option>
                             </select>
                         </div>
-                        {question && question.type != "explain" && <div className='flex'>
-                            <h2>
+                        {question && question.type != "explain" &&
+                            <h2
+                                onClick={(event) => createOption(question.id)}
+                                className='text-brandBlue hover:cursor-pointer hover:text-blue-800 mb-2'>
                                 Add&nbsp;Options <FontAwesomeIcon icon={faCirclePlus}
-                                    className='text-blue-600 hover:cursor-pointer hover:text-blue-00 '
-                                    onClick={(event) => createOption(question.id)}
                                 />
                             </h2>
-                        </div>
                         }
 
                         {question && question.options && question.type != "explain" &&
                             question.options.map((option, index) => {
                                 return (<div key={index} className='flex items-center justify-center'>
-                                    <input type='text'
-                                        className="w-full field-option rounded-md shadow-sm focus:outline-none focus:ring focus:ring-orange-200 focus:border-orange-500"
+                                    <input
+                                        className="input-secondary"
                                         id="option"
+                                        type='text'
                                         name="option"
                                         value={option || ""}
                                         onChange={(event) => handleAddOption(event, question.id, index)} />
-
                                     <FontAwesomeIcon icon={faX}
                                         className='text-red-600 hover:cursor-pointer hover:text-blue-00 m-2 '
                                         onClick={(event) => handleRemoveOption(event, question.id, index)}
                                     />
-
                                 </div>);
                             })}
-                        <hr />
+                        <hr className='border-t-2 border-blue-400 mb-2' />
                     </div>
                 );
             })}

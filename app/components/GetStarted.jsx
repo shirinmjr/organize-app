@@ -8,15 +8,6 @@ const GetStarted = () => {
         <div
             className="flex flex-col items-center justify-center h-screen mx-5">
             <div className="flex flex-col mb-3">
-                <div >
-                    <Image
-                        alt="app logo"
-                        src={get_started_logo}
-                        width={220}
-                        height={100}
-                    />
-                </div>
-                <br />
                 <div className="mt-50">
                     <Image
                         alt="get started image"
@@ -30,7 +21,7 @@ const GetStarted = () => {
                         <p>We empower communities to <b>get things done</b></p>
                     </div>
                     <Link href={`/event-page/new`}>
-                        <input type="submit" className="btn text-blue 400 shadow-lg p-3 m-2" value={"Get Started!"} />
+                        <input type="submit" className="btn" value={"Get Started!"} />
                     </Link>
                 </div>
             </div>
