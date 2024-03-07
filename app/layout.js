@@ -16,13 +16,12 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-
   return (
     <html lang="en">
       <body className={inter.className}>
         <div className="flex-grow overflow-y-auto text-default-text">
           <div className="flex flex-col m-4">
-            <div >
+            <div>
               <Image
                 alt="app logo"
                 src={get_started_logo}
