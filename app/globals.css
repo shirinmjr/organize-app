@@ -37,7 +37,7 @@
     @apply text-sm;
   }
   form {
-    @apply rounded-xl p-4 bg-white  text-blue-500;
+    @apply text-blue-500 bg-white rounded-xl;
   }
   label {
     @apply mt-4 text-blue-700;
@@ -45,7 +45,7 @@
   input,
   select,
   textarea {
-    @apply m-1 rounded p-1 border-spacing-3 border-blue-400;
+    @apply p-1 m-1 border-blue-400 rounded border-spacing-3;
   }
   .field-option {
     display: flex;
@@ -56,22 +56,22 @@
 
 @layer components {
   .icon {
-    @apply text-default-text text-xl;
+    @apply text-xl text-default-text;
   }
   .btn {
-    @apply hover:no-underline bg-white tracking-wider  text-center font-bold cursor-pointer px-4 py-2 border-princetonOrange rounded-full hover:bg-blue-accent-hover transition-colors block shadow-lg text-slate-900 border-2;
+    @apply block px-4 py-2 font-bold tracking-wider text-center bg-white border-2 rounded-full shadow-lg cursor-pointer hover:no-underline border-princetonOrange hover:bg-blue-accent-hover transition-colors text-slate-900;
   }
   .blue-btn {
-    @apply text-white text-xl m-4 p-2 rounded bg-brandBlue hover:bg-blue-600;
+    @apply p-2 m-4 text-xl text-white rounded bg-brandBlue hover:bg-blue-600;
   }
   .event-form {
     @apply flex flex-col px-2;
   }
   .form-q-title {
-    @apply text-brandBlue my-4;
+    @apply my-4 text-brandBlue;
   }
   .input-main {
-    @apply w-full bg-white text-black p-4 rounded border-blue-600 border-4 shadow-lg focus:border-princetonOrange  focus:ring focus:ring-orange-200;
+    @apply w-full p-4 text-black bg-white border-4 border-blue-600 rounded shadow-lg focus:border-princetonOrange focus:ring focus:ring-orange-200;
   }
   .input-secondary {
     @apply w-full text-blue-900 field-option rounded-md shadow-sm focus:outline-none focus:border-princetonOrange;
