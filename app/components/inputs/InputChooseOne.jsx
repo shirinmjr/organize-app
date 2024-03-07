@@ -4,12 +4,7 @@ import { useState } from "react";
 import InputWrapper from "./InputWrapper";
 import { RadioGroup } from "@headlessui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCheck,
-  faCheckSquare,
-  faCheckToSlot,
-  faListCheck,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 function mapIndexToLetterList(index) {
   if (index > 25) {
