@@ -1,16 +1,21 @@
+import React, { useEffect, useState } from "react";
+import { DatePicker } from "date-picker-nextjs";
+import InputWrapper from "../inputs/InputWrapper";
+import InputText from "../inputs/InputText";
 import Switch from "../inputs/Switch";
 
-import React, { useState } from "react";
-import InputText from "../inputs/InputText";
 const EventName = ({ callBack, eventName = "" }) => {
-  //   const handleDatePicker = (e) => {
-  //     setClickedInput(e.target.id);
-  //     //setModalDateIsOpen(true);
-  //   };
+  const [datePickerChecked, setDatePickerChecked] = useState(false);
+  const [modalDateIsOpen, setModalDateIsOpen] = useState(false);
+  const [clickedInput, setClickedInput] = useState(null);
 
-  const submit = (e) => {
-    e.preventDefault();
-    // your logic
+  useEffect(() => {
+    console.log(datePickerChecked);
+  }, [datePickerChecked]);
+
+  const handleDatePicker = (e) => {
+    setClickedInput(e.target.id);
+    setModalDateIsOpen(true);
   };
 
   return (
@@ -26,7 +31,32 @@ const EventName = ({ callBack, eventName = "" }) => {
         onChange={callBack}
         required
       />
-      <Switch label={"Have you decided on a date?"} />
+      <Switch
+        label={"Have you decided on a date?"}
+        isChecked={datePickerChecked}
+        callBack={() => setDatePickerChecked(!datePickerChecked)}
+      />
+      {datePickerChecked && (
+        <div>
+          <InputWrapper htmlFor="event-date" label="Event Date">
+            <input
+              className=" flex-row border-4 input-field outline-none"
+              type="text"
+              id="eventDate"
+              placeholder="Event Date"
+              onClick={handleDatePicker}
+            />
+
+            {modalDateIsOpen && (
+              <DatePicker
+                className="block"
+                setModalDateIsOpen={setModalDateIsOpen}
+                clickedInput={clickedInput}
+              />
+            )}
+          </InputWrapper>
+        </div>
+      )}
     </div>
   );
 };

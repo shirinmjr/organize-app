@@ -1,4 +1,6 @@
-const Switch = ({ label, id, prompt = "Yes", isChecked, onChange }) => {
+const Switch = ({ label, id, prompt = "Yes", isChecked, callBack }) => {
+  const handleClick = () => {};
+
   return (
     <div className="mx-2">
       <label htmlFor={id} className="flex items-center">
@@ -8,9 +10,9 @@ const Switch = ({ label, id, prompt = "Yes", isChecked, onChange }) => {
             type="checkbox"
             id={id}
             name={id}
-            checked={isChecked}
+            value={isChecked}
             className="sr-only peer p-1"
-            onChange={onChange}
+            onClick={callBack}
           />
           <span className="w-2/4 h-4/5 text-white bg-blue-200 absolute rounded-full left-1 right-1 top-1 peer-checked:bg-brandBlue peer-checked:left-9 transition-all duration-500 items-center text-center p-1">
             {prompt}
