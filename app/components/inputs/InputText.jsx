@@ -1,13 +1,24 @@
 import InputWrapper from "./InputWrapper";
 
-const InputText = ({ question }) => {
+const InputText = ({
+  placeHolder,
+  label,
+  name,
+  onChange,
+  value = "",
+  required = false,
+}) => {
   return (
-    <InputWrapper htmlFor={question} label={question}>
+    <InputWrapper htmlFor={name} label={label}>
       <input
-        className="p-2 border border-blue-400 rounded-full outline-none ring-0 focus:ring-1 bg-blue-50"
+        className=" w-full p-3 text-black bg-white border-4 border-blue-600 rounded-full shadow-lg focus:border-princetonOrange focus:ring focus:ring-orange-200"
+        name={name}
+        id={name}
         type="text"
-        name={question}
-        id={question}
+        placeholder={placeHolder}
+        required={required}
+        value={value}
+        onChange={onChange}
       />
     </InputWrapper>
   );

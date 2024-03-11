@@ -6,6 +6,7 @@ import NeedToDecide from "@/app/components/createEventForm/StepB.NeedToDecide";
 import GetUserInfo from "@/app/components/createEventForm/StepD.GetUserInfo";
 import GetUserAuth from "@/app/components/createEventForm/stepE.GetUserAuth";
 import WhoToInvite from "@/app/components/createEventForm/StepC.WhoToInvite";
+import Button from "@/app/components/inputs/Button";
 
 const Page = () => {
   const initialFormData = {
@@ -103,15 +104,9 @@ const Page = () => {
 
         <div className="flex flex-row items-center justify-between w-full">
           {step > 1 && (
-            <button className="blue-btn" onClick={(e) => handleBackStep()}>
-              Previous
-            </button>
+            <Button onClick={(e) => handleBackStep()}>Previous</Button>
           )}
-          {step < 4 && (
-            <button className="blue-btn" onClick={(e) => handleNextStep()}>
-              Next
-            </button>
-          )}
+          {step < 4 && <Button onClick={(e) => handleNextStep()}>Next</Button>}
         </div>
       </div>
     </div>
