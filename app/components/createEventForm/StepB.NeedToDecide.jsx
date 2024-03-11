@@ -86,7 +86,9 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
   return (
     <div className="event-form">
       <div className="flex gap-7 form-q-title">
-        <h3 className="">What does your group need to make decisions about?</h3>
+        <h3 className="">What do you want to ask?</h3>
+      </div>
+      <div className="flex gap-7">
         <h2
           className="text-brandBlue hover:cursor-pointer hover:text-blue-800"
           onClick={handleAddQuestion}
