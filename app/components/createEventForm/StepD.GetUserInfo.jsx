@@ -1,5 +1,6 @@
 "use Client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import InputText from "../inputs/InputText";
 
 const GetUserInfo = ({ callBack, organizerData = "" }) => {
   // const initialOrganizerInfo = {
@@ -8,7 +9,6 @@ const GetUserInfo = ({ callBack, organizerData = "" }) => {
   //   phoneNumber: "",
 
   // };
-
 
   const [organizerInfo, setOrganizerInfo] = useState(organizerData);
 
@@ -24,45 +24,42 @@ const GetUserInfo = ({ callBack, organizerData = "" }) => {
     });
   };
 
-
   return (
-    <div className='event-form'>
-      <div >
-        <h3 className='form-q-title' >
-          Last step, what is your name and phone number?
-        </h3>
-        <label>First Name</label>
-        <input
-          className="input-secondary"
+    <div className="event-form">
+      <div>
+        <div className="flex gap-7 form-q-title">
+          <h3 className=""> Last step, what is your name and phone number?</h3>
+        </div>
+
+        <InputText
           type="text"
           id="firstName"
           name="firstName"
-
-          value={organizerInfo.firstName || ""}
-          required
+          label="First Name"
+          placeHolder={"First Name..."}
+          value={organizerInfo.firstName}
           onChange={handleChange}
+          required
         />
-
-        <label>Last Name</label>
-        <input
-          className="input-secondary"
+        <InputText
           type="text"
           id="lastName"
           name="lastName"
-          value={organizerInfo.lastName || ""}
-          required
+          label="Last Name"
+          placeHolder={"Last Name..."}
+          value={organizerInfo.lastName}
           onChange={handleChange}
+          required
         />
-
-        <label>Phone Number</label>
-        <input
-          className="input-secondary"
+        <InputText
           type="tel"
           id="phoneNumber"
           name="phoneNumber"
-          value={organizerInfo.phoneNumber || ""}
-          required
+          label="Phone Number"
+          placeHolder={"Phone Number..."}
+          value={organizerInfo.phoneNumber}
           onChange={handleChange}
+          required
         />
       </div>
     </div>
