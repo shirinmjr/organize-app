@@ -56,9 +56,6 @@ const EventName = ({ callBack, eventName = "" }) => {
                 <div>
                   <DatePicker
                     className="block"
-                    onKeyDown={(event) => {
-                      event.preventDefault();
-                    }}
                     setModalDateIsOpen={setModalDateIsOpen}
                     clickedInput={clickedInput}
                   />
