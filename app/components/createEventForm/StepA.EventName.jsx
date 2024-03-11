@@ -26,6 +26,7 @@ const EventName = ({ callBack, eventName = "" }) => {
         onChange={callBack}
         required
       />
+      <Switch label={"Have you decided on a date?"} />
     </div>
   );
 };
