@@ -1,11 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCirclePlus,
-  faCircleXmark,
-  faX,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCirclePlus, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import generateUniqueId from "@/app/util/generateUniqueId";
 import InputText from "../inputs/InputText";
 import InputSelect from "../inputs/InputSelect";
@@ -122,7 +118,6 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
                     required
                   />
                 </div>
-
                 <FontAwesomeIcon
                   icon={faCircleXmark}
                   className=" m-2 text-red-600 hover:cursor-pointer hover:text-blue-00"
