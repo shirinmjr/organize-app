@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarDays, faClock } from "@fortawesome/free-solid-svg-icons";
 import { DatePicker } from "date-picker-nextjs";
+
 import InputWrapper from "../inputs/InputWrapper";
 import InputText from "../inputs/InputText";
 import Switch from "../inputs/Switch";
@@ -55,6 +56,9 @@ const EventName = ({ callBack, eventName = "" }) => {
                 <div>
                   <DatePicker
                     className="block"
+                    onKeyDown={(event) => {
+                      event.preventDefault();
+                    }}
                     setModalDateIsOpen={setModalDateIsOpen}
                     clickedInput={clickedInput}
                   />
