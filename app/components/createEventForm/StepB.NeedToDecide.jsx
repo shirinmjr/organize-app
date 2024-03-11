@@ -149,21 +149,6 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
                 ></InputSelect>
               </div>
 
-              {/* <div className="flex justify-center my-2 flex-col-2">
-                <select
-                  className="block bg-white border border-brandBlue rounded-md shadow-sm focus:outline-none focus:ring focus:ring-gray-200 focus:border-princetonOrange hover:cursor-pointer"
-                  id="type"
-                  name="type"
-                  value={question.type || ""}
-                  onChange={(event) => handleSelectChange(event, question.id)}
-                >
-                  <option value=""> How do you want people to answer</option>
-                  <option value="single">Single Choice</option>
-                  <option value="multiple">Multiple Choice</option>
-                  <option value="top3">Pick Top Three</option>
-                  <option value="explain">Explain it</option>
-                </select>
-              </div> */}
               {question && question.type != "explain" && (
                 <h2
                   onClick={(event) => handleAddOptionsList(question.id)}
@@ -178,25 +163,28 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
                 question.type != "explain" &&
                 question.options.map((option, index) => {
                   return (
-                    <div
-                      key={index}
-                      className="flex items-center justify-center"
-                    >
-                      <input
-                        className="input-secondary"
-                        id="option"
-                        type="text"
-                        name="option"
-                        value={option || ""}
-                        onChange={(event) =>
-                          handleAddOption(event, question.id, index)
-                        }
-                      />
-                      <FontAwesomeIcon
-                        icon={faX}
-                        className="m-2 text-red-600 hover:cursor-pointer hover:text-blue-00 "
-                        onClick={() => handleRemoveOption(question.id, index)}
-                      />
+                    <div key={index}>
+                      <div className="flex items-center justify-between">
+                        <div className="flex-1">
+                          <InputText
+                            className="w-full"
+                            id="option"
+                            type="text"
+                            name="option"
+                            placeHolder={"Option..."}
+                            value={option}
+                            onChange={(event) =>
+                              handleAddOption(event, question.id, index)
+                            }
+                            required
+                          />
+                        </div>
+                        <FontAwesomeIcon
+                          icon={faCircleXmark}
+                          className="m-2 text-red-600 hover:cursor-pointer hover:text-blue-00 "
+                          onClick={() => handleRemoveOption(question.id, index)}
+                        />
+                      </div>
                     </div>
                   );
                 })}

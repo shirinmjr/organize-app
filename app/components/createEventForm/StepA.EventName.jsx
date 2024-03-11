@@ -15,8 +15,10 @@ const EventName = ({ callBack, eventName = "" }) => {
 
   return (
     <div className="event-form">
+      <div className="flex gap-7 form-q-title">
+        <h3 className="">What is your event name?</h3>
+      </div>
       <InputText
-        label={"What is your event name?"}
         name="eventName"
         id="eventName"
         placeHolder={"Event Name.."}
