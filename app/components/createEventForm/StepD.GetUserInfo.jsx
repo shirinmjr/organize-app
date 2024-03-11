@@ -28,7 +28,10 @@ const GetUserInfo = ({ callBack, organizerData = "" }) => {
     <div className="event-form">
       <div>
         <div className="flex gap-7 form-q-title">
-          <h3 className=""> Last step, what is your name and phone number?</h3>
+          <h3 className="">
+            {" "}
+            Last step, Create your account to send your feedback request.
+          </h3>
         </div>
 
         <InputText
