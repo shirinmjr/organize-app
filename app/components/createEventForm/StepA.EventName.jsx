@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCalendarDays, faClock } from "@fortawesome/free-solid-svg-icons";
 import { DatePicker } from "date-picker-nextjs";
 import InputWrapper from "../inputs/InputWrapper";
 import InputText from "../inputs/InputText";
@@ -31,29 +33,44 @@ const EventName = ({ callBack, eventName = "" }) => {
         onChange={callBack}
         required
       />
+
       <Switch
         label={"Have you decided on a date?"}
         isChecked={datePickerChecked}
         callBack={() => setDatePickerChecked(!datePickerChecked)}
       />
       {datePickerChecked && (
-        <div>
-          <InputWrapper htmlFor="event-date" label="Event Date">
-            <input
-              className=" flex-row border-4 input-field outline-none"
-              type="text"
-              id="eventDate"
-              placeholder="Event Date"
-              onClick={handleDatePicker}
-            />
-
-            {modalDateIsOpen && (
-              <DatePicker
-                className="block"
-                setModalDateIsOpen={setModalDateIsOpen}
-                clickedInput={clickedInput}
+        <div className="flex items-center justify-start  rounded-full">
+          <InputWrapper htmlFor="event-date" label="">
+            <div className="flex items-center justify-around my-4">
+              <input
+                className=" p-2 border-4 border-blue-400 rounded-full"
+                type="text"
+                id="eventDate"
+                placeholder="Enter Date"
+                onClick={handleDatePicker}
               />
-            )}
+              <FontAwesomeIcon icon={faCalendarDays} />
+              {modalDateIsOpen && (
+                <div>
+                  <DatePicker
+                    className="block"
+                    setModalDateIsOpen={setModalDateIsOpen}
+                    clickedInput={clickedInput}
+                  />
+                </div>
+              )}
+            </div>
+            <div className="flex items-center justify-around my-4">
+              <input
+                className="p-2 border-4 border-blue-400 rounded-full "
+                type="text"
+                id="eventTime"
+                placeholder="Enter Time"
+                onClick={handleDatePicker}
+              />
+              <FontAwesomeIcon icon={faClock} />
+            </div>
           </InputWrapper>
         </div>
       )}
