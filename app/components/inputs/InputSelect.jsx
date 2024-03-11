@@ -38,7 +38,7 @@ const InputSelect = ({
             {boxButton}
             <FontAwesomeIcon icon={faCircleChevronDown} aria-hidden="false" />
           </Listbox.Button>
-          <Listbox.Options className="absolute w-full p-2 mt-4 overflow-auto border border-blue-400 cursor-pointer focus:outline-none bg-blue-50 max-h-60 rounded-md">
+          <Listbox.Options className=" absolute h-screen w-full p-2 mt-4 shadow  border border-blue-400 cursor-pointer focus:outline-none bg-blue-50 max-h-60 rounded-md">
             {options.map((option) => (
               <Listbox.Option
                 className={({ active }) =>
