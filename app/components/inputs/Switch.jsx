@@ -1,4 +1,4 @@
-const Switch = ({ label, id, prompt, isChecked, onChange }) => {
+const Switch = ({ label, id, prompt = "Yes", isChecked, onChange }) => {
   return (
     <div className="mx-2">
       <label htmlFor={id} className="flex items-center">
