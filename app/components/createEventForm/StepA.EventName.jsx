@@ -4,12 +4,9 @@ import React, { useState } from "react";
 //import { DatePicker } from "date-picker-nextjs";
 import InputText from "../inputs/InputText";
 const EventName = ({ callBack, eventName = "" }) => {
-  const [modalDateIsOpen, setModalDateIsOpen] = useState(false);
-  const [showDatePicker, setShowDatePicker] = useState(false);
-
   const handleDatePicker = (e) => {
     setClickedInput(e.target.id);
-    setModalDateIsOpen(true);
+    //setModalDateIsOpen(true);
   };
 
   const submit = (e) => {
@@ -29,30 +26,12 @@ const EventName = ({ callBack, eventName = "" }) => {
         required
       />
 
-      <Switch
+      {/* <Switch
         label={"Event date is decided"}
         children={"Yes"}
         id={"choose-date"}
         isChecked={showDatePicker}
         onChange={() => setShowDatePicker((state) => !state)}
-      />
-
-      {showDatePicker && <h1>date picker</h1>}
-      {/* <form className="test" onSubmit={submit}>
-        <label htmlFor="birthdate">Event Date</label>
-        <input
-          className="input-field outline-none"
-          type="text"
-          id="dateOfBirth"
-          placeholder="Event Date"
-          onClick={handleDatePicker}
-        /> */}
-      {/* 
-      <input type="submit" value="Submit" />
-      </form> */}
-      {/* <DatePicker
-        setModalDateIsOpen={setModalDateIsOpen}
-        clickedInput={clickedInput}
       /> */}
     </div>
   );
