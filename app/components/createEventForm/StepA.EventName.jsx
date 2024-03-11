@@ -1,7 +1,7 @@
 import Switch from "../inputs/Switch";
 
 import React, { useState } from "react";
-import { DatePicker } from "date-picker-nextjs";
+//import { DatePicker } from "date-picker-nextjs";
 import InputText from "../inputs/InputText";
 const EventName = ({ callBack, eventName = "" }) => {
   const [modalDateIsOpen, setModalDateIsOpen] = useState(false);
