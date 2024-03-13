@@ -1,12 +1,12 @@
 "use client";
-import { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Layout from "../layout";
 import Button from "@/app/components/inputs/Button";
 import InputText from "@/app/components/inputs/InputText";
 import InputSelect from "@/app/components/inputs/InputSelect";
-//import InputChooseOne from "@/app/components/inputs/InputChooseOne";
+import InputChooseOne from "@/app/components/inputs/InputChooseOne";
+import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleArrowRight } from "@fortawesome/free-solid-svg-icons";
 //Mock data to build Volunteer workflow
 import eventInfo from "../../../../assets/mock/mockEvent";
 import organizerInfo from "../../../../assets/mock/mockOrganizer";
@@ -19,8 +19,8 @@ export default function Page({ params }) {
   const [answers, setAnswers] = useState("");
 
   const handleSelectChange = (selected, id) => {
-    //  const selectedType = selected;
-    console.log("select type: ", selected, "for question: ", id);
+    const selectedType = selected;
+    console.log("select type: ", selectedType, "for question: ", id);
   };
   const mapQuestionTypeToInput = (questionObj) => {
     console.log("question object", questionObj);
@@ -28,21 +28,6 @@ export default function Page({ params }) {
     switch (type) {
       case "text":
         return <InputText question={question} />;
-
-      case "single":
-        return (
-          <div>
-            <InputSelect
-              id={question.id}
-              name={question.type}
-              label={""}
-              defaultOption={"Select One..."}
-              options={options}
-              onChange={(selected) => handleSelectChange(selected, question.id)}
-              required
-            />
-          </div>
-        );
       case "top3":
         return (
           <div>
@@ -67,6 +52,20 @@ export default function Page({ params }) {
               defaultOption={"Select All..."}
               options={options}
               onChange={(selected) => handleSelectChange(selected, question.id)}
+              required
+            />
+          </div>
+        );
+      case "single":
+        return (
+          <div>
+            <InputChooseOne
+              id={question.id}
+              name={question.type}
+              label={""}
+              defaultOption={"Select One..."}
+              options={options}
+              //onChange={(selected) => handleSelectChange(selected, question.id)}
               required
             />
           </div>
