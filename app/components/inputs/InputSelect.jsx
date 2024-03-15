@@ -6,21 +6,15 @@ import { Listbox } from "@headlessui/react";
 import { useState } from "react";
 import { faCircleChevronDown } from "@fortawesome/free-solid-svg-icons";
 
-const InputSelect = ({
-  label,
-  name,
-  id,
-  options,
-  defaultOption = "Select",
-  onChange,
-}) => {
-  const [selected, setSelected] = useState(options[[0]]);
-  const [boxButton, setBoxButton] = useState(defaultOption);
+const InputSelect = ({ label, name, id, options, value = "", onChange }) => {
+  const [selected, setSelected] = useState(
+    options.find((option) => option.value === value)
+  );
 
-  const handleSelect = (option, value) => {
-    setBoxButton(option);
-    setSelected(value);
-    onChange(value);
+  const handleSelect = (option) => {
+    console.log(option);
+    setSelected(option);
+    onChange(option.value);
   };
 
   return (
@@ -34,7 +28,7 @@ const InputSelect = ({
         >
           <div className="">
             <Listbox.Button className="flex items-center justify-between w-full cursor-pointer">
-              {boxButton}
+              {selected.option}
               <FontAwesomeIcon icon={faCircleChevronDown} aria-hidden="false" />
             </Listbox.Button>
             <Listbox.Options className="absolute p-2 mt-4 border border-blue-400 shadow cursor-pointer min-w-48 max-w-10/12 focus:outline-none bg-blue-50 max-h-60 rounded-md">
@@ -45,9 +39,9 @@ const InputSelect = ({
                       active ? "bg-blue-100" : ""
                     }`
                   }
-                  key={Math.random()}
+                  key={option.value}
                   value={option.value}
-                  onClick={() => handleSelect(option.option, option.value)}
+                  onClick={() => handleSelect(option)}
                 >
                   {option.option}
                 </Listbox.Option>

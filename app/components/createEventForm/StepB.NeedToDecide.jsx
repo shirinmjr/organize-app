@@ -103,7 +103,7 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
           return (
             <div
               key={question.id}
-              className="flex flex-col gap-3 bg-blue-50 rounded-md my-2 p-2"
+              className="flex flex-col p-2 my-2 gap-3 bg-blue-50 rounded-md"
             >
               <div className="flex items-center justify-between">
                 <div className="flex-1">
@@ -122,7 +122,7 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
                 </div>
                 <FontAwesomeIcon
                   icon={faCircleXmark}
-                  className=" m-2 text-red-600 hover:cursor-pointer hover:text-blue-00"
+                  className="m-2 text-red-600 hover:cursor-pointer hover:text-blue-00"
                   onClick={() => handleRemoveQuestion(question.id)}
                 />
               </div>
@@ -132,8 +132,9 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
                   id={question.id}
                   name="type"
                   label={""}
-                  defaultOption={"How do you want people to answer?"}
+                  value={question.type || ""}
                   options={[
+                    { option: "How do you want people to answer?", value: "" },
                     { option: "Single Choice", value: "single" },
                     { option: "Multiple Choice", value: "multiple" },
                     { option: "Pick Top Three", value: "top3" },
