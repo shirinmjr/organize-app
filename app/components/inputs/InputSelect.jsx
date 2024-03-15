@@ -12,9 +12,8 @@ const InputSelect = ({ label, name, id, options, value = "", onChange }) => {
   );
 
   const handleSelect = (option) => {
-    console.log(option);
     setSelected(option);
-    onChange(option.value);
+    onChange(option);
   };
 
   return (

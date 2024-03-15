@@ -140,8 +140,8 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
                     { option: "Pick Top Three", value: "top3" },
                     { option: "Explain it", value: "text" },
                   ]}
-                  onChange={(selected) =>
-                    handleSelectChange(selected, question.id)
+                  onChange={(option) =>
+                    handleSelectChange(option.value, question.id)
                   }
                   required
                 ></InputSelect>
