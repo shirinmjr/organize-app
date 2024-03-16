@@ -22,7 +22,7 @@ const InputChooseOne = ({ question, options }) => {
     <InputWrapper htmlFor={question} label={question}>
       <RadioGroup name={question} value={choice} onChange={setChoice}>
         {options.map((option, index) => (
-          <RadioGroup.Option key={index} value={option}>
+          <RadioGroup.Option key={index} value={option.value}>
             {({ active, checked }) => (
               <div
                 className={`
@@ -40,7 +40,7 @@ flex justify-between w-full p-2 my-1 border border-blue-400 rounded-full cursor-
               >
                 <span>
                   <span className="mr-2">{mapIndexToLetterList(index)}</span>
-                  <span>{option}</span>
+                  <span>{option.option}</span>
                 </span>
                 {checked ? (
                   <FontAwesomeIcon
