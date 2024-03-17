@@ -1,7 +1,7 @@
 "use client";
-import InputText from "../../../components/inputs/InputText";
-import InputSelect from "../../../components/inputs/InputSelect";
-import InputChooseOne from "../../../components/inputs/InputChooseOne";
+import InputText from "@/app/components/inputs/InputText";
+import InputSelect from "@/app/components/inputs/InputSelect";
+import InputChooseOne from "@/app/components/inputs/InputChooseOne";
 
 const MappedInput = ({ questionData }) => {
   const { type, id, question, options } = questionData;
@@ -15,7 +15,7 @@ const MappedInput = ({ questionData }) => {
           <InputSelect
             id={id}
             name={id}
-            label={""}
+            label={question.question}
             options={options}
             // onChange={(selected) => handleSelectChange(selected, question.id)}
             required
@@ -32,7 +32,7 @@ const MappedInput = ({ questionData }) => {
           <InputSelect
             id={id}
             name={id}
-            label={question}
+            label={question.question}
             options={options}
             // onChange={(selected) => handleSelectChange(selected, question.id)}
             required
@@ -46,7 +46,7 @@ const MappedInput = ({ questionData }) => {
           <InputChooseOne
             id={id}
             name={id}
-            label={""}
+            label={question.question}
             options={options}
             // onChange={(selected) => handleSelectChange(selected, question.id)}
             required

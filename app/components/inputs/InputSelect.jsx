@@ -14,8 +14,6 @@ const InputSelect = ({
   value = "",
   onChange = null,
 }) => {
-  console.log({ options });
-  console.log({ value });
   const [selected, setSelected] = useState(
     options.find((option) => option.value === value)
   );
