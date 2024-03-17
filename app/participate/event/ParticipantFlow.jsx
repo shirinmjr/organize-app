@@ -2,7 +2,7 @@
 
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import EventLandingPage from "./EventLandingPage";
-import Question from "./Qestion";
+import Question from "../Question";
 import { useState } from "react";
 
 const ParticipantFlow = ({ data }) => {
@@ -29,16 +29,20 @@ const ParticipantFlow = ({ data }) => {
       setStep((step) => step - 1);
     }
   };
-  console.log({ step, data, question: data.questions[step - 1] });
+
+  const questions = data.questions.map((question) => (
+    <Question
+      key={question.id}
+      question={question}
+      onPrev={decrementStep}
+      onNext={incrementStep}
+    />
+  ));
 
   return step === 0 ? (
     <EventLandingPage name={data.eventName} onStart={incrementStep} />
   ) : (
-    <Question
-      question={data.questions[step - 1]}
-      onPrev={decrementStep}
-      onNext={incrementStep}
-    />
+    questions[step - 1]
   );
 };
 

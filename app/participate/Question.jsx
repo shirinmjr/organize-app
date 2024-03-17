@@ -1,6 +1,6 @@
 "use client";
 import Button from "@/app/components/inputs/Button";
-import MappedInput from "./[id]/MappedInput";
+import MappedInput from "./event/[id]/MappedInput";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
@@ -23,7 +23,7 @@ const Question = ({ question, onNext, onPrev }) => {
   return (
     <div className="w-full">
       <form>
-        <div className="flex flex-col">
+        <div className="flex flex-col p-1">
           <MappedInput
             questionData={question}
             value={+answer}
