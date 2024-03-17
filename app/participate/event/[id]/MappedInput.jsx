@@ -25,12 +25,13 @@ const MappedInput = ({ questionData, onChange, value }) => {
     case "multiple":
       return (
         <div>
-          <InputSelect
+          <InputChooseOne
             id={id}
             name={id}
             label={question.question}
             options={options}
-            // onChange={(selected) => handleSelectChange(selected, question.id)}
+            value={value}
+            onChange={(selected) => onChange(selected.value)}
             required
           />
         </div>
@@ -43,7 +44,8 @@ const MappedInput = ({ questionData, onChange, value }) => {
             name={id}
             label={question.question}
             options={options}
-            // onChange={(selected) => handleSelectChange(selected, question.id)}
+            value={value}
+            onChange={(selected) => onChange(selected.value)}
             required
           />
         </div>
