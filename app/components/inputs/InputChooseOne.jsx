@@ -15,19 +15,25 @@ function mapIndexToLetterList(index) {
   return `${((index % 26) + 10).toString(36)}.`;
 }
 
-const InputChooseOne = ({ question, options, value, onChange }) => {
-  const [choice, setChoice] = useState(
-    options.find((option) => option.value === value)
-  );
+const InputChooseOne = ({
+  label,
+  id,
+  name,
+  options,
+  value = "",
+  onChange = null,
+}) => {
+  const [choice, setChoice] = useState(value);
 
   const handleChoose = (option) => {
+    console.log({ option });
     setChoice(option);
     onChange && onChange(option);
   };
 
   return (
-    <InputWrapper htmlFor={question} label={question}>
-      <RadioGroup name={question} value={choice} onChange={handleChoose}>
+    <InputWrapper htmlFor={name} label={label}>
+      <RadioGroup name={name} id={id} value={choice} onChange={handleChoose}>
         {options.map((option, index) => (
           <RadioGroup.Option key={option.value} value={option.value}>
             {({ active, checked }) => (

@@ -7,48 +7,52 @@ const MappedInput = ({ questionData, onChange, value }) => {
   const { type, id, question, options } = questionData;
   switch (type) {
     case "text":
-      return <InputText question={question} />;
+      return (
+        <InputText
+          id={id}
+          name={id}
+          label={question}
+          options={options}
+          value={value}
+          onChange={(selected) => onChange(selected.value)}
+          required
+        />
+      );
     case "top3":
       return (
-        <div>
-          <InputSelect
-            id={id}
-            name={id}
-            label={question.question}
-            options={options}
-            value={value}
-            onChange={(selected) => onChange(selected.value)}
-            required
-          />
-        </div>
+        <InputSelect
+          id={id}
+          name={id}
+          label={question}
+          options={options}
+          value={value}
+          onChange={(selected) => onChange(selected.value)}
+          required
+        />
       );
     case "multiple":
       return (
-        <div>
-          <InputChooseOne
-            id={id}
-            name={id}
-            label={question.question}
-            options={options}
-            value={value}
-            onChange={(selected) => onChange(selected.value)}
-            required
-          />
-        </div>
+        <InputChooseOne
+          id={id}
+          name={id}
+          label={question}
+          options={options}
+          value={value}
+          onChange={(selected) => onChange(selected)}
+          required
+        />
       );
     case "single":
       return (
-        <div>
-          <InputChooseOne
-            id={id}
-            name={id}
-            label={question.question}
-            options={options}
-            value={value}
-            onChange={(selected) => onChange(selected.value)}
-            required
-          />
-        </div>
+        <InputChooseOne
+          id={id}
+          name={id}
+          label={question.question}
+          options={options}
+          value={value}
+          onChange={(selected) => onChange(selected.value)}
+          required
+        />
       );
     default:
       return <></>;

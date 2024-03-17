@@ -21,11 +21,11 @@
       "question": "Which games would you like to see at the Fun Fair?",
       "options": [
         { "value": 1, "option": "Arts & Crafts" },
-        { "value": 1, "option": "Tug of War" },
-        { "value": 2, "option": "Three-Legged Race" },
-        { "value": 3, "option": "Sack Race" },
-        { "value": 4, "option": "Egg and Spoon Race" },
-        { "value": 5, "option": "Obstacle Course" }
+        { "value": 2, "option": "Tug of War" },
+        { "value": 3, "option": "Three-Legged Race" },
+        { "value": 4, "option": "Sack Race" },
+        { "value": 5, "option": "Egg and Spoon Race" },
+        { "value": 6, "option": "Obstacle Course" }
       ],
       "type": "multiple"
     },

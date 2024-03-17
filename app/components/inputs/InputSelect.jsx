@@ -24,7 +24,7 @@ const InputSelect = ({
   };
 
   return (
-    <InputWrapper htmlFor={label} label={label}>
+    <InputWrapper htmlFor={name} label={label}>
       <div className="static">
         <Listbox
           className="p-2 bg-white border border-blue-400 rounded-full outline-none ring-0 focus:ring-1"

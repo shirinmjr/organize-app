@@ -9,7 +9,6 @@ const Question = ({ question, onNext, onPrev }) => {
   const pathname = usePathname();
   const { replace } = useRouter();
   const [answer, setAnswer] = useState(searchParams.get(question.id) || "");
-  console.log({ answer });
   const updateParams = (query, value) => {
     const params = new URLSearchParams(searchParams);
     params.set(query, value);
@@ -24,7 +23,7 @@ const Question = ({ question, onNext, onPrev }) => {
   return (
     <div className="w-full">
       <form>
-        <div>
+        <div className="flex flex-col">
           <MappedInput
             questionData={question}
             value={+answer}
