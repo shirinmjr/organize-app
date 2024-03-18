@@ -4,6 +4,7 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import Image from "next/image";
 import organize_brand_blue from "../public/icons/organize_brand_blue_512.png";
+import logotype_3x from "../assets/images/logotype@3x.png";
 
 config.autoAddCss = false;
 
@@ -20,11 +21,19 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <div className="flex-grow overflow-y-auto text-default-text">
-          <div className="flex flex-col m-4">
+          <div className="flex flex-row items-center justify-center">
             <div>
               <Image
                 alt="app logo"
                 src={organize_brand_blue}
+                width={220}
+                height={100}
+              />
+            </div>
+            <div>
+              <Image
+                alt="logo type"
+                src={logotype_3x}
                 width={220}
                 height={100}
               />
