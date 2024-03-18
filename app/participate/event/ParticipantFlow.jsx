@@ -4,6 +4,7 @@ import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import EventLandingPage from "./EventLandingPage";
 import Question from "../Question";
 import { useState } from "react";
+import Button from "@/app/components/inputs/Button";
 
 const ParticipantFlow = ({ data }) => {
   const searchParams = useSearchParams();
@@ -30,19 +31,20 @@ const ParticipantFlow = ({ data }) => {
     }
   };
 
-  const questions = data.questions.map((question) => (
-    <Question
-      key={question.id}
-      question={question}
-      onPrev={decrementStep}
-      onNext={incrementStep}
-    />
-  ));
-
   return step === 0 ? (
     <EventLandingPage name={data.eventName} onStart={incrementStep} />
   ) : (
-    questions[step - 1]
+    <form>
+      {data.questions.map((question, i) => (
+        <div key={question.id} className={`${step - 1 != i ? "hidden" : ""}`}>
+          <Question question={question} />
+        </div>
+      ))}
+      <div className="flex w-full gap-2">
+        <Button onClick={decrementStep}>Previous</Button>
+        <Button onClick={incrementStep}>Next</Button>
+      </div>
+    </form>
   );
 };
 
