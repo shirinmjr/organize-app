@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import Image from "next/image";
-import get_started_logo from "../assets/images/get_started_logo.png";
+import organize_brand_blue from "../public/icons/organize_brand_blue_512.png";
 
 config.autoAddCss = false;
 
@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
             <div>
               <Image
                 alt="app logo"
-                src={get_started_logo}
+                src={organize_brand_blue}
                 width={220}
                 height={100}
               />
