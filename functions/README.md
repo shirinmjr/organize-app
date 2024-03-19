@@ -1,28 +1,52 @@
 This folder contains the Google Functions code for this project.
 
 ## Getting Started
-1. To install dependencies, run:
+If you haven't already, initialize your Firebase project:
+1. Go to the Firebase Console and create a new project (or use an existing one).
+2. Install Firebase CLI globally using npm:
+
 ```bash
-npm install
+npm install -g firebase-tools
 ```
 
-2. To install gcloud CLI, follow the steps at [https://cloud.google.com/sdk/docs/install]
+3. Authenticate the Firebase CLI with your Google Account:
 
-3. After installation, authenticate to Google Cloud:
 ```bash
-gcloud auth application-default login
+firebase login
 ```
 
-Ignore the "quota exceeded" warning.
-
-4. To run Google Functions locally, run:
+4. Initialize Firebase in your project directory:
 ```bash
-npm start
+firebase init functions
 ```
 
-5. To test the Google Function call:
+This command sets up Firebase Functions in your project.
+Follow the prompts to select your Firebase project and configure it with JavaScript or TypeScript.
+Navigate to the functions sub-directory. This directory contains the functions code in index.js.
+This code defines a Firebase Function named storeEventWithAuth that listens for HTTP POST requests.
+It extracts the phoneNumber from the organizerInfo field and logs it.
+Then, it stores the event data in a Firestore collection named events.
+
+## Deployment
+
+Deploy your function to Firebase using the Firebase CLI:
 ```bash
-curl -X POST http://localhost:8080 -H "Content-Type: application/json" -d '{
+npm run deploy
+```
+or
+```bash
+firebase deploy --only functions
+```
+
+*Note*: After deployment, Google might leave behind a Docker registry.
+** Delete this registry immediately to avoid an accidental billing. **
+This registry is redundant and is not used after deployment.
+
+## Testing
+
+To test the Firebase Function call:
+```bash
+curl -X POST  https://us-central1-organizeapp-bb677.cloudfunctions.net/storeEventWithAuth  -H "Content-Type: application/json" -d '{
   "eventName": "Sample Event",
   "questions": [
     {
@@ -34,13 +58,13 @@ curl -X POST http://localhost:8080 -H "Content-Type: application/json" -d '{
   "volunteers": [
     {
       "volunteerName": "John Doe",
-      "phoneNumber": "1234567890"
+      "phoneNumber": "+16505554567"
     }
   ],
   "organizerInfo": {
     "firstName": "Jane",
     "lastName": "Doe",
-    "phoneNumber": "0987654321"
+    "phoneNumber": "+16505554567"
   }
 }'
 ```
@@ -48,16 +72,10 @@ curl -X POST http://localhost:8080 -H "Content-Type: application/json" -d '{
 If everything is setup correctly, then you should see the following in the console output:
 ```bash
 Event stored with ID: /* event ID */
+Organizer Phone Number: +16505554567
 ```
 
-To see the event in the Firestore database, open [https://console.cloud.google.com/firestore/databases/-default-/data/panel?authuser=1&project=confident-slice-411518]
-
-## Deploying to Google Cloud
-
-Run the following command:
-```bash
-gcloud functions deploy storeEvent --runtime nodejs14 --trigger-http --allow-unauthenticated --region=nam5
-```
+To see the event in the Firestore database, open [https://console.firebase.google.com/project/organizeapp-bb677/firestore/data/~2Fevents~2F2mAfrDMt14mXIO4Bv3jY].
 
 ## Caveats
-TLS, authentication and authorization haven't been implemented yet
+Authentication and authorization haven't been implemented yet (function name is misleading, work in progress)
