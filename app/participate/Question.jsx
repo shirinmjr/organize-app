@@ -21,7 +21,7 @@ const Question = ({ question }) => {
   };
 
   return (
-    <div className="w-full">
+    <div className="mx-auto">
       <form>
         <div className="flex flex-col p-1">
           <MappedInput

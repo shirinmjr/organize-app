@@ -1,7 +1,7 @@
 "use client";
 import InputText from "@/app/components/inputs/InputText";
-import InputSelect from "@/app/components/inputs/InputSelect";
 import InputChooseOne from "@/app/components/inputs/InputChooseOne";
+import InputChooseMany from "@/app/components/inputs/InputChooseMany";
 
 const MappedInput = ({ questionData, onChange, value }) => {
   const { type, id, question, options } = questionData;
@@ -20,25 +20,27 @@ const MappedInput = ({ questionData, onChange, value }) => {
       );
     case "top3":
       return (
-        <InputChooseOne
+        <InputChooseMany
           id={id}
           name={id}
           label={question}
           options={options}
           value={value}
           onChange={(selected) => onChange(selected)}
+          numberOfChoices={3}
           required
         />
       );
     case "multiple":
       return (
-        <InputChooseOne
+        <InputChooseMany
           id={id}
           name={id}
           label={question}
           options={options}
           value={value}
           onChange={(selected) => onChange(selected)}
+          numberOfChoices={options.length}
           required
         />
       );

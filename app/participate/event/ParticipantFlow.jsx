@@ -36,7 +36,10 @@ const ParticipantFlow = ({ data }) => {
   ) : (
     <form>
       {data.questions.map((question, i) => (
-        <div key={question.id} className={`${step - 1 != i ? "hidden" : ""}`}>
+        <div
+          key={question.id}
+          className={`my-4 ${step - 1 != i ? "hidden" : ""}`}
+        >
           <Question question={question} />
         </div>
       ))}

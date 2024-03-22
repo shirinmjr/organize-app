@@ -21,7 +21,7 @@ const InputChooseOne = ({
   name,
   options,
   value = "",
-  onChange = null,
+  onChange = undefined,
 }) => {
   const [choice, setChoice] = useState(value);
 
@@ -33,13 +33,14 @@ const InputChooseOne = ({
 
   return (
     <InputWrapper htmlFor={name} label={label}>
+      <p className="px-4">Choose one option...</p>
       <RadioGroup name={name} id={id} value={choice} onChange={handleChoose}>
         {options.map((option, index) => (
           <RadioGroup.Option key={option.value} value={option.value}>
             {({ active, checked }) => (
               <div
                 className={`
-flex justify-between w-full p-2 my-1 border border-blue-400 rounded-full cursor-pointer  border-1 focus:ring-none hover:border-blue-700
+flex justify-between w-full p-3 my-2 border border-blue-400 rounded-full cursor-pointer  border-1 focus:ring-none hover:border-blue-700
             ${
               active
                 ? "ring-1 ring-white/60 ring-offset-1 border-blue-700 focus:outline-blue-700"

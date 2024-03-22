@@ -13,7 +13,7 @@ export default async function QuestionPage({ params }) {
   console.log(question.next);
 
   return (
-    <div className="w-full">
+    <div>
       <form>
         <MappedInput questionData={question} />
         <div className="flex w-full gap-2">
