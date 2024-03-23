@@ -1,10 +1,18 @@
 {
   "eventName": "After-School Fun Fair",
+  "id": 1,
   "questions": [
     {
       "id": "gs70ebtzltn9mm3u",
       "question": "What is your favorite after-school activity?",
-      "options": ["Sports", "Arts & Crafts", "Music", "Drama", "STEM", "Other"],
+      "options": [
+        { "value": 1, "option": "Arts & Crafts" },
+        { "value": 2, "option": "Music" },
+        { "value": 3, "option": "Other" },
+        { "value": 4, "option": "STEM" },
+        { "value": 5, "option": "Drama" },
+        { "value": 6, "option": "Sports" }
+      ],
       "type": "top3"
     },
 
@@ -12,11 +20,12 @@
       "id": "03ofl7n3ltn9vnvr",
       "question": "Which games would you like to see at the Fun Fair?",
       "options": [
-        "Tug of War",
-        "Three-Legged Race",
-        "Sack Race",
-        "Egg and Spoon Race",
-        "Obstacle Course"
+        { "value": 1, "option": "Arts & Crafts" },
+        { "value": 2, "option": "Tug of War" },
+        { "value": 3, "option": "Three-Legged Race" },
+        { "value": 4, "option": "Sack Race" },
+        { "value": 5, "option": "Egg and Spoon Race" },
+        { "value": 6, "option": "Obstacle Course" }
       ],
       "type": "multiple"
     },
@@ -30,7 +39,10 @@
     {
       "id": "2moe5lx1ltn9yxdt",
       "question": "Would you like to volunteer to help organize the event?",
-      "options": ["Yes", "No"],
+      "options": [
+        { "value": 1, "option": "Yes" },
+        { "value": 2, "option": "No" }
+      ],
       "type": "single"
     }
   ]

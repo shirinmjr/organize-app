@@ -1,3 +1,3 @@
 export default function Layout({ children }) {
-  return <div className="flex justify-center p-2 m-2">{children}</div>;
+  return <div className="h-full p-2 bg-white w-96 rounded-xl">{children}</div>;
 }

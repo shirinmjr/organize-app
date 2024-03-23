@@ -15,18 +15,32 @@ function mapIndexToLetterList(index) {
   return `${((index % 26) + 10).toString(36)}.`;
 }
 
-const InputChooseOne = ({ question, options }) => {
-  const [choice, setChoice] = useState(null);
+const InputChooseOne = ({
+  label,
+  id,
+  name,
+  options,
+  value = "",
+  onChange = undefined,
+}) => {
+  const [choice, setChoice] = useState(value);
+
+  const handleChoose = (option) => {
+    console.log({ option });
+    setChoice(option);
+    onChange && onChange(option);
+  };
 
   return (
-    <InputWrapper htmlFor={question} label={question}>
-      <RadioGroup name={question} value={choice} onChange={setChoice}>
+    <InputWrapper htmlFor={name} label={label}>
+      <p className="px-4">Choose one option...</p>
+      <RadioGroup name={name} id={id} value={choice} onChange={handleChoose}>
         {options.map((option, index) => (
-          <RadioGroup.Option key={index} value={option}>
+          <RadioGroup.Option key={option.value} value={option.value}>
             {({ active, checked }) => (
               <div
                 className={`
-flex justify-between w-full p-2 my-1 border border-blue-400 rounded-full cursor-pointer  border-1 focus:ring-none hover:border-blue-700
+flex justify-between w-full p-3 my-2 border border-blue-400 rounded-full cursor-pointer  border-1 focus:ring-none hover:border-blue-700
             ${
               active
                 ? "ring-1 ring-white/60 ring-offset-1 border-blue-700 focus:outline-blue-700"
@@ -40,7 +54,7 @@ flex justify-between w-full p-2 my-1 border border-blue-400 rounded-full cursor-
               >
                 <span>
                   <span className="mr-2">{mapIndexToLetterList(index)}</span>
-                  <span>{option}</span>
+                  <span>{option.option}</span>
                 </span>
                 {checked ? (
                   <FontAwesomeIcon
