@@ -26,7 +26,7 @@ const Question = ({ question }) => {
         <div className="flex flex-col p-1">
           <MappedInput
             questionData={question}
-            value={+answer}
+            value={answer}
             onChange={handleOnChange}
           />
         </div>
