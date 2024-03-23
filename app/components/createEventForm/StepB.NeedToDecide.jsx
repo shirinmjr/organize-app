@@ -85,7 +85,7 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
 
   return (
     <div className="event-form">
-      <div className="flex gap-7 form-q-title">
+      <div className="flex gap-7 w-full">
         <h3 className="">What do you want to ask?</h3>
       </div>
       <div className="flex gap-7">
