@@ -13,7 +13,7 @@ const InputChooseMany = ({
 }) => {
   return (
     <InputWrapper htmlFor={name} label={label}>
-      <p className="p-3">Choose {numberOfChoices} options... </p>
+      <p className="p-3">Choose up to {numberOfChoices} options... </p>
       {options.map((option, index) => (
         <button
           key={index}
