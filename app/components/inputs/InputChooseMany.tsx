@@ -80,18 +80,20 @@ const InputChooseMany = ({
   const [choices, setChoices] = useState(value);
 
   const handleTryToChoose = (option: IQuestionOption) => {
-    onChange && onChange(option.value);
     const choiceIndex = choices.findIndex((choice) => choice === option.value);
     if (choiceIndex > -1) {
       setChoices((state) => state.filter((choice) => choice !== option.value));
+      onChange && onChange(option.value);
       return true;
     } else if (numberOfChoices > choices.length) {
       setChoices((choices) => [...choices, option.value]);
+      onChange && onChange(option.value);
       return true;
     }
     return false;
   };
 
+  // @TODO: I need to add a hidden input that will capture the value if i want to use form actions
   return (
     <InputWrapper htmlFor={name} label={label}>
       <p className="p-3">
