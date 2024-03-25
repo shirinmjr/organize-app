@@ -18,19 +18,20 @@ function mapIndexToLetterList(index: number): string {
 interface InputChooseManyChoiceProps {
   option: IQuestionOption;
   index: number;
-  onClick: (arg0: IQuestionOption) => void;
+  canChooseOne: (arg0: IQuestionOption) => boolean;
 }
 
 const InputChooseManyChoice = ({
   option,
   index,
-  onClick,
+  canChooseOne,
 }: InputChooseManyChoiceProps) => {
   const [checked, setChecked] = useState(false);
 
   const handleOnClick = () => {
-    onClick && onClick(option);
-    setChecked((checked) => !checked);
+    if (canChooseOne(option)) {
+      setChecked((checked) => !checked);
+    }
   };
   return (
     <button type="button" onClick={handleOnClick}>
@@ -64,7 +65,7 @@ interface InputChooseManyProps {
   name: string;
   options: IQuestionOption[];
   value: number[];
-  onChange: (arg0: number) => void;
+  onChange?: (arg0: number) => void;
   numberOfChoices?: number;
 }
 
@@ -78,23 +79,28 @@ const InputChooseMany = ({
 }: InputChooseManyProps) => {
   const [choices, setChoices] = useState(value);
 
-  const handleOnClick = (option: IQuestionOption) => {
+  const handleTryToChoose = (option: IQuestionOption) => {
     onChange && onChange(option.value);
     const choiceIndex = choices.findIndex((choice) => choice === option.value);
     if (choiceIndex > -1) {
       setChoices((state) => state.filter((choice) => choice !== option.value));
-    } else {
+      return true;
+    } else if (numberOfChoices > choices.length) {
       setChoices((choices) => [...choices, option.value]);
+      return true;
     }
+    return false;
   };
 
   return (
     <InputWrapper htmlFor={name} label={label}>
-      <p className="p-3">Choose up to {numberOfChoices} options... </p>
+      <p className="p-3">
+        Choose up to <strong>{numberOfChoices}</strong> options...{" "}
+      </p>
       {options.map((option, index) => (
         <InputChooseManyChoice
           key={index}
-          onClick={handleOnClick}
+          canChooseOne={handleTryToChoose}
           index={index}
           option={option}
         />

@@ -13,15 +13,13 @@ const Question = ({ question }: { question: IQuestion }) => {
 
   return (
     <div className="mx-auto">
-      <form>
-        <div className="flex flex-col p-1">
-          <MappedInput
-            questionData={question}
-            value={answer}
-            onChange={handleOnChange}
-          />
-        </div>
-      </form>
+      <div className="flex flex-col p-1">
+        <MappedInput
+          questionData={question}
+          value={answer}
+          onChange={handleOnChange}
+        />
+      </div>
     </div>
   );
 };
