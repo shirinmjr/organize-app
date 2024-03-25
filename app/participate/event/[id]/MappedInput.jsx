@@ -47,12 +47,11 @@ const MappedInput = ({ questionData, onChange, value }) => {
     case "single":
       return (
         <InputChooseOne
-          id={id}
           name={id}
           label={question.question}
           options={options}
           value={value}
-          onChange={(selected) => onChange(selected.value)}
+          onChange={(selected) => onChange(selected)}
           required
         />
       );
