@@ -63,8 +63,8 @@ interface InputChooseManyProps {
   label: string;
   name: string;
   options: IQuestionOption[];
-  value: [];
-  onChange: (arg0: string | number) => void;
+  value: number[];
+  onChange: (arg0: number) => void;
   numberOfChoices?: number;
 }
 
@@ -78,19 +78,16 @@ const InputChooseMany = ({
 }: InputChooseManyProps) => {
   const [choices, setChoices] = useState(value);
 
-  console.log({ options });
-
   const handleOnClick = (option: IQuestionOption) => {
     onChange && onChange(option.value);
-    console.log({ choices });
     const choiceIndex = choices.findIndex((choice) => choice === option.value);
     if (choiceIndex > -1) {
-      setChoices((choices) => choices.splice(choiceIndex));
+      setChoices((state) => state.filter((choice) => choice !== option.value));
     } else {
       setChoices((choices) => [...choices, option.value]);
     }
-    console.log({ choices });
   };
+
   return (
     <InputWrapper htmlFor={name} label={label}>
       <p className="p-3">Choose up to {numberOfChoices} options... </p>
