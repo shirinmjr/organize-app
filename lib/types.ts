@@ -17,3 +17,13 @@ export interface IEvent {
   eventName: string;
   questions: IQuestion[];
 }
+
+export interface IResponse {
+  id: string; // the question id
+  response: string[]; // an array of UUIDs
+}
+
+export interface IParticipantResponse {
+  id: string;
+  responses: IResponse[];
+}

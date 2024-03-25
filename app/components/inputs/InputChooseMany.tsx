@@ -4,8 +4,9 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import InputWrapper from "./InputWrapper";
 import { useState } from "react";
+import { IQuestionOption } from "@/lib/types";
 
-function mapIndexToLetterList(index) {
+function mapIndexToLetterList(index: number): string {
   if (index > 25) {
     console.warn(
       "Can only map lowercase letters of the alphabet, now starting over from the beginning"
@@ -14,11 +15,21 @@ function mapIndexToLetterList(index) {
   return `${((index % 26) + 10).toString(36)}.`;
 }
 
-const InputChooseManyChoice = ({ option, index, onClick }) => {
+interface InputChooseManyChoiceProps {
+  option: IQuestionOption;
+  index: number;
+  onClick: (arg0: IQuestionOption) => void;
+}
+
+const InputChooseManyChoice = ({
+  option,
+  index,
+  onClick,
+}: InputChooseManyChoiceProps) => {
   const [checked, setChecked] = useState(false);
 
-  const handleOnClick = (value) => {
-    onClick && onClick(value);
+  const handleOnClick = () => {
+    onClick && onClick(option);
     setChecked((checked) => !checked);
   };
   return (
@@ -48,24 +59,35 @@ flex justify-between p-3 my-1 border border-blue-400 rounded-full cursor-pointer
   );
 };
 
+interface InputChooseManyProps {
+  label: string;
+  name: string;
+  options: IQuestionOption[];
+  value: [];
+  onChange: (arg0: string | number) => void;
+  numberOfChoices?: number;
+}
+
 const InputChooseMany = ({
   label,
-  id,
   name,
   options,
   value = [],
   onChange = undefined,
   numberOfChoices = 3,
-}) => {
+}: InputChooseManyProps) => {
   const [choices, setChoices] = useState(value);
-  console.log({ choices });
-  const handleOnClick = (value) => {
-    onChange && onChange(value);
-    const choiceIndex = choices.findIndex((option) => option.id === value);
+
+  console.log({ options });
+
+  const handleOnClick = (option: IQuestionOption) => {
+    onChange && onChange(option.value);
+    console.log({ choices });
+    const choiceIndex = choices.findIndex((choice) => choice === option.value);
     if (choiceIndex > -1) {
       setChoices((choices) => choices.splice(choiceIndex));
     } else {
-      setChoices((choices) => choices.push(value));
+      setChoices((choices) => [...choices, option.value]);
     }
     console.log({ choices });
   };
