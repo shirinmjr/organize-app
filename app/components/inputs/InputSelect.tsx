@@ -28,6 +28,7 @@ const InputSelect = ({
   );
 
   const handleSelect = (option: IQuestionOption) => {
+    console.log({ option });
     setSelected(option);
     onChange && onChange(option);
   };
