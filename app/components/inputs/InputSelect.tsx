@@ -5,20 +5,29 @@ import InputWrapper from "./InputWrapper";
 import { Listbox } from "@headlessui/react";
 import { useState } from "react";
 import { faCircleChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { IQuestionOption } from "@/lib/types";
+
+interface InputSelectProps {
+  label: string;
+  name: string;
+  id: string | number;
+  options: IQuestionOption[];
+  value: string | number;
+  onChange?: (arg0: IQuestionOption) => void;
+}
 
 const InputSelect = ({
   label,
   name,
-  id,
   options,
   value = "",
   onChange = null,
-}) => {
+}: InputSelectProps) => {
   const [selected, setSelected] = useState(
     options.find((option) => option.value === value)
   );
 
-  const handleSelect = (option) => {
+  const handleSelect = (option: IQuestionOption) => {
     setSelected(option);
     onChange && onChange(option);
   };
@@ -26,13 +35,8 @@ const InputSelect = ({
   return (
     <InputWrapper htmlFor={name} label={label}>
       <div className="static">
-        <Listbox
-          className="p-2 bg-white border border-blue-400 rounded-full outline-none ring-0 focus:ring-1"
-          name={name}
-          id={id}
-          value={selected}
-        >
-          <div className="">
+        <Listbox name={name} value={selected}>
+          <div className="p-2 bg-white border border-blue-400 rounded-full outline-none ring-0 focus:ring-1">
             <Listbox.Button className="flex items-center justify-between w-full cursor-pointer">
               {selected?.option || "Choose one"}
               <FontAwesomeIcon icon={faCircleChevronDown} aria-hidden="false" />

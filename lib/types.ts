@@ -1,6 +1,6 @@
 export type QuestionType = "top3" | "multiple" | "text" | "single";
 
-export interface IQuestionOptions {
+export interface IQuestionOption {
   value: number;
   option: string;
 }
@@ -9,7 +9,7 @@ export interface IQuestion {
   id: string;
   question: string;
   type: QuestionType;
-  options?: IQuestionOptions[];
+  options?: IQuestionOption[];
 }
 
 export interface IEvent {
