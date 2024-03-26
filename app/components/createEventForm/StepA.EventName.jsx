@@ -6,6 +6,7 @@ import dayjs from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 
 import InputWrapper from "../inputs/InputWrapper";
 import InputText from "../inputs/InputText";
@@ -48,14 +49,14 @@ const EventName = ({ callBack, eventName = "" }) => {
         <div className="flex flex-col items-center justify-start  rounded-full">
           <InputWrapper htmlFor="event-date" label="">
             <div className="flex items-center">
-              <input
+              {/* <input
                 className=" p-2 border-4 border-blue-400 rounded-full"
                 type="text"
                 id="eventDate"
                 placeholder="Enter Date"
                 onClick={handleDatePicker}
               />
-              <FontAwesomeIcon icon={faCalendarDays} />
+              <FontAwesomeIcon icon={faCalendarDays} /> */}
               {/* {modalDateIsOpen && (
                 <div>
                   <DatePicker
@@ -66,22 +67,25 @@ const EventName = ({ callBack, eventName = "" }) => {
                 </div>
               )} */}
 
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
+              {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker
-                  defaultValue={dayjs("2022-04-17")}
+                  components={["DatePicker", "DatePicker", "DatePicker"]}
                   name="startDate"
                 />
+              </LocalizationProvider> */}
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DateTimePicker />
               </LocalizationProvider>
             </div>
             <div className="flex items-center">
-              <input
+              {/* <input
                 className="p-2 border-4 border-blue-400 rounded-full "
                 type="text"
                 id="eventTime"
                 placeholder="Enter Time"
                 onClick={handleDatePicker}
-              />
-              <FontAwesomeIcon icon={faClock} />
+              /> */}
+              {/* <FontAwesomeIcon icon={faClock} /> */}
             </div>
           </InputWrapper>
         </div>
