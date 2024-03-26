@@ -7,6 +7,8 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
+import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
+import { MobileTimePicker } from "@mui/x-date-pickers/MobileTimePicker";
 
 import InputWrapper from "../inputs/InputWrapper";
 import InputText from "../inputs/InputText";
@@ -66,17 +68,32 @@ const EventName = ({ callBack, eventName = "" }) => {
                   />
                 </div>
               )} */}
-
-              {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DatePicker
-                  components={["DatePicker", "DatePicker", "DatePicker"]}
-                  name="startDate"
-                />
-              </LocalizationProvider> */}
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DateTimePicker />
-              </LocalizationProvider>
+              <div className="flex flex-col">
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DatePicker
+                    components={["DatePicker", "DatePicker", "DatePicker"]}
+                    name="startDate"
+                  />
+                </LocalizationProvider>
+              </div>
+              <div>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DateTimePicker />
+                </LocalizationProvider>
+              </div>
             </div>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DemoContainer
+                components={[
+                  "TimePicker",
+                  "MobileTimePicker",
+                  "DesktopTimePicker",
+                  "StaticTimePicker",
+                ]}
+              >
+                <MobileTimePicker defaultValue={dayjs("2022-04-17T15:30")} />
+              </DemoContainer>
+            </LocalizationProvider>
             <div className="flex items-center">
               {/* <input
                 className="p-2 border-4 border-blue-400 rounded-full "
