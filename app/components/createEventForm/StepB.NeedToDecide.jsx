@@ -85,7 +85,7 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
 
   return (
     <div className="event-form">
-      <div className="flex gap-7 w-full">
+      <div className="flex w-full gap-7">
         <h3 className="">What do you want to ask?</h3>
       </div>
       <div className="flex gap-7">
@@ -129,7 +129,6 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
 
               <div>
                 <InputSelect
-                  id={question.id}
                   name="type"
                   label={""}
                   value={question.type || ""}

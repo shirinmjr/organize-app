@@ -1,9 +1,10 @@
 "use client";
+import { IQuestion } from "@/lib/types";
 import MappedInput from "./event/[id]/MappedInput";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
-const Question = ({ question }) => {
+const Question = ({ question }: { question: IQuestion }) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -26,7 +27,7 @@ const Question = ({ question }) => {
         <div className="flex flex-col p-1">
           <MappedInput
             questionData={question}
-            value={+answer}
+            value={answer}
             onChange={handleOnChange}
           />
         </div>

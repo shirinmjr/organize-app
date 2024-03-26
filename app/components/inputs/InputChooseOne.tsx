@@ -5,8 +5,9 @@ import InputWrapper from "./InputWrapper";
 import { RadioGroup } from "@headlessui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { IQuestionOption } from "@/lib/types";
 
-function mapIndexToLetterList(index) {
+function mapIndexToLetterList(index: number): string {
   if (index > 25) {
     console.warn(
       "Can only map lowercase letters of the alphabet, now starting over from the beginning"
@@ -15,26 +16,32 @@ function mapIndexToLetterList(index) {
   return `${((index % 26) + 10).toString(36)}.`;
 }
 
+interface InputChooseOneProps {
+  label: string;
+  name: string;
+  options: IQuestionOption[];
+  value: string | number;
+  onChange?: (arg0: string | number) => void;
+}
+
 const InputChooseOne = ({
   label,
-  id,
   name,
   options,
   value = "",
   onChange = undefined,
-}) => {
+}: InputChooseOneProps) => {
   const [choice, setChoice] = useState(value);
 
-  const handleChoose = (option) => {
-    console.log({ option });
-    setChoice(option);
-    onChange && onChange(option);
+  const handleChoose = (value: string | number) => {
+    setChoice(value);
+    onChange && onChange(value);
   };
 
   return (
     <InputWrapper htmlFor={name} label={label}>
       <p className="px-4">Choose one option...</p>
-      <RadioGroup name={name} id={id} value={choice} onChange={handleChoose}>
+      <RadioGroup name={name} value={choice} onChange={handleChoose}>
         {options.map((option, index) => (
           <RadioGroup.Option key={option.value} value={option.value}>
             {({ active, checked }) => (
