@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarDays, faClock } from "@fortawesome/free-solid-svg-icons";
-//import { DatePicker } from "date-picker-nextjs";
 import dayjs from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -51,34 +50,12 @@ const EventName = ({ callBack, eventName = "" }) => {
         <div className="flex flex-col items-center justify-start  rounded-full">
           <InputWrapper htmlFor="event-date" label="">
             <div className="flex items-center">
-              {/* <input
-                className=" p-2 border-4 border-blue-400 rounded-full"
-                type="text"
-                id="eventDate"
-                placeholder="Enter Date"
-                onClick={handleDatePicker}
-              />
-              <FontAwesomeIcon icon={faCalendarDays} /> */}
-              {/* {modalDateIsOpen && (
-                <div>
-                  <DatePicker
-                    className="block"
-                    setModalDateIsOpen={setModalDateIsOpen}
-                    clickedInput={clickedInput}
-                  />
-                </div>
-              )} */}
               <div className="flex flex-col">
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DatePicker
                     components={["DatePicker", "DatePicker", "DatePicker"]}
                     name="startDate"
                   />
-                </LocalizationProvider>
-              </div>
-              <div>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <DateTimePicker />
                 </LocalizationProvider>
               </div>
             </div>
@@ -92,6 +69,7 @@ const EventName = ({ callBack, eventName = "" }) => {
                 ]}
               >
                 <MobileTimePicker defaultValue={dayjs("2022-04-17T15:30")} />
+                <FontAwesomeIcon icon={faClock} />
               </DemoContainer>
             </LocalizationProvider>
             <div className="flex items-center">

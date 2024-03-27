@@ -1,4 +1,4 @@
-const Switch = ({ label, id, prompt = "Yes", isChecked, callBack }) => {
+const Switch = ({ label, id, prompt = "", isChecked, callBack }) => {
   const handleClick = () => {};
 
   return (
