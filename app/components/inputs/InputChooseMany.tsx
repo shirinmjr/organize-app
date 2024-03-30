@@ -9,7 +9,7 @@ import { IQuestionOption } from "@/lib/types";
 function mapIndexToLetterList(index: number): string {
   if (index > 25) {
     console.warn(
-      "Can only map lowercase letters of the alphabet, now starting over from the beginning"
+      "Can only map lowercase letters of the alphabet, now starting over from the beginning",
     );
   }
   return `${((index % 26) + 10).toString(36)}.`;
@@ -34,16 +34,13 @@ const InputChooseManyChoice = ({
     }
   };
   return (
-    <button type="button" onClick={handleOnClick}>
+    <button
+      type="button"
+      onClick={handleOnClick}>
       <div
         className={`
 flex justify-between p-3 my-1 border border-blue-400 rounded-full cursor-pointer  border-1 focus:ring-none hover:border-blue-700
-            ${
-              checked
-                ? "bg-white border-blue-700 font-bold text-blue-600"
-                : "bg-blue-50"
-            }`}
-      >
+            ${checked ? "bg-white border-blue-700 font-bold text-blue-600" : "bg-blue-50"}`}>
         <span>
           <span className="mr-2">{mapIndexToLetterList(index)}</span>
           <span>{option.option}</span>
@@ -99,7 +96,9 @@ const InputChooseMany = ({
 
   // @TODO: I need to add a hidden input that will capture the value if i want to use form actions
   return (
-    <InputWrapper htmlFor={name} label={label}>
+    <InputWrapper
+      htmlFor={name}
+      label={label}>
       <p className="p-3">
         Choose up to <strong>{numberOfChoices}</strong> options...{" "}
       </p>

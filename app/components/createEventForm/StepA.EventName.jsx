@@ -41,11 +41,13 @@ const EventName = ({ callBack, eventName = "" }) => {
         callBack={() => setDatePickerChecked(!datePickerChecked)}
       />
       {datePickerChecked && (
-        <div className="flex items-center justify-start  rounded-full">
-          <InputWrapper htmlFor="event-date" label="">
+        <div className="flex items-center justify-start rounded-full">
+          <InputWrapper
+            htmlFor="event-date"
+            label="">
             <div className="flex items-center justify-around my-4">
               <input
-                className=" p-2 border-4 border-blue-400 rounded-full"
+                className="p-2 border-4 border-blue-400 rounded-full "
                 type="text"
                 id="eventDate"
                 placeholder="Enter Date"
