@@ -64,8 +64,8 @@ interface InputChooseManyProps {
   label: string;
   name: string;
   options: IQuestionOption[];
-  value: number[];
-  onChange?: (arg0: number) => void;
+  value?: number[];
+  onChange?: (arg0: number[]) => void;
   numberOfChoices?: number;
 }
 
@@ -82,12 +82,16 @@ const InputChooseMany = ({
   const handleTryToChoose = (option: IQuestionOption) => {
     const choiceIndex = choices.findIndex((choice) => choice === option.value);
     if (choiceIndex > -1) {
-      setChoices((state) => state.filter((choice) => choice !== option.value));
-      onChange && onChange(option.value);
+      const updatedChoices = choices.filter(
+        (choice) => choice !== option.value
+      );
+      setChoices(updatedChoices);
+      onChange && onChange(updatedChoices);
       return true;
     } else if (numberOfChoices > choices.length) {
-      setChoices((choices) => [...choices, option.value]);
-      onChange && onChange(option.value);
+      const updatedChoices = [...choices, option.value];
+      setChoices(updatedChoices);
+      onChange && onChange(updatedChoices);
       return true;
     }
     return false;

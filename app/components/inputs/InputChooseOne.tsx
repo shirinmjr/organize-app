@@ -20,7 +20,7 @@ interface InputChooseOneProps {
   label: string;
   name: string;
   options: IQuestionOption[];
-  value: string | number;
+  value?: string | number;
   onChange?: (arg0: string | number) => void;
 }
 

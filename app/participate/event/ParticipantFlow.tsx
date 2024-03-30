@@ -1,13 +1,20 @@
 "use client";
 
 import EventLandingPage from "./EventLandingPage";
-import Question from "../Question";
 import { useState } from "react";
 import Button from "@/app/components/inputs/Button";
+import { IEvent, IResponse } from "@/lib/types";
+import MappedInput from "./[id]/MappedInput";
 
-const ParticipantFlow = ({ data }) => {
+const ParticipantFlow = ({ data }: { data: IEvent }) => {
   const [step, setStep] = useState(0);
+  const defaultFormState: IResponse[] = data.questions.map((question) => ({
+    id: question.id,
+    response: [],
+  }));
+  const [volunteerResponse, setVolunteerResponse] = useState(defaultFormState);
 
+  console.log(volunteerResponse);
   const incrementStep = () => {
     if (step < data.questions.length) {
       setStep((step) => step + 1);
@@ -19,6 +26,14 @@ const ParticipantFlow = ({ data }) => {
     }
   };
 
+  const onChangeHandler = (answer: IResponse) => {
+    const updatedData = volunteerResponse.filter(
+      (response) => response.id != answer.id
+    );
+    updatedData.push(answer);
+    setVolunteerResponse(updatedData);
+  };
+
   return step === 0 ? (
     <EventLandingPage name={data.eventName} onStart={incrementStep} />
   ) : (
@@ -28,7 +43,14 @@ const ParticipantFlow = ({ data }) => {
           key={question.id}
           className={`my-4 ${step - 1 != i ? "hidden" : ""}`}
         >
-          <Question question={question} />
+          <div className="mx-auto">
+            <div className="flex flex-col p-1">
+              <MappedInput
+                questionData={question}
+                onChangeCallback={onChangeHandler}
+              />
+            </div>
+          </div>
         </div>
       ))}
       <div className="flex w-full gap-2">

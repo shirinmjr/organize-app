@@ -20,7 +20,7 @@ export interface IEvent {
 
 export interface IResponse {
   id: string; // the question id
-  response: string[]; // an array of UUIDs
+  response: string[]; // an array of UUIDs or a string from an input
 }
 
 export interface IParticipantResponse {
