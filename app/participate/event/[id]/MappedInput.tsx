@@ -67,7 +67,7 @@ const MappedInput = ({ questionData, onChangeCallback }: MappedInputProps) => {
           label={question}
           options={options}
           value={choiceValue[0] || ""}
-          onChange={(selected) => onChoiceChange(selected)}
+          onChange={(selected) => onChoiceChange([selected])}
         />
       );
     }

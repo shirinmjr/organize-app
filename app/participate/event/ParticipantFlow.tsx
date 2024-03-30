@@ -16,7 +16,7 @@ const ParticipantFlow = ({ data }: { data: IEvent }) => {
 
   console.log(volunteerResponse);
   const incrementStep = () => {
-    if (step < data.questions.length) {
+    if (step <= data.questions.length) {
       setStep((step) => step + 1);
     }
   };
@@ -57,6 +57,9 @@ const ParticipantFlow = ({ data }: { data: IEvent }) => {
         <Button onClick={decrementStep}>Previous</Button>
         <Button onClick={incrementStep}>Next</Button>
       </div>
+      {step - 1 === data.questions.length ? (
+        <div>{JSON.stringify(volunteerResponse)}</div>
+      ) : null}
     </form>
   );
 };
