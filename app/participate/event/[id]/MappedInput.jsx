@@ -9,7 +9,6 @@ const MappedInput = ({ questionData, onChange, value }) => {
     case "text":
       return (
         <InputText
-          id={id}
           name={id}
           label={question}
           options={options}
@@ -21,7 +20,6 @@ const MappedInput = ({ questionData, onChange, value }) => {
     case "top3":
       return (
         <InputChooseMany
-          id={id}
           name={id}
           label={question}
           options={options}
@@ -34,7 +32,6 @@ const MappedInput = ({ questionData, onChange, value }) => {
     case "multiple":
       return (
         <InputChooseMany
-          id={id}
           name={id}
           label={question}
           options={options}
@@ -47,12 +44,10 @@ const MappedInput = ({ questionData, onChange, value }) => {
     case "single":
       return (
         <InputChooseOne
-          id={id}
-          name={id}
           label={question.question}
           options={options}
           value={value}
-          onChange={(selected) => onChange(selected.value)}
+          onChange={(selected) => onChange(selected)}
           required
         />
       );
