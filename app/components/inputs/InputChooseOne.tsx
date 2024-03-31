@@ -18,7 +18,7 @@ interface InputChooseOneProps {
   label: string;
   name: string;
   options: IQuestionOption[];
-  value: string | number;
+  value?: string | number;
   onChange?: (arg0: string | number) => void;
 }
 
@@ -31,11 +31,18 @@ const InputChooseOne = ({ label, name, options, value = "", onChange = undefined
   };
 
   return (
-    <InputWrapper htmlFor={name} label={label}>
+    <InputWrapper
+      htmlFor={name}
+      label={label}>
       <p className="px-4">Choose one option...</p>
-      <RadioGroup name={name} value={choice} onChange={handleChoose}>
+      <RadioGroup
+        name={name}
+        value={choice}
+        onChange={handleChoose}>
         {options.map((option, index) => (
-          <RadioGroup.Option key={option.value} value={option.value}>
+          <RadioGroup.Option
+            key={option.option_id}
+            value={option.option_id}>
             {({ active, checked }) => (
               <div
                 className={`
@@ -46,7 +53,13 @@ flex justify-between p-3 my-2 border border-blue-400 rounded-full cursor-pointer
                   <span className="mr-2">{mapIndexToLetterList(index)}</span>
                   <span>{option.option}</span>
                 </span>
-                {checked ? <FontAwesomeIcon className="self-center mr-2" icon={faCheck} aria-hidden="true" /> : null}
+                {checked ? (
+                  <FontAwesomeIcon
+                    className="self-center mr-2"
+                    icon={faCheck}
+                    aria-hidden="true"
+                  />
+                ) : null}
               </div>
             )}
           </RadioGroup.Option>

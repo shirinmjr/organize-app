@@ -1,29 +1,36 @@
 export type QuestionType = "top3" | "multiple" | "text" | "single";
 
 export interface IQuestionOption {
-  value: number;
+  option_id: number;
   option: string;
 }
 
 export interface IQuestion {
-  id: string;
-  question: string;
+  question_id: string;
+  title: string;
   type: QuestionType;
   options?: IQuestionOption[];
 }
 
 export interface IEvent {
-  id: string;
-  eventName: string;
+  survey_id: string;
+  event_name: string;
   questions: IQuestion[];
 }
 
-export interface IResponse {
-  id: string; // the question id
-  response: string[]; // an array of UUIDs
+export type IResponse = ISingleResponse | IMultipleResponse;
+
+export interface ISingleResponse {
+  [key: string]: string | number;
+}
+export interface IMultipleResponse {
+  [key: string]: string[] | number[];
 }
 
 export interface IParticipantResponse {
-  id: string;
+  participant_id: string;
   responses: IResponse[];
+  survey_id: string;
+  event_id: string;
+  date_submitted: string;
 }

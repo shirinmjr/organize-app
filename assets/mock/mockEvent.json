@@ -1,47 +1,45 @@
 {
-  "eventName": "After-School Fun Fair",
-  "id": 1,
+  "event_name": "After-School Fun Fair",
+  "event_id": "anotherid",
+  "survey_id": 1,
   "questions": [
     {
-      "id": "gs70ebtzltn9mm3u",
-      "question": "What is your favorite after-school activity?",
+      "question_id": "gs70ebtzltn9mm3u",
+      "title": "What is your favorite after-school activity?",
       "options": [
-        { "value": 1, "option": "Arts & Crafts" },
-        { "value": 2, "option": "Music" },
-        { "value": 3, "option": "Other" },
-        { "value": 4, "option": "STEM" },
-        { "value": 5, "option": "Drama" },
-        { "value": 6, "option": "Sports" }
+        { "option_id": 1, "option": "Arts & Crafts" },
+        { "option_id": 2, "option": "Music" },
+        { "option_id": 3, "option": "Other" },
+        { "option_id": 4, "option": "STEM" },
+        { "option_id": 5, "option": "Drama" },
+        { "option_id": 6, "option": "Sports" }
       ],
       "type": "top3"
     },
-
     {
-      "id": "03ofl7n3ltn9vnvr",
-      "question": "Which games would you like to see at the Fun Fair?",
+      "question_id": "03ofl7n3ltn9vnvr",
+      "title": "Which games would you like to see at the Fun Fair?",
       "options": [
-        { "value": 1, "option": "Arts & Crafts" },
-        { "value": 2, "option": "Tug of War" },
-        { "value": 3, "option": "Three-Legged Race" },
-        { "value": 4, "option": "Sack Race" },
-        { "value": 5, "option": "Egg and Spoon Race" },
-        { "value": 6, "option": "Obstacle Course" }
+        { "option_id": 1, "option": "Arts & Crafts" },
+        { "option_id": 2, "option": "Tug of War" },
+        { "option_id": 3, "option": "Three-Legged Race" },
+        { "option_id": 4, "option": "Sack Race" },
+        { "option_id": 5, "option": "Egg and Spoon Race" },
+        { "option_id": 6, "option": "Obstacle Course" }
       ],
       "type": "multiple"
     },
-
     {
-      "id": "z2pekzinltn9ym8x",
-      "question": "What food do you hope to find at the Fun Fair?",
-      "options": [],
+      "question_id": "z2pekzinltn9ym8x",
+      "title": "What food do you hope to find at the Fun Fair?",
       "type": "text"
     },
     {
-      "id": "2moe5lx1ltn9yxdt",
-      "question": "Would you like to volunteer to help organize the event?",
+      "question_id": "2moe5lx1ltn9yxdt",
+      "title": "Would you like to volunteer to help organize the event?",
       "options": [
-        { "value": 1, "option": "Yes" },
-        { "value": 2, "option": "No" }
+        { "option_id": 1, "option": "Yes" },
+        { "option_id": 2, "option": "No" }
       ],
       "type": "single"
     }
