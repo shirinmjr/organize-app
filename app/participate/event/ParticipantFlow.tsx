@@ -34,7 +34,7 @@ const ParticipantFlow = ({ data }: { data: IEvent }) => {
 
   return step === 0 ? (
     <EventLandingPage
-      name={data.eventName}
+      name={data.event_name}
       onStart={incrementStep}
     />
   ) : (

@@ -14,17 +14,23 @@ export interface IQuestion {
 
 export interface IEvent {
   survey_id: string;
-  eventName: string;
+  event_name: string;
   questions: IQuestion[];
 }
 
-// @TODO: update this to reflect the new data structure
-export interface IResponse {
-  id: string; // the question id
-  response: string[]; // an array of UUIDs or a string from an input
+export type IResponse = ISingleResponse | IMultipleResponse;
+
+export interface ISingleResponse {
+  [key: string]: string | number;
+}
+export interface IMultipleResponse {
+  [key: string]: string[] | number[];
 }
 
 export interface IParticipantResponse {
-  id: string;
+  participant_id: string;
   responses: IResponse[];
+  survey_id: string;
+  event_id: string;
+  date_submitted: string;
 }

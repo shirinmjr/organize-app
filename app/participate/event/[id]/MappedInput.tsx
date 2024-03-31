@@ -18,7 +18,7 @@ const MappedInput = ({ questionData, onChangeCallback }: MappedInputProps) => {
 
   const onTextChange = (value: string) => {
     setStringValue(value);
-    onChangeCallback({ id, response: [value] });
+    onChangeCallback({ id, response: value });
   };
   const onChoiceChange = (value) => {
     setChoiceValue(value);
