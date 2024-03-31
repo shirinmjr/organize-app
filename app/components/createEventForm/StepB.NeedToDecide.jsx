@@ -99,7 +99,7 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
             <div
               key={question.id}
               className="flex flex-col p-2 my-2 gap-3 bg-blue-50 rounded-md">
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col items-center justify-between">
                 <div className="flex-1">
                   <InputText
                     className="w-full"

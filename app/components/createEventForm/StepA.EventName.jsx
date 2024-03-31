@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendarDays, faClock } from "@fortawesome/free-solid-svg-icons";
-import { DatePicker } from "date-picker-nextjs";
+import dayjs from "dayjs";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+import { MobileTimePicker } from "@mui/x-date-pickers/MobileTimePicker";
 
 import InputWrapper from "../inputs/InputWrapper";
 import InputText from "../inputs/InputText";
@@ -9,17 +12,21 @@ import Switch from "../inputs/Switch";
 
 const EventName = ({ callBack, eventName = "" }) => {
   const [datePickerChecked, setDatePickerChecked] = useState(false);
-  const [modalDateIsOpen, setModalDateIsOpen] = useState(false);
-  const [clickedInput, setClickedInput] = useState(null);
+  const [eventDate, setEventDate] = useState("");
+  const [eventTime, setEventTime] = useState("");
 
+  const todayDate = dayjs();
   useEffect(() => {
     console.log(datePickerChecked);
-  }, [datePickerChecked]);
+    console.log("date", eventDate);
+    //callBack(eventDate);
+  }, [datePickerChecked, eventDate]);
 
-  const handleDatePicker = (e) => {
-    setClickedInput(e.target.id);
-    setModalDateIsOpen(true);
-  };
+  //   const handleDatePicker = (e) => {
+  //     setEventDate(new Date(e.$d).toISOString().substring(0, 10));
+  // callBack()
+  //     // setModalDateIsOpen(true);
+  //   };
 
   return (
     <div className="event-form">
@@ -28,7 +35,6 @@ const EventName = ({ callBack, eventName = "" }) => {
       </div>
       <InputText
         name="eventName"
-        id="eventName"
         placeHolder={"Event Name.."}
         value={eventName}
         onChange={callBack}
@@ -41,39 +47,28 @@ const EventName = ({ callBack, eventName = "" }) => {
         callBack={() => setDatePickerChecked(!datePickerChecked)}
       />
       {datePickerChecked && (
-        <div className="flex items-center justify-start rounded-full">
-          <InputWrapper
-            htmlFor="event-date"
-            label="">
-            <div className="flex items-center justify-around my-4">
-              <input
-                className="p-2 border-4 border-blue-400 rounded-full "
-                type="text"
-                id="eventDate"
-                placeholder="Enter Date"
-                onClick={handleDatePicker}
-              />
-              <FontAwesomeIcon icon={faCalendarDays} />
-              {modalDateIsOpen && (
-                <div>
-                  <DatePicker
-                    className="block"
-                    setModalDateIsOpen={setModalDateIsOpen}
-                    clickedInput={clickedInput}
-                  />
-                </div>
-              )}
+        <div className="flex flex-col items-center justify-start  rounded-full">
+          <InputWrapper htmlFor="event-date" label="">
+            <div className="flex items-center">
+              <div className="flex flex-col">
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DatePicker defaultValue={todayDate} name={"eventDate"} />
+                </LocalizationProvider>
+              </div>
             </div>
-            <div className="flex items-center justify-around my-4">
-              <input
-                className="p-2 border-4 border-blue-400 rounded-full "
-                type="text"
-                id="eventTime"
-                placeholder="Enter Time"
-                onClick={handleDatePicker}
-              />
-              <FontAwesomeIcon icon={faClock} />
-            </div>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DemoContainer
+                components={[
+                  //  "TimePicker",
+                  "MobileTimePicker",
+                  // "DesktopTimePicker",
+                  // "StaticTimePicker",
+                ]}
+              >
+                <MobileTimePicker name="eventTime" defaultValue={todayDate} />
+              </DemoContainer>
+            </LocalizationProvider>
+            <div className="flex items-center"></div>
           </InputWrapper>
         </div>
       )}
