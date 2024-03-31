@@ -22,9 +22,7 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
   };
 
   const handleRemoveQuestion = (questionId) => {
-    setQuestions((questions) =>
-      questions.filter((question) => question.id !== questionId)
-    );
+    setQuestions((questions) => questions.filter((question) => question.id !== questionId));
   };
 
   const handleTextFieldChange = (e, id) => {
@@ -69,16 +67,14 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
 
   const handleAddOption = (event, questionId, optionIndex) => {
     questions.forEach((question, index) => {
-      if (question.id === questionId)
-        questions[index].options[optionIndex] = event.target.value;
+      if (question.id === questionId) questions[index].options[optionIndex] = event.target.value;
     });
     setQuestions([...questions]);
   };
 
   const handleRemoveOption = (questionId, optionIndex) => {
     questions.forEach((question, index) => {
-      if (question.id === questionId)
-        questions[index].options.splice(optionIndex, 1);
+      if (question.id === questionId) questions[index].options.splice(optionIndex, 1);
     });
     setQuestions([...questions]);
   };
@@ -91,8 +87,7 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
       <div className="flex gap-7">
         <h2
           className="text-brandBlue hover:cursor-pointer hover:text-blue-800"
-          onClick={handleAddQuestion}
-        >
+          onClick={handleAddQuestion}>
           Add&nbsp;
           <FontAwesomeIcon icon={faCirclePlus} />
         </h2>
@@ -103,8 +98,7 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
           return (
             <div
               key={question.id}
-              className="flex flex-col p-2 my-2 gap-3 bg-blue-50 rounded-md"
-            >
+              className="flex flex-col p-2 my-2 gap-3 bg-blue-50 rounded-md">
               <div className="flex items-center justify-between">
                 <div className="flex-1">
                   <InputText
@@ -114,9 +108,7 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
                     name="question"
                     placeHolder={"Question..."}
                     value={question.question}
-                    onChange={(event) =>
-                      handleTextFieldChange(event, question.id)
-                    }
+                    onChange={(event) => handleTextFieldChange(event, question.id)}
                     required
                   />
                 </div>
@@ -133,24 +125,20 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
                   label={""}
                   value={question.type || ""}
                   options={[
-                    { option: "How do you want people to answer?", value: "" },
-                    { option: "Single Choice", value: "single" },
-                    { option: "Multiple Choice", value: "multiple" },
-                    { option: "Pick Top Three", value: "top3" },
-                    { option: "Explain it", value: "text" },
+                    { option: "How do you want people to answer?", option_id: "" },
+                    { option: "Single Choice", option_id: "single" },
+                    { option: "Multiple Choice", option_id: "multiple" },
+                    { option: "Pick Top Three", option_id: "top3" },
+                    { option: "Explain it", option_id: "text" },
                   ]}
-                  onChange={(option) =>
-                    handleSelectChange(option.value, question.id)
-                  }
-                  required
-                ></InputSelect>
+                  onChange={(option) => handleSelectChange(option.option_id, question.id)}
+                  required></InputSelect>
               </div>
 
               {question && question.type != "explain" && (
                 <h2
                   onClick={(event) => handleAddOptionsList(question.id)}
-                  className="mb-2 text-brandBlue hover:cursor-pointer hover:text-blue-800"
-                >
+                  className="mb-2 text-brandBlue hover:cursor-pointer hover:text-blue-800">
                   Add&nbsp;Options <FontAwesomeIcon icon={faCirclePlus} />
                 </h2>
               )}
@@ -170,9 +158,7 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
                             name="option"
                             placeHolder={"Option..."}
                             value={option}
-                            onChange={(event) =>
-                              handleAddOption(event, question.id, index)
-                            }
+                            onChange={(event) => handleAddOption(event, question.id, index)}
                             required
                           />
                         </div>

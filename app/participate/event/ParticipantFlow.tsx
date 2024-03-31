@@ -9,7 +9,7 @@ import MappedInput from "./[id]/MappedInput";
 const ParticipantFlow = ({ data }: { data: IEvent }) => {
   const [step, setStep] = useState(0);
   const defaultFormState: IResponse[] = data.questions.map((question) => ({
-    id: question.id,
+    id: question.question_id,
     response: [],
   }));
   const [volunteerResponse, setVolunteerResponse] = useState(defaultFormState);
@@ -27,22 +27,22 @@ const ParticipantFlow = ({ data }: { data: IEvent }) => {
   };
 
   const onChangeHandler = (answer: IResponse) => {
-    const updatedData = volunteerResponse.filter(
-      (response) => response.id != answer.id
-    );
+    const updatedData = volunteerResponse.filter((response) => response.id != answer.id);
     updatedData.push(answer);
     setVolunteerResponse(updatedData);
   };
 
   return step === 0 ? (
-    <EventLandingPage name={data.eventName} onStart={incrementStep} />
+    <EventLandingPage
+      name={data.eventName}
+      onStart={incrementStep}
+    />
   ) : (
     <form>
       {data.questions.map((question, i) => (
         <div
-          key={question.id}
-          className={`my-4 ${step - 1 != i ? "hidden" : ""}`}
-        >
+          key={question.question_id}
+          className={`my-4 ${step - 1 != i ? "hidden" : ""}`}>
           <div className="mx-auto">
             <div className="flex flex-col p-1">
               <MappedInput
@@ -57,9 +57,7 @@ const ParticipantFlow = ({ data }: { data: IEvent }) => {
         <Button onClick={decrementStep}>Previous</Button>
         <Button onClick={incrementStep}>Next</Button>
       </div>
-      {step - 1 === data.questions.length ? (
-        <div>{JSON.stringify(volunteerResponse)}</div>
-      ) : null}
+      {step - 1 === data.questions.length ? <div>{JSON.stringify(volunteerResponse)}</div> : null}
     </form>
   );
 };

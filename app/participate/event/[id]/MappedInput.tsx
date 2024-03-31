@@ -11,7 +11,7 @@ interface MappedInputProps {
 }
 
 const MappedInput = ({ questionData, onChangeCallback }: MappedInputProps) => {
-  const { type, id, question, options } = questionData;
+  const { type, question_id: id, title: question, options } = questionData;
 
   const [stringValue, setStringValue] = useState("");
   const [choiceValue, setChoiceValue] = useState([]);

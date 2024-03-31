@@ -8,9 +8,7 @@ import { IQuestionOption } from "@/lib/types";
 
 function mapIndexToLetterList(index: number): string {
   if (index > 25) {
-    console.warn(
-      "Can only map lowercase letters of the alphabet, now starting over from the beginning",
-    );
+    console.warn("Can only map lowercase letters of the alphabet, now starting over from the beginning");
   }
   return `${((index % 26) + 10).toString(36)}.`;
 }
@@ -21,11 +19,7 @@ interface InputChooseManyChoiceProps {
   canChooseOne: (arg0: IQuestionOption) => boolean;
 }
 
-const InputChooseManyChoice = ({
-  option,
-  index,
-  canChooseOne,
-}: InputChooseManyChoiceProps) => {
+const InputChooseManyChoice = ({ option, index, canChooseOne }: InputChooseManyChoiceProps) => {
   const [checked, setChecked] = useState(false);
 
   const handleOnClick = () => {
@@ -77,16 +71,14 @@ const InputChooseMany = ({
   const [choices, setChoices] = useState(value);
 
   const handleTryToChoose = (option: IQuestionOption) => {
-    const choiceIndex = choices.findIndex((choice) => choice === option.value);
+    const choiceIndex = choices.findIndex((choice) => choice === option.option_id);
     if (choiceIndex > -1) {
-      const updatedChoices = choices.filter(
-        (choice) => choice !== option.value
-      );
+      const updatedChoices = choices.filter((choice) => choice !== option.option_id);
       setChoices(updatedChoices);
       onChange && onChange(updatedChoices);
       return true;
     } else if (numberOfChoices > choices.length) {
-      const updatedChoices = [...choices, option.value];
+      const updatedChoices = [...choices, option.option_id];
       setChoices(updatedChoices);
       onChange && onChange(updatedChoices);
       return true;
