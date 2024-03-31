@@ -10,7 +10,7 @@ const ParticipantFlow = ({ data }: { data: IEvent }) => {
   const [step, setStep] = useState(0);
   const defaultFormState: IResponse[] = data.questions.map((question) => ({
     id: question.question_id,
-    response: [],
+    response: null,
   }));
   const [volunteerResponse, setVolunteerResponse] = useState(defaultFormState);
 
