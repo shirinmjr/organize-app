@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendarDays, faClock } from "@fortawesome/free-solid-svg-icons";
 import dayjs from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
-import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { MobileTimePicker } from "@mui/x-date-pickers/MobileTimePicker";
 
 import InputWrapper from "../inputs/InputWrapper";
@@ -15,17 +12,21 @@ import Switch from "../inputs/Switch";
 
 const EventName = ({ callBack, eventName = "" }) => {
   const [datePickerChecked, setDatePickerChecked] = useState(false);
-  const [modalDateIsOpen, setModalDateIsOpen] = useState(false);
-  const [clickedInput, setClickedInput] = useState(null);
+  const [eventDate, setEventDate] = useState("");
+  const [eventTime, setEventTime] = useState("");
 
+  const todayDate = dayjs();
   useEffect(() => {
     console.log(datePickerChecked);
-  }, [datePickerChecked]);
+    console.log("date", eventDate);
+    //callBack(eventDate);
+  }, [datePickerChecked, eventDate]);
 
-  const handleDatePicker = (e) => {
-    setClickedInput(e.target.id);
-    setModalDateIsOpen(true);
-  };
+  //   const handleDatePicker = (e) => {
+  //     setEventDate(new Date(e.$d).toISOString().substring(0, 10));
+  // callBack()
+  //     // setModalDateIsOpen(true);
+  //   };
 
   return (
     <div className="event-form">
@@ -34,7 +35,6 @@ const EventName = ({ callBack, eventName = "" }) => {
       </div>
       <InputText
         name="eventName"
-        id="eventName"
         placeHolder={"Event Name.."}
         value={eventName}
         onChange={callBack}
@@ -52,36 +52,23 @@ const EventName = ({ callBack, eventName = "" }) => {
             <div className="flex items-center">
               <div className="flex flex-col">
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <DatePicker
-                    components={["DatePicker", "DatePicker", "DatePicker"]}
-                    name="startDate"
-                  />
+                  <DatePicker defaultValue={todayDate} name={"eventDate"} />
                 </LocalizationProvider>
               </div>
             </div>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DemoContainer
                 components={[
-                  "TimePicker",
+                  //  "TimePicker",
                   "MobileTimePicker",
-                  "DesktopTimePicker",
-                  "StaticTimePicker",
+                  // "DesktopTimePicker",
+                  // "StaticTimePicker",
                 ]}
               >
-                <MobileTimePicker defaultValue={dayjs("2022-04-17T15:30")} />
-                <FontAwesomeIcon icon={faClock} />
+                <MobileTimePicker name="eventTime" defaultValue={todayDate} />
               </DemoContainer>
             </LocalizationProvider>
-            <div className="flex items-center">
-              {/* <input
-                className="p-2 border-4 border-blue-400 rounded-full "
-                type="text"
-                id="eventTime"
-                placeholder="Enter Time"
-                onClick={handleDatePicker}
-              /> */}
-              {/* <FontAwesomeIcon icon={faClock} /> */}
-            </div>
+            <div className="flex items-center"></div>
           </InputWrapper>
         </div>
       )}

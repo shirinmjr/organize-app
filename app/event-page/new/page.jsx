@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import ProgressBar from "@/app/components/ProgressBar";
 import EventName from "@/app/components/createEventForm/StepA.EventName";
+//import EventTime from "@/app/components/createEventForm/EventTime";
 import NeedToDecide from "@/app/components/createEventForm/StepB.NeedToDecide";
 import GetUserInfo from "@/app/components/createEventForm/StepD.GetUserInfo";
 import GetUserAuth from "@/app/components/createEventForm/stepE.GetUserAuth";
