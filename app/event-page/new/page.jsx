@@ -2,44 +2,32 @@
 import React, { useEffect, useState } from "react";
 import ProgressBar from "@/app/components/ProgressBar";
 import EventName from "@/app/components/createEventForm/StepA.EventName";
-//import EventTime from "@/app/components/createEventForm/EventTime";
+import EventDateTime from "@/app/components/createEventForm/EventDateTime";
 import NeedToDecide from "@/app/components/createEventForm/StepB.NeedToDecide";
+import WhoToInvite from "@/app/components/createEventForm/StepC.WhoToInvite";
 import GetUserInfo from "@/app/components/createEventForm/StepD.GetUserInfo";
 import GetUserAuth from "@/app/components/createEventForm/stepE.GetUserAuth";
-import WhoToInvite from "@/app/components/createEventForm/StepC.WhoToInvite";
+import EventSummary from "@/app/components/createEventForm/EventSummary";
 import Button from "@/app/components/inputs/Button";
+import Switch from "@/app/components/inputs/Switch";
 
 const Page = () => {
-  const initialFormData = {
-    eventName: "",
-    questions: [
-      {
-        question: "",
-        type: "",
-        answers: [],
-      },
-    ],
-    volunteers: [
-      {
-        volunteerName: "",
-        phoneNumber: "",
-      },
-    ],
-    organizerInfo: {
-      firstName: "",
-      lastName: "",
-      phoneNumber: "",
-    },
-  };
-
-  const totalSteps = 4; //total steps - on the form change if steps changed
+  const totalSteps = 5; //total steps - on the form change if steps changed
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState("");
+  const [datePickerChecked, setDatePickerChecked] = useState(false);
 
   const handleNextStep = () => setStep(step + 1);
   const handleBackStep = () => setStep(step - 1);
 
   const handleEventName = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleEventDateTime = (event) => {
     setFormData({
       ...formData,
       [event.target.name]: event.target.value,
@@ -52,6 +40,7 @@ const Page = () => {
       ["questions"]: questions,
     });
   };
+
   const handleGetUserInfo = (organizerInfo) => {
     setFormData({
       ...formData,
@@ -62,10 +51,10 @@ const Page = () => {
     console.log("Authenticating User... for ", organizerInfo);
   };
 
-  // const handleSubmitFormData = () => {
-  //     //you can also add gree to terms here
-  //     console.log("Form submitted successfully and data is: ", formData);
-  // };
+  const handleSubmitFormData = () => {
+    //This is where the back-end call happens
+    console.log("Form submitted successfully and data is: ", formData);
+  };
 
   useEffect(() => {
     console.log("Form data: ", formData);
@@ -77,10 +66,20 @@ const Page = () => {
         <form className="overflow-y-auto">
           <ProgressBar step={step} totalSteps={totalSteps} />
           {step === 1 ? (
-            <EventName
-              callBack={handleEventName}
-              eventName={formData.eventName}
-            />
+            <div>
+              <EventName
+                callBack={handleEventName}
+                eventName={formData.eventName}
+              />
+              <Switch
+                label={"Have you decided on a date?"}
+                isChecked={datePickerChecked}
+                callBack={() => setDatePickerChecked(!datePickerChecked)}
+              />
+              {datePickerChecked && (
+                <EventDateTime callBack={handleEventDateTime} />
+              )}
+            </div>
           ) : null}
           {step === 2 ? (
             <NeedToDecide
@@ -101,13 +100,21 @@ const Page = () => {
               organizerData={formData.organizerInfo}
             />
           ) : null}
+          {step === 5 ? (
+            <div>
+              <EventSummary />
+            </div>
+          ) : null}
         </form>
 
         <div className="flex flex-row items-center justify-between w-full">
           {step > 1 && (
             <Button onClick={(e) => handleBackStep()}>Previous</Button>
           )}
-          {step < 4 && <Button onClick={(e) => handleNextStep()}>Next</Button>}
+          {step < 5 && <Button onClick={(e) => handleNextStep()}>Next</Button>}
+          {step === 5 && (
+            <Button onClick={(e) => handleSubmitFormData()}>Submit</Button>
+          )}
         </div>
       </div>
     </div>
