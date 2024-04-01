@@ -1,9 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import ProgressBar from "@/app/components/ProgressBar";
-import EventName from "@/app/components/createEventForm/StepA.EventName";
+import EventName from "@/app/components/createEventForm/EventName";
 import EventDateTime from "@/app/components/createEventForm/EventDateTime";
-import NeedToDecide from "@/app/components/createEventForm/StepB.NeedToDecide";
+import NeedToDecide from "@/app/components/createEventForm/NeedToDecide";
 import WhoToInvite from "@/app/components/createEventForm/StepC.WhoToInvite";
 import GetUserInfo from "@/app/components/createEventForm/StepD.GetUserInfo";
 import GetUserAuth from "@/app/components/createEventForm/stepE.GetUserAuth";
