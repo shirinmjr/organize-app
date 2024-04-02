@@ -82,27 +82,23 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
 
   return (
     <div className="event-form">
-      <div className="flex w-full gap-7">
-        <h3 className="">What do you want to ask?</h3>
-      </div>
-      <div className="flex gap-7">
-        <h2
-          className="text-brandBlue hover:cursor-pointer hover:text-blue-800"
-          onClick={handleAddQuestion}>
-          Add&nbsp;
-          <FontAwesomeIcon icon={faCirclePlus} />
-        </h2>
-      </div>
+      <h3>What do you want to ask?</h3>
+      <h2
+        className="my-2 text-brandBlue hover:cursor-pointer hover:text-blue-800"
+        onClick={handleAddQuestion}>
+        Add&nbsp;
+        <FontAwesomeIcon icon={faCirclePlus} />
+      </h2>
 
       {questions &&
         questions.map((question) => {
           return (
-            <div
-              key={question.id}
-              className="flex flex-col  col-1 bg-blue-50 rounded-md">
-              <InputWrapper>
-                <div className="flex col-2 items-center justify-between">
-                  <div>
+            <InputWrapper>
+              <div
+                key={question.id}
+                className="flex flex-col bg-blue-50 rounded-md p-2">
+                <div className="grid grid-cols-10  items-center">
+                  <div className="col-span-9">
                     <InputText
                       type="text"
                       id="question"
@@ -113,7 +109,7 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
                       required
                     />
                   </div>
-                  <div>
+                  <div className="col-span-1 m-2">
                     <FontAwesomeIcon
                       icon={faCircleXmark}
                       className=" text-red-600 hover:cursor-pointer hover:text-blue-00"
@@ -122,7 +118,7 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
                   </div>
                 </div>
 
-                <div>
+                <div className="my-2">
                   <InputSelect
                     name="type"
                     label={""}
@@ -137,44 +133,47 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
                     onChange={(option) => handleSelectChange(option.option_id, question.id)}
                     required></InputSelect>
                 </div>
-              </InputWrapper>
-              {question && question.type != "explain" && (
-                <h2
-                  onClick={(event) => handleAddOptionsList(question.id)}
-                  className="mb-2 text-brandBlue hover:cursor-pointer hover:text-blue-800">
-                  Add&nbsp;Options <FontAwesomeIcon icon={faCirclePlus} />
-                </h2>
-              )}
 
-              {question &&
-                question.options &&
-                question.type != "explain" &&
-                question.options.map((option, index) => {
-                  return (
-                    <div key={index}>
-                      <div className="flex items-center justify-between">
-                        <div className="flex-1">
-                          <InputText
-                            className="w-full"
-                            id="option"
-                            type="text"
-                            name="option"
-                            placeholder={"Option..."}
-                            value={option}
-                            onChange={(event) => handleAddOption(event, question.id, index)}
-                            required
-                          />
+                {question && question.type != "explain" && (
+                  <h2
+                    onClick={(event) => handleAddOptionsList(question.id)}
+                    className="my-2 text-brandBlue hover:cursor-pointer hover:text-blue-800">
+                    Add&nbsp;Options <FontAwesomeIcon icon={faCirclePlus} />
+                  </h2>
+                )}
+
+                {question &&
+                  question.options &&
+                  question.type != "explain" &&
+                  question.options.map((option, index) => {
+                    return (
+                      <div key={index}>
+                        <div className="grid grid-cols-10  items-center">
+                          <div className="col-span-9 m-2">
+                            <InputText
+                              className="w-full border border-blue-500"
+                              id="option"
+                              type="text"
+                              name="option"
+                              placeholder={"Option..."}
+                              value={option}
+                              onChange={(event) => handleAddOption(event, question.id, index)}
+                              required
+                            />
+                          </div>
+                          <div className="col-span-1 m-2">
+                            <FontAwesomeIcon
+                              icon={faCircleXmark}
+                              className="my-2 text-red-600 hover:cursor-pointer hover:text-blue-00 "
+                              onClick={() => handleRemoveOption(question.id, index)}
+                            />
+                          </div>
                         </div>
-                        <FontAwesomeIcon
-                          icon={faCircleXmark}
-                          className="m-2 text-red-600 hover:cursor-pointer hover:text-blue-00 "
-                          onClick={() => handleRemoveOption(question.id, index)}
-                        />
                       </div>
-                    </div>
-                  );
-                })}
-            </div>
+                    );
+                  })}
+              </div>
+            </InputWrapper>
           );
         })}
     </div>
