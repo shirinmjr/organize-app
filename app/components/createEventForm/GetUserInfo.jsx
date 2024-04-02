@@ -1,6 +1,7 @@
 "use Client";
 import React, { useState, useEffect } from "react";
 import InputText from "../inputs/InputText";
+import InputWrapper from "../inputs/InputWrapper";
 
 const GetUserInfo = ({ callBack, organizerData = "" }) => {
   // const initialOrganizerInfo = {
@@ -26,14 +27,8 @@ const GetUserInfo = ({ callBack, organizerData = "" }) => {
 
   return (
     <div className="event-form">
-      <div>
-        <div className="flex gap-7 form-q-title">
-          <h3 className="">
-            {" "}
-            Last step, Create your account to send your feedback request.
-          </h3>
-        </div>
-
+      <h3 className=""> Last step, Create your account to send your feedback request.</h3>
+      <InputWrapper>
         <InputText
           type="text"
           id="firstName"
@@ -64,7 +59,7 @@ const GetUserInfo = ({ callBack, organizerData = "" }) => {
           onChange={handleChange}
           required
         />
-      </div>
+      </InputWrapper>
     </div>
   );
 };
