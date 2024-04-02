@@ -1,12 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import ProgressBar from "@/app/components/ProgressBar";
-import EventName from "@/app/components/createEventForm/StepA.EventName";
+import EventName from "@/app/components/createEventForm/EventName";
 import EventDateTime from "@/app/components/createEventForm/EventDateTime";
-import NeedToDecide from "@/app/components/createEventForm/StepB.NeedToDecide";
-import WhoToInvite from "@/app/components/createEventForm/StepC.WhoToInvite";
-import GetUserInfo from "@/app/components/createEventForm/StepD.GetUserInfo";
-import GetUserAuth from "@/app/components/createEventForm/stepE.GetUserAuth";
+import NeedToDecide from "@/app/components/createEventForm/NeedToDecide";
+import WhoToInvite from "@/app/components/createEventForm/WhoToInvite";
+import GetUserInfo from "@/app/components/createEventForm/GetUserInfo";
+import UserAuth from "@/app/components/createEventForm/UserAuth";
 import EventSummary from "@/app/components/createEventForm/EventSummary";
 import Button from "@/app/components/inputs/Button";
 import Switch from "@/app/components/inputs/Switch";
@@ -64,7 +64,10 @@ const Page = () => {
     <div className="p-4 rounded shadow-md form-container">
       <div className="p-4 bg-white rounded shadow-md">
         <form className="overflow-y-auto">
-          <ProgressBar step={step} totalSteps={totalSteps} />
+          <ProgressBar
+            step={step}
+            totalSteps={totalSteps}
+          />
           {step === 1 ? (
             <div>
               <EventName
@@ -76,9 +79,7 @@ const Page = () => {
                 isChecked={datePickerChecked}
                 callBack={() => setDatePickerChecked(!datePickerChecked)}
               />
-              {datePickerChecked && (
-                <EventDateTime callBack={handleEventDateTime} />
-              )}
+              {datePickerChecked && <EventDateTime callBack={handleEventDateTime} />}
             </div>
           ) : null}
           {step === 2 ? (
@@ -95,7 +96,7 @@ const Page = () => {
             />
           ) : null}
           {step === 4 ? (
-            <GetUserAuth
+            <UserAuth
               callBack={(organizerInfo) => handleUserAuth(organizerInfo)}
               organizerData={formData.organizerInfo}
             />
@@ -108,13 +109,9 @@ const Page = () => {
         </form>
 
         <div className="flex flex-row items-center justify-between w-full">
-          {step > 1 && (
-            <Button onClick={(e) => handleBackStep()}>Previous</Button>
-          )}
+          {step > 1 && <Button onClick={(e) => handleBackStep()}>Previous</Button>}
           {step < 5 && <Button onClick={(e) => handleNextStep()}>Next</Button>}
-          {step === 5 && (
-            <Button onClick={(e) => handleSubmitFormData()}>Submit</Button>
-          )}
+          {step === 5 && <Button onClick={(e) => handleSubmitFormData()}>Submit</Button>}
         </div>
       </div>
     </div>

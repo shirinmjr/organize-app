@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import generateUniqueId from "@/app/util/generateUniqueId";
+import InputWrapper from "../inputs/InputWrapper";
 import InputText from "../inputs/InputText";
 import InputSelect from "../inputs/InputSelect";
 
@@ -98,43 +99,45 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
           return (
             <div
               key={question.id}
-              className="flex flex-col p-2 my-2 gap-3 bg-blue-50 rounded-md">
-              <div className="flex flex-col items-center justify-between">
-                <div className="flex-1">
-                  <InputText
-                    className="w-full"
-                    type="text"
-                    id="question"
-                    name="question"
-                    placeHolder={"Question..."}
-                    value={question.question}
-                    onChange={(event) => handleTextFieldChange(event, question.id)}
-                    required
-                  />
+              className="flex flex-col  col-1 bg-blue-50 rounded-md">
+              <InputWrapper>
+                <div className="flex col-2 items-center justify-between">
+                  <div>
+                    <InputText
+                      type="text"
+                      id="question"
+                      name="question"
+                      placeholder={"Question..."}
+                      value={question.question}
+                      onChange={(event) => handleTextFieldChange(event, question.id)}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <FontAwesomeIcon
+                      icon={faCircleXmark}
+                      className=" text-red-600 hover:cursor-pointer hover:text-blue-00"
+                      onClick={() => handleRemoveQuestion(question.id)}
+                    />
+                  </div>
                 </div>
-                <FontAwesomeIcon
-                  icon={faCircleXmark}
-                  className="m-2 text-red-600 hover:cursor-pointer hover:text-blue-00"
-                  onClick={() => handleRemoveQuestion(question.id)}
-                />
-              </div>
 
-              <div>
-                <InputSelect
-                  name="type"
-                  label={""}
-                  value={question.type || ""}
-                  options={[
-                    { option: "How do you want people to answer?", option_id: "" },
-                    { option: "Single Choice", option_id: "single" },
-                    { option: "Multiple Choice", option_id: "multiple" },
-                    { option: "Pick Top Three", option_id: "top3" },
-                    { option: "Explain it", option_id: "text" },
-                  ]}
-                  onChange={(option) => handleSelectChange(option.option_id, question.id)}
-                  required></InputSelect>
-              </div>
-
+                <div>
+                  <InputSelect
+                    name="type"
+                    label={""}
+                    value={question.type || ""}
+                    options={[
+                      { option: "How do you want people to answer?", option_id: "" },
+                      { option: "Single Choice", option_id: "single" },
+                      { option: "Multiple Choice", option_id: "multiple" },
+                      { option: "Pick Top Three", option_id: "top3" },
+                      { option: "Explain it", option_id: "text" },
+                    ]}
+                    onChange={(option) => handleSelectChange(option.option_id, question.id)}
+                    required></InputSelect>
+                </div>
+              </InputWrapper>
               {question && question.type != "explain" && (
                 <h2
                   onClick={(event) => handleAddOptionsList(question.id)}
@@ -156,7 +159,7 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
                             id="option"
                             type="text"
                             name="option"
-                            placeHolder={"Option..."}
+                            placeholder={"Option..."}
                             value={option}
                             onChange={(event) => handleAddOption(event, question.id, index)}
                             required
