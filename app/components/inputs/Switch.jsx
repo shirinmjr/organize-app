@@ -3,9 +3,11 @@ const Switch = ({ label, id, prompt = "", isChecked, callBack }) => {
 
   return (
     <div className="mx-2">
-      <label htmlFor={id} className="flex items-center">
+      <label
+        htmlFor={id}
+        className="flex items-center">
         {label}
-        <div className="bg-orange-100 w-20 h-10 cursor-pointer relative m-3 rounded-full ">
+        <div className="bg-orange-100 w-20 h-10 cursor-pointer relative m-3 rounded-full border-2 border-blue-500 ">
           <input
             type="checkbox"
             id={id}
