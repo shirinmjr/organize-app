@@ -1,7 +1,7 @@
 export type QuestionType = "top3" | "multiple" | "text" | "single";
 
 export interface IQuestionOption {
-  option_id: number;
+  option_id: number | string;
   option: string;
 }
 

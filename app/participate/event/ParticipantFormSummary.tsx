@@ -12,14 +12,14 @@ const ParticipantFormSummary = ({
   onEdit: (arg0: string) => void;
 }) => {
   const getResponse = (question: IQuestion) => {
-    const { type, question_id } = question;
+    const { question_id } = question;
     const response = volunteerResponse[question_id];
     if (response == null) {
       return "No answer given";
     } else if (typeof response === "string") {
       return <p>{response.toString()}</p>;
     } else if (Array.isArray(response)) {
-      const collectedResponses = question.options.filter((option) => response.includes(option.option_id));
+      const collectedResponses = question.options.filter((option) => [...response].includes(option.option_id));
       return (
         <ul className="ml-4">
           {collectedResponses.map((option) => (
