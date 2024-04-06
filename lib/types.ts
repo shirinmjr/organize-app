@@ -1,7 +1,7 @@
 export type QuestionType = "top3" | "multiple" | "text" | "single";
 
 export interface IQuestionOption {
-  option_id: number | string;
+  option_id: number;
   option: string;
 }
 
@@ -24,7 +24,7 @@ export interface ISingleResponse {
   [key: string]: string | number;
 }
 export interface IMultipleResponse {
-  [key: string]: string[] | number[];
+  [key: string]: number[];
 }
 
 export type QuestionResponses = Record<string, string | number | string[] | number[]>;
