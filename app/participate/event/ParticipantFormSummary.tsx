@@ -1,3 +1,4 @@
+import Button from "@/app/components/inputs/Button";
 import { IQuestion, IResponse, QuestionResponses } from "@/lib/types";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

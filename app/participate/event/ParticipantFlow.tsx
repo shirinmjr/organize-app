@@ -34,6 +34,10 @@ const ParticipantFlow = ({ data, defaultResponse }: { data: IEvent; defaultRespo
     setStep(index + 1);
   };
 
+  const onSubmit = () => {
+    console.log({ volunteerResponse });
+  };
+
   return step === 0 ? (
     <EventLandingPage
       name={data.event_name}
@@ -56,16 +60,23 @@ const ParticipantFlow = ({ data, defaultResponse }: { data: IEvent; defaultRespo
         </div>
       ))}
       {step - 1 === data.questions.length ? (
-        <ParticipantFormSummary
-          questions={data.questions}
-          volunteerResponse={volunteerResponse}
-          onEdit={goToQuestionIndex}
-        />
-      ) : null}
-      <div className="flex w-full gap-2">
-        <Button onClick={decrementStep}>Previous</Button>
-        <Button onClick={incrementStep}>Next</Button>
-      </div>
+        <>
+          <ParticipantFormSummary
+            questions={data.questions}
+            volunteerResponse={volunteerResponse}
+            onEdit={goToQuestionIndex}
+          />
+
+          <div className="flex w-full gap-2">
+            <Button onClick={onSubmit}>Submit Answers</Button>
+          </div>
+        </>
+      ) : (
+        <div className="flex w-full gap-2">
+          <Button onClick={decrementStep}>Previous</Button>
+          <Button onClick={incrementStep}>Next</Button>
+        </div>
+      )}
     </form>
   );
 };
