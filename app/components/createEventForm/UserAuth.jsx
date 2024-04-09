@@ -94,7 +94,7 @@ export default function GetUserAuth() {
     <div className="event-form">
       <h3 className=""> Please verify your phone number:</h3>
       <div className="my-2">
-        We have sent a temporary verification code to your phone number ending in 6680. Enter the code to continue.
+        We have sent a temporary verification code to your phone number. Enter the code to continue.
       </div>
       <InputWrapper>
         <div className="flex items-center my-2">

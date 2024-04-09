@@ -10,6 +10,8 @@ import UserAuth from "@/app/components/createEventForm/UserAuth";
 import EventSummary from "@/app/components/createEventForm/EventSummary";
 import Button from "@/app/components/inputs/Button";
 import Switch from "@/app/components/inputs/Switch";
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 const Page = () => {
   const totalSteps = 5; //total steps - on the form change if steps changed
@@ -48,7 +50,18 @@ const Page = () => {
     });
   };
   const handleUserAuth = (organizerInfo) => {
-    console.log("Authenticating User... for ", organizerInfo);
+    console.log("handleUserAuth");
+    if(organizerInfo != null && organizerInfo != undefined) {
+      console.log("Authenticating User... for ", organizerInfo);
+      if (organizerInfo.phoneNumber != null && organizerInfo.phoneNumber != undefined) {
+        console.log("Organizer's phone number: ", organizerInfo.phoneNumber);
+      }
+      setFormData({
+        ...formData,
+        ["organizerInfo"]: organizerInfo,
+      });
+    }
+    handleNextStep();
   };
 
   const handleSubmitFormData = () => {
@@ -109,8 +122,10 @@ const Page = () => {
         </form>
 
         <div className="flex flex-row items-center justify-between w-full">
-          {step > 1 && <Button onClick={(e) => handleBackStep()}>Previous</Button>}
-          {step < 5 && <Button onClick={(e) => handleNextStep()}>Next</Button>}
+          {step > 1 && step < 4 && <Button onClick={(e) => handleBackStep()}>Previous</Button>}
+          {step < 3 && <Button onClick={(e) => handleNextStep()}>Next</Button>}
+          {step === 3 && <Button onClick={(e) => handleNextStep()}>Create</Button>}
+          {step === 4 && <Button onClick={(e) => handleUserAuth()}>Authenticate</Button>}
           {step === 5 && <Button onClick={(e) => handleSubmitFormData()}>Submit</Button>}
         </div>
       </div>
