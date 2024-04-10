@@ -9,9 +9,11 @@ interface InputTextProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 const InputText = ({ label, name, ...rest }: InputTextProps) => {
   return (
-    <InputWrapper htmlFor={name} label={label}>
+    <InputWrapper
+      htmlFor={name}
+      label={label}>
       <input
-        className="w-full p-3 text-black bg-white border-4 border-blue-600 rounded-full shadow-lg focus:border-princetonOrange focus:ring focus:ring-orange-200"
+        className="w-full p-3 text-black bg-white border-2 border-blue-600 shadow-lg focus:border-princetonOrange focus:ring focus:ring-orange-200"
         type="text"
         name={name}
         {...rest}

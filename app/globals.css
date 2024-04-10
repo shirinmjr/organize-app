@@ -65,7 +65,7 @@
     @apply p-2 m-4 text-xl text-white rounded bg-brandBlue hover:bg-blue-600;
   }
   .event-form {
-    @apply flex flex-col px-2;
+    @apply flex flex-col mx-1 my-2;
   }
   .form-q-title {
     @apply my-4 text-brandBlue;

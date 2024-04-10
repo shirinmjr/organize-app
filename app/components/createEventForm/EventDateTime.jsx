@@ -3,9 +3,10 @@ import InputWrapper from "../inputs/InputWrapper";
 import dayjs from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
+import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 import { MobileTimePicker } from "@mui/x-date-pickers/MobileTimePicker";
+import { orange } from "@mui/material/colors";
 
 const EventDateTime = () => {
   const [eventDate, setEventDate] = useState("");
@@ -14,18 +15,29 @@ const EventDateTime = () => {
   useEffect(() => {
     console.log("date", eventDate);
   }, [eventDate]);
-  //   const handleDatePicker = (e) => {
-  //     setEventDate(new Date(e.$d).toISOString().substring(0, 10));
-  // callBack()
-  //     // setModalDateIsOpen(true);
-  //   };
+
   return (
     <div className="flex flex-col items-center justify-start  rounded-full">
-      <InputWrapper htmlFor="event-date" label="">
+      <InputWrapper
+        htmlFor="event-date"
+        label="">
         <div className="flex items-center">
           <div className="flex flex-col">
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DatePicker defaultValue={todayDate} name={"eventDate"} />
+              <DemoContainer components={["DatePicker", "MobileDatePicker", "DesktopDatePicker", "StaticDatePicker"]}>
+                <DemoItem label="Event Date">
+                  <MobileDatePicker
+                    sx={{
+                      border: 2,
+                      borderColor: "brandBlue",
+                      borderRadius: "8px",
+                      "&:hover": { borderColor: orange[300] },
+                    }}
+                    defaultValue={todayDate}
+                    name={"eventDate"}
+                  />
+                </DemoItem>
+              </DemoContainer>
             </LocalizationProvider>
           </div>
         </div>
@@ -36,9 +48,19 @@ const EventDateTime = () => {
               "MobileTimePicker",
               // "DesktopTimePicker",
               // "StaticTimePicker",
-            ]}
-          >
-            <MobileTimePicker name="eventTime" defaultValue={todayDate} />
+            ]}>
+            <DemoItem label="Event Time">
+              <MobileTimePicker
+                sx={{
+                  border: 2,
+                  borderColor: "brandBlue",
+                  borderRadius: "8px",
+                  "&:hover": { borderColor: orange[300] },
+                }}
+                name="eventTime"
+                defaultValue={todayDate}
+              />
+            </DemoItem>
           </DemoContainer>
         </LocalizationProvider>
         <div className="flex items-center"></div>

@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import InputWrapper from "../inputs/InputWrapper";
 import InputText from "../inputs/InputText";
-import Switch from "../inputs/Switch";
 
 const EventName = ({ callBack, eventName = "" }) => {
-  const [datePickerChecked, setDatePickerChecked] = useState(false);
-
   return (
     <InputWrapper>
       <div className="event-form">
@@ -14,7 +11,7 @@ const EventName = ({ callBack, eventName = "" }) => {
         </div>
         <InputText
           name="eventName"
-          placeHolder={"Event Name.."}
+          placeholder={"Event Name.."}
           value={eventName}
           onChange={callBack}
           required
