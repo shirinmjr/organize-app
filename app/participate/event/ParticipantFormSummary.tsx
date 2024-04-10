@@ -1,5 +1,4 @@
-import Button from "@/app/components/inputs/Button";
-import { IQuestion, IResponse, QuestionResponses } from "@/lib/types";
+import { IQuestion, QuestionResponses } from "@/lib/types";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -25,7 +24,7 @@ const ParticipantFormSummary = ({
         <ul className="ml-4">
           {collectedResponses.map((option) => (
             <li
-              key={option.option}
+              key={option.option.toString()}
               className="list-disc">
               {option.option}
             </li>
