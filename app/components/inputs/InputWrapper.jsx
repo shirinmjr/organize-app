@@ -2,7 +2,7 @@ const InputWrapper = ({ children, htmlFor, label }) => {
   return (
     <>
       <label
-        className="w-full font-bold"
+        className="w-full p-2 m-1 font-bold"
         htmlFor={htmlFor}>
         {label}
       </label>

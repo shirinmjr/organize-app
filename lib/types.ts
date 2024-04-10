@@ -24,12 +24,14 @@ export interface ISingleResponse {
   [key: string]: string | number;
 }
 export interface IMultipleResponse {
-  [key: string]: string[] | number[];
+  [key: string]: number[];
 }
+
+export type QuestionResponses = Record<string, string | number | string[] | number[]>;
 
 export interface IParticipantResponse {
   participant_id: string;
-  responses: IResponse[];
+  responses: QuestionResponses;
   survey_id: string;
   event_id: string;
   date_submitted: string;

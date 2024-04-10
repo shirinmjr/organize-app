@@ -3,18 +3,14 @@
 import EventLandingPage from "./EventLandingPage";
 import { useState } from "react";
 import Button from "@/app/components/inputs/Button";
-import { IEvent, IResponse } from "@/lib/types";
+import { IEvent, IResponse, QuestionResponses } from "@/lib/types";
 import MappedInput from "./[id]/MappedInput";
+import ParticipantFormSummary from "./ParticipantFormSummary";
 
-const ParticipantFlow = ({ data }: { data: IEvent }) => {
+const ParticipantFlow = ({ data, defaultResponse }: { data: IEvent; defaultResponse: QuestionResponses }) => {
   const [step, setStep] = useState(0);
-  const defaultFormState: IResponse[] = data.questions.map((question) => ({
-    id: question.question_id,
-    response: null,
-  }));
-  const [volunteerResponse, setVolunteerResponse] = useState(defaultFormState);
+  const [volunteerResponse, setVolunteerResponse] = useState(defaultResponse);
 
-  console.log(volunteerResponse);
   const incrementStep = () => {
     if (step <= data.questions.length) {
       setStep((step) => step + 1);
@@ -27,9 +23,19 @@ const ParticipantFlow = ({ data }: { data: IEvent }) => {
   };
 
   const onChangeHandler = (answer: IResponse) => {
-    const updatedData = volunteerResponse.filter((response) => response.id != answer.id);
-    updatedData.push(answer);
-    setVolunteerResponse(updatedData);
+    setVolunteerResponse((state) => ({ ...state, ...answer }));
+  };
+
+  const goToQuestionIndex = (id: string) => {
+    const index = data.questions.findIndex((question) => question.question_id === id);
+    if (index < 0) {
+      return;
+    }
+    setStep(index + 1);
+  };
+
+  const onSubmit = () => {
+    console.log({ volunteerResponse });
   };
 
   return step === 0 ? (
@@ -53,11 +59,24 @@ const ParticipantFlow = ({ data }: { data: IEvent }) => {
           </div>
         </div>
       ))}
-      <div className="flex w-full gap-2">
-        <Button onClick={decrementStep}>Previous</Button>
-        <Button onClick={incrementStep}>Next</Button>
-      </div>
-      {step - 1 === data.questions.length ? <div>{JSON.stringify(volunteerResponse)}</div> : null}
+      {step - 1 === data.questions.length ? (
+        <>
+          <ParticipantFormSummary
+            questions={data.questions}
+            volunteerResponse={volunteerResponse}
+            onEdit={goToQuestionIndex}
+          />
+
+          <div className="flex w-full gap-2">
+            <Button onClick={onSubmit}>Submit Answers</Button>
+          </div>
+        </>
+      ) : (
+        <div className="flex w-full gap-2">
+          <Button onClick={decrementStep}>Previous</Button>
+          <Button onClick={incrementStep}>Next</Button>
+        </div>
+      )}
     </form>
   );
 };
