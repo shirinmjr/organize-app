@@ -10,8 +10,6 @@ import UserAuth from "@/app/components/createEventForm/UserAuth";
 import EventSummary from "@/app/components/createEventForm/EventSummary";
 import Button from "@/app/components/inputs/Button";
 import Switch from "@/app/components/inputs/Switch";
-import firebase from 'firebase/app';
-import 'firebase/auth';
 
 const Page = () => {
   const totalSteps = 5; //total steps - on the form change if steps changed
@@ -49,23 +47,33 @@ const Page = () => {
       ["organizerInfo"]: organizerInfo,
     });
   };
-  const handleUserAuth = (organizerInfo) => {
-    console.log("handleUserAuth");
+  const validateFormData = (organizerInfo) => {
+    console.log("validateFormData");
     if(organizerInfo != null && organizerInfo != undefined) {
-      console.log("Authenticating User... for ", organizerInfo);
+      console.log("Validated organizer info: ", organizerInfo);
       if (organizerInfo.phoneNumber != null && organizerInfo.phoneNumber != undefined) {
-        console.log("Organizer's phone number: ", organizerInfo.phoneNumber);
+        console.log("Validated phone number: ", organizerInfo.phoneNumber);
       }
+      else
+      {
+        // TODO: else bail
+      }
+
+      // TODO: convert phone number to E.164 phone number format
+
       setFormData({
         ...formData,
         ["organizerInfo"]: organizerInfo,
       });
     }
+    {
+      // TODO: else bail
+    }
     handleNextStep();
   };
 
   const handleSubmitFormData = () => {
-    //This is where the back-end call happens
+    //TODO: This is where the back-end call for saving the form happens
     console.log("Form submitted successfully and data is: ", formData);
   };
 
@@ -110,7 +118,7 @@ const Page = () => {
           ) : null}
           {step === 4 ? (
             <UserAuth
-              callBack={(organizerInfo) => handleUserAuth(organizerInfo)}
+              callBack={(organizerInfo) => validateFormData(organizerInfo)}
               organizerData={formData.organizerInfo}
             />
           ) : null}
@@ -125,7 +133,7 @@ const Page = () => {
           {step > 1 && step < 4 && <Button onClick={(e) => handleBackStep()}>Previous</Button>}
           {step < 3 && <Button onClick={(e) => handleNextStep()}>Next</Button>}
           {step === 3 && <Button onClick={(e) => handleNextStep()}>Create</Button>}
-          {step === 4 && <Button onClick={(e) => handleUserAuth()}>Authenticate</Button>}
+          {step === 4 && <Button onClick={(e) => validateFormData()}>Authenticate</Button>}
           {step === 5 && <Button onClick={(e) => handleSubmitFormData()}>Submit</Button>}
         </div>
       </div>
