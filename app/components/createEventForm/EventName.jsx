@@ -6,9 +6,7 @@ const EventName = ({ callBack, eventName = "" }) => {
   return (
     <InputWrapper>
       <div className="event-form">
-        <div className="flex gap-7">
-          <h3 className="">What is your event name?</h3>
-        </div>
+        <h3 className="">What is your event name?</h3>
         <InputText
           name="eventName"
           placeholder={"Event Name.."}
