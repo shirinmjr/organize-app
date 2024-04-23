@@ -20,8 +20,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className=" flex flex-col justify-center overflow-y-auto">
-          <div className="flex flex-col items-center m-4">
+        <div className=" styles.container flex flex-col justify-center overflow-y-auto">
+          <div className="flex flex-col items-center m-4 max-w-1/2 mx-auto">
             <div>
               <Image
                 alt="app logo"
