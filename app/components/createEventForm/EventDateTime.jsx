@@ -11,10 +11,10 @@ import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 import { MobileTimePicker } from "@mui/x-date-pickers/MobileTimePicker";
 import { orange } from "@mui/material/colors";
 
-export interface IQuestionOption {
-  option_id: string | number | Boolean;
-  option: string;
-}
+// export interface IQuestionOption {
+//   option_id: string | number | Boolean;
+//   option: string;
+// }
 const EventDateTime = () => {
   const [datePickerChecked, setDatePickerChecked] = useState(false);
 
