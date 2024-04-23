@@ -17,9 +17,9 @@ const GetStarted = () => {
           />
           <h1 className="">Make a difference,</h1>
           <h2>together</h2>
-          <div className="lg:grid grid-cols-2 xl:grid-cols-4">
+          <div className="">
             <p>
-              We empower communities to <b>get things done</b>
+              We empower communities to <strong>get things done</strong>
             </p>
           </div>
           <Link href={`/event-page/new`}>

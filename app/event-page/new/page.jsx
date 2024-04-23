@@ -9,10 +9,9 @@ import GetUserInfo from "@/app/components/createEventForm/GetUserInfo";
 import UserAuth from "@/app/components/createEventForm/UserAuth";
 import EventSummary from "@/app/components/createEventForm/EventSummary";
 import Button from "@/app/components/inputs/Button";
-import Switch from "@/app/components/inputs/Switch";
 
 const Page = () => {
-  const totalSteps = 5; //total steps - on the form change if steps changed
+  const totalSteps = 6; //total steps - on the form change if steps changed
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState("");
   const [datePickerChecked, setDatePickerChecked] = useState(false);
@@ -93,34 +92,33 @@ const Page = () => {
                 callBack={handleEventName}
                 eventName={formData.eventName}
               />
-              <Switch
-                label={"Have you decided on a date?"}
-                isChecked={datePickerChecked}
-                callBack={() => setDatePickerChecked(!datePickerChecked)}
-              />
-              {datePickerChecked && <EventDateTime callBack={handleEventDateTime} />}
             </div>
           ) : null}
           {step === 2 ? (
+            <div>
+              <EventDateTime callBack={handleEventDateTime} />
+            </div>
+          ) : null}
+          {step === 3 ? (
             <NeedToDecide
               callBack={(questions) => handleNeedToDecide(questions)}
               questionsData={formData.questions}
             />
           ) : null}
-          {/* {step === 3 ? <WhoToInvite /> : null} //Coming Soon...*/}
-          {step === 3 ? (
+          {/* {step === 4 ? <WhoToInvite /> : null} //Coming Soon...*/}
+          {step === 4 ? (
             <GetUserInfo
               callBack={(organizerInfo) => handleGetUserInfo(organizerInfo)}
               organizerData={formData.organizerInfo}
             />
           ) : null}
-          {step === 4 ? (
+          {step === 5 ? (
             <UserAuth
               callBack={(organizerInfo) => validateFormData(organizerInfo)}
               organizerData={formData.organizerInfo}
             />
           ) : null}
-          {step === 5 ? (
+          {step === 6 ? (
             <div>
               <EventSummary />
             </div>
@@ -129,10 +127,10 @@ const Page = () => {
 
         <div className="flex flex-row items-center justify-between w-full">
           {step > 1 && step < 4 && <Button onClick={(e) => handleBackStep()}>Previous</Button>}
-          {step < 3 && <Button onClick={(e) => handleNextStep()}>Next</Button>}
-          {step === 3 && <Button onClick={(e) => handleNextStep()}>Create</Button>}
-          {step === 4 && <Button onClick={(e) => validateFormData()}>Authenticate</Button>}
-          {step === 5 && <Button onClick={(e) => handleSubmitFormData()}>Submit</Button>}
+          {step < 4 && <Button onClick={(e) => handleNextStep()}>Next</Button>}
+          {step === 4 && <Button onClick={(e) => handleNextStep()}>Create</Button>}
+          {step === 5 && <Button onClick={(e) => validateFormData()}>Authenticate</Button>}
+          {step === 6 && <Button onClick={(e) => handleSubmitFormData()}>Submit</Button>}
         </div>
       </div>
     </div>
