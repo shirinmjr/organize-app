@@ -6,12 +6,14 @@
   body {
     background-color: #0066ff;
     color: #ffffff;
+     max-width: 60%;
     margin: auto;
   }
 
-  @media screen and (min-width: 400px) {
+  @media screen and (max-width: 400px) {
   body {
-        max-width: 60%;
+     max-width: 100%;
+       
   }
 }
 
