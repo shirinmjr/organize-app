@@ -49,13 +49,11 @@ const Page = () => {
   };
   const validateFormData = (organizerInfo) => {
     console.log("validateFormData");
-    if(organizerInfo != null && organizerInfo != undefined) {
+    if (organizerInfo != null && organizerInfo != undefined) {
       console.log("Validated organizer info: ", organizerInfo);
       if (organizerInfo.phoneNumber != null && organizerInfo.phoneNumber != undefined) {
         console.log("Validated phone number: ", organizerInfo.phoneNumber);
-      }
-      else
-      {
+      } else {
         // TODO: else bail
       }
 
