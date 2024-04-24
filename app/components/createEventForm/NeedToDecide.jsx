@@ -91,9 +91,10 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
       </h2>
 
       {questions &&
-        questions.map((question) => {
+        questions.map((question, index) => {
           return (
-            question.type != "dateTime" && (
+            <div key={index}>
+              question.type != "dateTime" && (
               <InputWrapper>
                 <div
                   key={question.id}
@@ -175,7 +176,8 @@ const NeedToDecide = ({ callBack, questionsData = [] }) => {
                     })}
                 </div>
               </InputWrapper>
-            )
+              )
+            </div>
           );
         })}
     </div>
