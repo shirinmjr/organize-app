@@ -5,6 +5,7 @@ import RadioGroup from "@mui/material/RadioGroup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import dayjs from "dayjs";
+import generateUniqueId from "@/app/util/generateUniqueId";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
@@ -17,43 +18,55 @@ import { orange } from "@mui/material/colors";
 //   option_id: string | number | Boolean;
 //   option: string;
 // }
-const EventDateTime = () => {
-  const [datePickerChecked, setDatePickerChecked] = useState();
+//callBack, eventDate = [], eventTime = []
+const EventDateTime = ({ callBack, questionsData = [] }) => {
+  const [datePickerChecked, setDatePickerChecked] = useState(null);
+  const [questions, setQuestions] = useState(questionsData);
   const [eventDate, setEventDate] = useState("");
   const [eventTime, setEventTime] = useState("");
   const todayDate = dayjs();
 
   useEffect(() => {
+    callBack(questions);
+  }, [questions]);
+
+  useEffect(() => {
     console.log("date", eventDate);
+    console.log("event:", questions);
   }, [eventDate, datePickerChecked]);
+
+  const handleAddDateTime = () => {
+    const question = {};
+    const questionId = generateUniqueId();
+    question.id = questionId;
+    question.question = "Pick a Date and Time";
+    question.type = "dateTime";
+    question.options = [];
+    setQuestions((questions) => [...questions, question]);
+  };
 
   return (
     <div className="event-form">
       <h3>Have you decided on a date?</h3>
       <div className="flex items-center font-bold justify-center">
-        {/* name={"event-date"}
-          label={"Have you decided on a date?"}
-          options={}
-          // onChange={(selected) => onChoiceChange([selected])}
-         */}
         <RadioGroup
           row
           aria-labelledby="demo-row-radio-buttons-group-label"
           name="row-radio-buttons-group"
-          onChange={(e) => setDatePickerChecked(e.target.value === "true" ? true : false)}>
+          onChange={(e) => setDatePickerChecked(e.target.value)}>
           <FormControlLabel
-            value={true}
+            value={"yes"}
             control={<Radio />}
             label="Yes"
           />
           <FormControlLabel
-            value={false}
+            value={"no"}
             control={<Radio />}
             label="No"
           />
         </RadioGroup>
       </div>
-      {datePickerChecked && (
+      {datePickerChecked === "yes" && (
         <InputWrapper
           htmlFor="event-date"
           label="">
@@ -61,7 +74,7 @@ const EventDateTime = () => {
             <div className="mx-2">
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DemoContainer components={["DatePicker", "MobileDatePicker", "DesktopDatePicker", "StaticDatePicker"]}>
-                  <DemoItem label="Event Date">
+                  <DemoItem label="Date">
                     <MobileDatePicker
                       sx={{
                         border: 2,
@@ -78,14 +91,8 @@ const EventDateTime = () => {
               </LocalizationProvider>
             </div>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DemoContainer
-                components={[
-                  //  "TimePicker",
-                  "MobileTimePicker",
-                  // "DesktopTimePicker",
-                  // "StaticTimePicker",
-                ]}>
-                <DemoItem label="Event Time">
+              <DemoContainer components={["MobileTimePicker"]}>
+                <DemoItem label="Time">
                   <MobileTimePicker
                     sx={{
                       margin: 2,
@@ -105,23 +112,23 @@ const EventDateTime = () => {
           </div>
         </InputWrapper>
       )}
-
-      {!datePickerChecked && (
+      {datePickerChecked === "no" && (
         <InputWrapper
           htmlFor="event-date"
           label="">
-          <div className="">
+          <div className="flex items-center">
             <h3>Propose up to 5 options. </h3>
+            &nbsp;
             <h2
               className="my-2 text-brandBlue hover:cursor-pointer hover:text-blue-800"
-              // onClick={handleAddQuestion}
-            >
+              onClick={handleAddDateTime}>
               Add&nbsp;
               <FontAwesomeIcon icon={faCirclePlus} />
             </h2>
           </div>
         </InputWrapper>
       )}
+      {datePickerChecked === "no" && <div>{}</div>}
     </div>
   );
 };
