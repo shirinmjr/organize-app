@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import InputWrapper from "../inputs/InputWrapper";
 import InputText from "../inputs/InputText";
 
@@ -9,7 +9,7 @@ const EventName = ({ callBack, eventName = "" }) => {
         <h3 className="">What is your event name?</h3>
         <InputText
           name="eventName"
-          placeholder={"Event Name.."}
+          placeholder={"Event Name..."}
           value={eventName}
           onChange={callBack}
           required

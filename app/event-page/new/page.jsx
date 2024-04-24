@@ -96,7 +96,11 @@ const Page = () => {
           ) : null}
           {step === 2 ? (
             <div>
-              <EventDateTime callBack={handleEventDateTime} />
+              <EventDateTime
+                callBack={(questions) => handleNeedToDecide(questions)}
+                // dateTimeCallBack={(eventDateTime) => handleEventDateTime(eventDateTime)}
+                questionsData={formData.questions}
+              />
             </div>
           ) : null}
           {step === 3 ? (
